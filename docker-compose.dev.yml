@@ -1,0 +1,153 @@
+name: "Spiral-Backend"
+# Network
+networks:
+  abrenet:
+    external: true
+
+# Volumes
+volumes:
+  backend-mysql-data:
+    driver: local
+  backend-pmadata:
+    driver: local
+  storage:
+    driver: local
+
+
+services:
+
+  ####################################################################################################
+  # app
+  ####################################################################################################
+  app-backend:
+    build:
+      args:
+        user: www
+        uid: 1000
+      context: ./development/docker
+      dockerfile: Dockerfile
+    image: "${APP_IMAGE_NAME}"
+    container_name: "${APP_CONTAINER_NAME}"
+    restart: "${APP_RESTART}"
+    environment:
+      VIRTUAL_HOST: "${VIRTUAL_HOST}"
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+      - ~/.ssh:/root/.ssh
+    depends_on:
+      - mysql-abrecode
+      - phpmyadmin-abrecode
+      - redis-abrecode
+    networks:
+      - abrenet
+
+
+  mysql-abrecode:
+    image: "${MYSQL_IMG}"
+    container_name: "${MYSQL_CONTAINER_NAME}"
+    restart: "${MYSQL_RESTART_MODE}"
+    tty: true
+    ports:
+      - "${MYSQL_PORT}:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MYSQL_USER: "${DB_USERNAME}"
+      MYSQL_PASSWORD: "${DB_PASSWORD}"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "${MYSQL_ALLOW_EMPTY_PASSWORD}"
+      MYSQL_DATABASE: "${DB_DATABASE}"
+    healthcheck:
+      test: mysql -h localhost -u root -e 'SELECT version();'
+      start_period: 5s
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - "backend-mysql-data:/var/lib/mysql/"
+    networks:
+      - abrenet
+
+  phpmyadmin-abrecode:
+    image: "${PMA_IMAGE}"
+    container_name: "${PMA_CONTAINER_NAME}"
+    environment:
+      #      PMA_PMADB: 1
+      #      PMA_ARBITRARY: 1
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      PMA_HOST: "${PMA_HOST}"
+      PMA_PORT: "${PMA_MYSQL_PORT}"
+    restart: "${PMA_RESTART}"
+    depends_on:
+      - mysql-abrecode
+
+    ports:
+      - "${PMA_UI_PORT}:80"
+    volumes:
+      - "backend-pmadata:/etc/phpmyadmin/config.user.inc.php"
+    networks:
+      - abrenet
+    # platform: "linux/amd64"
+    links:
+      - mysql-abrecode
+
+  redis-abrecode:
+    image: "${REDIS_IMAGE}"
+    container_name: "${REDIS_CONTAINER_NAME}"
+    restart: "${REDIS_RESTART}"
+    ports:
+      - "${REDIS_PORT}:6379"
+    networks:
+      - abrenet
+
+
+
+  ####################################################################################################
+  # Mail Tester
+  ####################################################################################################
+
+  mailhog:
+    image: "${MAILHOG_IMAGE}"
+    container_name: "${MAILHOG_CONTAINER_NAME}"
+    restart: "${MAILHOG_RESTART}"
+    platform: "linux/amd64"
+    networks:
+      - abrenet
+    ports:
+      - "${MAILHOG_SERVICE_PORT}:1025"
+      - "${MAILHOG_UI_PORT}:8025"
+
+
+
+  ####################################################################################################
+  # Nginx
+  ####################################################################################################
+  nginx-abrecode:
+    image: "${NGINX_IMG}"
+    container_name: "${NGINX_CONTAINER_NAME}"
+    restart: "${NGINX_RESTART}"
+    ports:
+      - "${NGINX_PORT_80}:8000"
+      - "${NGINX_PORT_443}:443"
+    volumes:
+      - ./:/var/www
+      - ./development/nginx:/etc/nginx/conf.d
+    networks:
+      - abrenet
+
+
+    ####################################################################################################
+
+  storage-abrecode:
+    image: minio/minio:latest
+    container_name: "${MINIO_CONTAINER_NAME}"
+    command: minio server /var/lib/minio/data --console-address ":9001"
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    networks:
+      - abrenet
+    volumes:
+      - 'storage:/var/lib/minio/data'
+    environment:
+      - 'MINIO_ROOT_USER=${MINIO_ROOT_USER}'
+      - 'MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}'
