@@ -1,0 +1,11 @@
+{
+    "name": "ProjectManager",
+    "alias": "projectmanager",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ProjectManager\\App\\Providers\\ProjectManagerServiceProvider"
+    ],
+    "files": []
+}

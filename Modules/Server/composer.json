@@ -1,0 +1,31 @@
+{
+    "name": "nwidart/server",
+    "description": "",
+    "authors": [
+        {
+            "name": "Hadi Mo",
+            "email": "hi@abrebase.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Server\\": "",
+            "Modules\\Server\\App\\": "app/",
+            "Modules\\Server\\Database\\Factories\\": "database/factories/",
+            "Modules\\Server\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Server\\Tests\\": "tests/"
+        }
+    }
+}

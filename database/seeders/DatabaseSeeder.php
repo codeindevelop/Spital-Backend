@@ -4,6 +4,12 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Modules\Auth\Database\Seeders\AuthDatabaseSeeder;
+use Modules\Leads\Database\Seeders\LeadsDatabaseSeeder;
+use Modules\Localization\Database\Seeders\LocalizationDatabaseSeeder;
+use Modules\RolePermission\Database\Seeders\RolePermissionDatabaseSeeder;
+use Modules\Settings\Database\Seeders\SettingsDatabaseSeeder;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,11 +18,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+
+        // Localization Seeder Like Languages and Countries etc...
+        $this->call(LocalizationDatabaseSeeder::class);
+
+        // Role and Permission Seeder Base File
+        $this->call(RolePermissionDatabaseSeeder::class);
+
+
+        // Settings Module seeder
+        $this->call(SettingsDatabaseSeeder::class);
+
+        // User And Superadmin Default Seeder
+        $this->call(AuthDatabaseSeeder::class);
+
+        // Lead requirement Seeder
+        $this->call(LeadsDatabaseSeeder::class);
     }
 }
