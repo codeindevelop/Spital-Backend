@@ -8,9 +8,17 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * @method assignRole(string $string)
+ * @method static findOrFail(mixed $user_id)
+ * @property mixed $first_name
+ * @property mixed $register_ip
+ */
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    public mixed $activation_token;
 
     /**
      * The attributes that are mass assignable.

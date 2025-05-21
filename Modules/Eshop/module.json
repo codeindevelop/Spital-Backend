@@ -1,0 +1,11 @@
+{
+    "name": "Eshop",
+    "alias": "eshop",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Eshop\\App\\Providers\\EshopServiceProvider"
+    ],
+    "files": []
+}

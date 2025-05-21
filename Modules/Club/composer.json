@@ -1,0 +1,31 @@
+{
+    "name": "nwidart/club",
+    "description": "",
+    "authors": [
+        {
+            "name": "Hadi Mo",
+            "email": "hi@abrebase.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Club\\": "",
+            "Modules\\Club\\App\\": "app/",
+            "Modules\\Club\\Database\\Factories\\": "database/factories/",
+            "Modules\\Club\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Club\\Tests\\": "tests/"
+        }
+    }
+}

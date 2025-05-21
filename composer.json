@@ -6,10 +6,25 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "ext-json": "*",
+        "ext-rdkafka": "*",
+        "geoip/geoip": "^1.17",
+        "geoip2/geoip2": "~2.0",
         "guzzlehttp/guzzle": "^7.2",
+        "hekmatinasser/verta": "^8.3",
         "laravel/framework": "^10.10",
+        "laravel/passport": "^11.10",
         "laravel/sanctum": "^3.3",
-        "laravel/tinker": "^2.8"
+        "laravel/socialite": "^5.18",
+        "laravel/tinker": "^2.8",
+        "league/csv": "^9.21",
+        "mateusjunges/laravel-kafka": "^2.4",
+        "nesbot/carbon": "^2.72",
+        "nwidart/laravel-modules": "^10.0",
+        "salibhdr/typhoon-iran-cities": "^3.0",
+        "spatie/laravel-activitylog": "^4.10",
+        "spatie/laravel-permission": "^6.10",
+        "torann/geoip": "^3.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -23,6 +38,7 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
+            "Modules\\": "Modules/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }

@@ -1,0 +1,3163 @@
+{
+	"info": {
+		"_postman_id": "b2dff018-263b-41fd-b5a4-baa078a34421",
+		"name": "Abre Code",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11489907"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Localization",
+							"item": [
+								{
+									"name": "Meta",
+									"item": [
+										{
+											"name": "create Meta",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"name\": \"nam\",\n    \"content\": \"nam\",\n    \"property\": \"nam\",\n    \"locale\": \"fa\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{BackendURL}}/api/admin/v1/localization/meta/create",
+													"host": [
+														"{{BackendURL}}"
+													],
+													"path": [
+														"api",
+														"admin",
+														"v1",
+														"localization",
+														"meta",
+														"create"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "Page",
+									"item": [
+										{
+											"name": "create Page",
+											"protocolProfileBehavior": {
+												"disabledSystemHeaders": {}
+											},
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"name\": \"pagsesnassssmses\",\n    \"path\": \"asdassdscssassd\",\n    \"description\": \"asdasd\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{BackendURL}}/api/admin/v1/localization/page/create",
+													"host": [
+														"{{BackendURL}}"
+													],
+													"path": [
+														"api",
+														"admin",
+														"v1",
+														"localization",
+														"page",
+														"create"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "New Folder",
+									"item": []
+								}
+							]
+						},
+						{
+							"name": "Auth",
+							"item": [
+								{
+									"name": "Login",
+									"item": [
+										{
+											"name": "Login Superadmin",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"email\" : \"hadiyoodream@gmail.com\",\n    \"password\" :  \"supersuper\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{BackendURL}}/api/v1/admin/login-managers",
+													"host": [
+														"{{BackendURL}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"login-managers"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Login Admin",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"email\" : \"codeindevelopment@gmail.com\",\n    \"password\" :  \"adminadmin\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{BackendURL}}/api/v1/admin/login-managers",
+													"host": [
+														"{{BackendURL}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"login-managers"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "User",
+							"item": [
+								{
+									"name": "Update User",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"first_name\": \"updated\",\r\n    \"last_name\": \"example\",\r\n    \"mobile_number\": \"091222\",\r\n    \"email\": \"updateduser@user.com\",\r\n    \"password\": \"useruser\",\r\n    \"password_confirmation\": \"useruser\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}/api/v1/admin/update-user/258432",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"update-user",
+												"258432"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get User By id",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"user_id\" : 669\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}/api/v1/admin/getuser",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"getuser"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get All Users",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseURL}}/api/v1/admin/users",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get All Trashed Users",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseURL}}/api/v1/admin/trashed-users",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"trashed-users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Restore Trashed User By Id",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{baseURL}}/api/v1/trashed-user/258433",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"trashed-user",
+												"258433"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create User",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"user_group_id\": 1,\r\n    \"portal_id\": 1,\r\n    \"user_name\": \"usersss\",\r\n    \"first_name\": \"جعفر\",\r\n    \"last_name\": \"موسوی\",\r\n    \"gender\": \"آقا\",\r\n    \"mobile_number\": \"09331292288\",\r\n    \"email\": \"testusaer@exampl4e3.com\",\r\n    \"send_verify_email\": 1,\r\n    \"send_welcome_sms\": 1,\r\n    \"active\": 1,\r\n    \"create_password\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}/api/v1/admin/create-user",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"create-user"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete User By id",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseURL}}/api/v1/admin/user/668",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"user",
+												"668"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Roles",
+							"item": [
+								{
+									"name": "Get All Roles",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseURL}}/api/v1/admin/roles",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"roles"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Role Permissions",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseURL}}/api/v1/role-permissions",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"role-permissions"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Role Permissions By ID",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseURL}}/api/v1/role-permission/3",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"role-permission",
+												"3"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get User Roles",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseURL}}/api/admin/v1/user-roles",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"v1",
+												"user-roles"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Role By Id",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseURL}}/api/v1/role/4",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"role",
+												"4"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "create role",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"role_name\": \"hadi\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}/api/v1/admin/role",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"role"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Assign Role to User",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"user_id\": 1,\r\n    \"rolenames\": [\"admin\",\"hadi\"]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}/api/v1/role-to-user",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"role-to-user"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Remove User Role",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"user_id\": 2,\r\n    \"rolename\": \"writer\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}/api/v1/role-remove-user",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"role-remove-user"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Role Giv Permission",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"role_id\": 4,\r\n    \"permission_ids\": \"publish articles\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}/api/v1/role-giv-permission",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"role-giv-permission"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Role Revoke Permission",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"role_id\": 9,\r\n    \"permission_id\": 3\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}/api/v1/role-revoke-permission",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"role-revoke-permission"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Permission",
+							"item": [
+								{
+									"name": "Get All Permissions",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseURL}}/api/v1/permissions",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"permissions"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Users Permission",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseURL}}/api/v1/user-permissions",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"user-permissions"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get User Permission By User ID",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseURL}}/api/v1/get-user-permission/1",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"get-user-permission",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete permission",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseURL}}/api/v1/permission/5",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"permission",
+												"5"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Crate Permission",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"permission_name\": \"hadi\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}/api/v1/permission",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"permission"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "verification",
+							"item": [
+								{
+									"name": "Reject user",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"user_id\" : \"668\",\n    \"action\" : \"reject\",\n    \"reject_status\" : \"مشکل در مدارک\",\n    \"status\" : \"احراز هویت نشده\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}/api/v1/admin/verify-user",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"verify-user"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Verify user",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"user_id\" : \"668\",\n    \"action\" : \"verify\"\n\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}/api/v1/admin/verify-user",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"verify-user"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Login",
+							"item": [
+								{
+									"name": "Email",
+									"item": [
+										{
+											"name": "Login Email",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"email\" : \"Lila33@yahoo.com\",\n    \"password\" :  \"passwordpassword\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{BackendURL}}/api/v1/user/login-email",
+													"host": [
+														"{{BackendURL}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														"login-email"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "Sms",
+									"item": [
+										{
+											"name": "Login Sms",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"mobile_number\": \"09044459532\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{BackendURL}}/api/v1/user/login-sms",
+													"host": [
+														"{{BackendURL}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														"login-sms"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Verify SMS Login Token",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"mobile_number\": \"09044459539\",\n    \"token\": \"568952\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{BackendURL}}/api/v1/user/sms-verify",
+													"host": [
+														"{{BackendURL}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														"sms-verify"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Mobile",
+							"item": [
+								{
+									"name": "set mobile number",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobile_number\": \"09961409780\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BackendURL}}/api/v1/user/mobile-otp",
+											"host": [
+												"{{BackendURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"user",
+												"mobile-otp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "verify mobile number",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mobile_verify_token\": \"117465\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BackendURL}}/api/v1/user/verify-otp",
+											"host": [
+												"{{BackendURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"user",
+												"verify-otp"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "signup",
+							"item": [
+								{
+									"name": "sms",
+									"item": [
+										{
+											"name": "User Signup SMS",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"mobile_number\": \"09044459539\"\n    \n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{BackendURL}}/api/v1/user/signup-sms",
+													"host": [
+														"{{BackendURL}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														"signup-sms"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Verify SMS Token",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"token\": \"206896\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{BackendURL}}/api/v1/user/signup/verify/sms-token",
+													"host": [
+														"{{BackendURL}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														"signup",
+														"verify",
+														"sms-token"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "email",
+									"item": [
+										{
+											"name": "User Signup email",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"first_name\": \"مهدی\",\n    \"last_name\": \"موسوی\",\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"passwordpassword\",\n    \"password_confirmation\": \"passwordpassword\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{BackendURL}}/api/v1/user/signup-email",
+													"host": [
+														"{{BackendURL}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														"signup-email"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Verify Email Token",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"token\": \"966746\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{BackendURL}}/api/v1/user/signup/verify/email-token",
+													"host": [
+														"{{BackendURL}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														"signup",
+														"verify",
+														"email-token"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "social Login and signup",
+									"item": [
+										{
+											"name": "signup or login",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "GET",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"first_name\": \"هادی\",\n    \"last_name\": \"موسوی\",\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"passwordpassword\",\n    \"password_confirmation\": \"passwordpassword\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{BackendURL}}/api/v1/user/google/redirect",
+													"host": [
+														"{{BackendURL}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														"google",
+														"redirect"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Verify Email Token",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"token\": \"966746\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{BackendURL}}/api/v1/user/signup/verify/email-token",
+													"host": [
+														"{{BackendURL}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														"signup",
+														"verify",
+														"email-token"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "verify token",
+									"item": []
+								}
+							]
+						},
+						{
+							"name": "Profile",
+							"item": [
+								{
+									"name": "Get User Profile",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{BackendURL}}/api/v1/user/profile",
+											"host": [
+												"{{BackendURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"user",
+												"profile"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "logout",
+							"item": [
+								{
+									"name": "logout User",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{BackendURL}}/api/v1/user/logout",
+											"host": [
+												"{{BackendURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"user",
+												"logout"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Training",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "instracture",
+							"item": [
+								{
+									"name": "create instructor by admin",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"user_id\": \"9e9102e5-f3d5-4f34-97b5-f484670370e5\",\n    \"instructor_slug\": \"hadi-mousavi\",\n    \"link_instagram\": \"useruser\",\n    \"link_facebook\": \"useruser\",\n    \"link_linkedin\": \"useruser\",\n    \"link_twitter\": \"useruser\",\n    \"link_github\": \"useruser\",\n    \"link_youtube\": \"useruser\",\n    \"link_website\": \"useruser\",\n    \"skils\": \"php -css-react\",\n    \"short_biography\": \"web developer\",\n    \"biography\": \"web developer and programmer\",\n    \"instructor_image\": \"image\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BackendURL}}/api/v1/admin/training/register-instructor",
+											"host": [
+												"{{BackendURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"training",
+												"register-instructor"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get All instructors List",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/admin/training/all-instructors",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"training",
+												"all-instructors"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get instructor by id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/admin/training/instructor/1",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"training",
+												"instructor",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "create instructor by admin Copy",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"first_name\" : \"محمدسعید فراهانی\",\n    \"mobile\": \"09379676845\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/admin/traning/preregister",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"traning",
+												"preregister"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Training Path",
+							"item": [
+								{
+									"name": "Get All Train Paths",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/admin/training/path/all",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"training",
+												"path",
+												"all"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Train Paths with id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/admin/training/path/show/1",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"training",
+												"path",
+												"show",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "create new traning path",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n \n    \"path_name\": \"برنامه نویس وب\",\n    \"path_target_tech\": \"web\",\n    \"short_desc\": \"مسیر تبدیل شدن به یک برنامه نویس وب سایت\",\n    \"long_desc\": \"توضیحات بلند در مورد این مسیر\",\n    \"active\": true\n   \n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/admin/training/path/new",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"training",
+												"path",
+												"new"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "edit traning path",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n \n    \"path_name\": \"برنامه نویس وب\",\n    \"path_target_tech\": \"web\",\n    \"short_desc\": \"مسیر تبدیل شدن به یک برنامه نویس وب سایت\",\n    \"long_desc\": \"توضیحات بلند در مورد این مسیر\",\n    \"active\": false\n   \n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{authServer-V1}}/api/api/v1/admin/traning/path/edit/1",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"api",
+												"v1",
+												"admin",
+												"traning",
+												"path",
+												"edit",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Student",
+							"item": [
+								{
+									"name": "group",
+									"item": [
+										{
+											"name": "Get All Students Group",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/student/student-groups",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"student",
+														"student-groups"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get Students Group by id",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/student/student-group/1",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"student",
+														"student-group",
+														"1"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Create Students Group",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"group_name\": \"haha\",\n    \"description\": \"desc\",\n    \"active\": 1\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/student/student-group",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"student",
+														"student-group"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "edit Students Group",
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"group_name\": \"hahaaaa\",\n    \"description\": \"desc\",\n    \"active\": 1\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/student/edit-student-group/1",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"student",
+														"edit-student-group",
+														"1"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "delete Students Group Copy",
+											"request": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/student/delete-student-group/1",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"student",
+														"delete-student-group",
+														"1"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "Levels",
+									"item": [
+										{
+											"name": "Get All Students Level",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/student/student-levels",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"student",
+														"student-levels"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get Students level by id",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/student/student-level/1",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"student",
+														"student-level",
+														"1"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Create Students level",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"level_name\": \"haard\",\n    \"level_image\": \"/asasasas\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/student/student-level",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"student",
+														"student-level"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "edit Students Level",
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"level_name\": \"basicsssss\",\n    \"level_image\": null\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/student/edit-student-level/1",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"student",
+														"edit-student-level",
+														"1"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "delete Students Level",
+											"request": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/student/delete-student-level/1",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"student",
+														"delete-student-level",
+														"1"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "Get Student by id",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"student_id\" : 2672\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/admin/student/student",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"student",
+												"student"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Student by id",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"student_id\" : 2671\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{authServer-V1}}/api/api/v1/admin/student/delete-student",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"api",
+												"v1",
+												"admin",
+												"student",
+												"delete-student"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Edit Student by id",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"student_id\" : 2672\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{authServer-V1}}/api/api/v1/admin/student/edit-student",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"api",
+												"v1",
+												"admin",
+												"student",
+												"edit-student"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get All Students List",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{authServer-V1}}/api/api/v1/admin/student/all-students",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"api",
+												"v1",
+												"admin",
+												"student",
+												"all-students"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "create student by operator",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"user_id\": \"668\",\n    \"student_group_id\": \"1\",\n    \"level_id\": \"3\",\n    \"status\": \"ثبت توسط اپراتور\",\n    \"profile_img\": \"img\",\n    \"cover_img\": \"img\",\n    \"about_student\": \"درباره دانشجو\",\n    \"company_name\": \"کمپانی\",\n    \"location_name\": \"تهران\",\n    \"instagram_id\": \"instagram_id\",\n    \"x_id\": \"x_id\",\n    \"github_id\": \"github_id\",\n    \"gitlab_id\": \"gitlab_id\",\n    \"bitbucket_id\": \"bitbucket_id\",\n    \"website_url\": \"www.boxicode.com\",\n    \"job_name\": \"طراح سایت\",\n    \"description\": \"توضیحات کلی در مورد دانشجو\",\n    \"referer_name\": \"hadi\",\n    \"referer_mobile_number\": \"hadi\",\n    \"referer_email\": \"hadi\",\n    \"referer_code\": \"123123\",\n    \"active\": 1,\n    \"send_wellcom_sms\": 0,\n    \"send_wellcom_email\": 1\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/admin/student/signup-student",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"student",
+												"signup-student"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "course",
+							"item": [
+								{
+									"name": "1 - course category",
+									"item": [
+										{
+											"name": "Get All course Category",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/training/all-course-category",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"training",
+														"all-course-category"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get course Category by id",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/training/category/1",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"training",
+														"category",
+														"1"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "create course Category",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"category_name\": \"طراحی سایت\",\n    \"slug\": \"webdesign\",\n    \"description\": \"طراحی سایت\",\n    \"category_image\": null,\n    \"active\": true\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/training/create-course-category",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"training",
+														"create-course-category"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "2 - course",
+									"item": [
+										{
+											"name": "Get All course",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/training/all-courses",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"training",
+														"all-courses"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get course by id",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/training/course/1",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"training",
+														"course",
+														"1"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Create course",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"category_id\": \"9e9107eb-0e42-4b9e-9a29-699e45274d42\",\n    \"instructor_id\": \"9e9103fe-fca2-4d7f-b37a-3ba19439d3a5\",\n    \"course_title\": \"دوره آموزش طراحی فروشگاه اینترنتی\",\n    \"course_slug\": \"/create-shsop-whit-reacsthassax\",\n    \"short_desc\": \"دوره آموزش طراحی فروشگاه آنلاین توسط ریکت جی اس\",\n    \"longdesc\": \"دوره آموزش طراحی فروشگاه آنلاین توسط ریکت جی اس\",\n    \"keywords\": \"طراحی سایت ، برنامه نویسی\",\n    \"course_image\": \"1\",\n    \"cover_image\": \"1\",\n    \"course_intro_video\": \"1\",\n    \"course_time\": \"۲۵ دقیقه\",\n    \"need_requirement\": false,\n    \"requirement_courses_id\": 2,\n    \"requirement_courses_description\": \"نیازمند دوره آموزشی دیگر\",\n    \"requirement_courses_active\": true,\n    \"course_type\": \"نقدی\",\n    \"course_level\": \"مقدماتی\",\n    \"status\": \"آخرین نسخه\",\n    \"price\": \"15000000\",\n    \"is_special\": true,\n    \"active\": true\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/training/create-course",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"training",
+														"create-course"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Update course",
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"category_id\": \"1\",\n    \"instructor_id\": \"1\",\n    \"course_title\": \"دوره آموزش طراحی فروشگاه اینترنتی\",\n    \"course_slug\": \"/create-shop-whit-reacthassa\",\n    \"short_desc\": \"دوره آموزش طراحی فروشگاه آنلاین توسط ریکت جی اس\",\n    \"longdesc\": \"دوره آموزش طراحی فروشگاه آنلاین توسط ریکت جی اس\",\n    \"keywords\": \"طراحی سایت ، برنامه نویسی\",\n    \"course_image\": \"1\",\n    \"cover_image\": \"1\",\n    \"course_intro_video\": \"1\",\n    \"course_time\": \"۲۵ دقیقه\",\n    \"need_requirement\": true,\n    \"requirement_courses_id\": 2,\n    \"requirement_courses_description\": \"نیازمند دوره آموزشی دیگر\",\n    \"requirement_courses_active\":true,\n    \"course_type\": \"مسیر یادگیری طراحی سایت\",\n    \"price\": \"15000000\",\n    \"active\": \"1\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/training/edit-course/1",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"training",
+														"edit-course",
+														"1"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "3 - Course Seasons",
+									"item": [
+										{
+											"name": "Get All seasons",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/training/all-seasons",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"training",
+														"all-seasons"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get seasons by id",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/training/get-season/1",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"training",
+														"get-season",
+														"1"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Create season",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"course_id\": 1,\n    \"season_order_number\": 1,\n    \n    \"season_name\": \"آموزش مباحث هوک\",\n    \"season_desc\": \"آموزش استفاده از هوک ها در ریکت\",\n    \"duration\": \"۲۳ دقیقه\",\n    \"active\": \"1\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/training/create-season",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"training",
+														"create-season"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Update seasons",
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"category_id\": \"1\",\n    \"instructor_id\": \"1\",\n    \"course_title\": \"دوره آموزش طراحی فروشگاه اینترنتی\",\n    \"course_slug\": \"/create-shop-whit-reacthassa\",\n    \"short_desc\": \"دوره آموزش طراحی فروشگاه آنلاین توسط ریکت جی اس\",\n    \"longdesc\": \"دوره آموزش طراحی فروشگاه آنلاین توسط ریکت جی اس\",\n    \"keywords\": \"طراحی سایت ، برنامه نویسی\",\n    \"course_image\": \"1\",\n    \"cover_image\": \"1\",\n    \"course_intro_video\": \"1\",\n    \"course_time\": \"۲۵ دقیقه\",\n    \"need_requirement\": true,\n    \"requirement_courses_id\": 2,\n    \"requirement_courses_description\": \"نیازمند دوره آموزشی دیگر\",\n    \"requirement_courses_active\":true,\n    \"course_type\": \"مسیر یادگیری طراحی سایت\",\n    \"price\": \"15000000\",\n    \"active\": \"1\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/training/edit-season/1",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"training",
+														"edit-season",
+														"1"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "4 - Course Episodes",
+									"item": [
+										{
+											"name": "Get All episodes",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/training/all-episodes",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"training",
+														"all-episodes"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get episode by id",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/training/get-episode/1",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"training",
+														"get-episode",
+														"1"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Create episode",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"course_season_id\": 2,\n    \"episode_order_number\": 1,\n    \"episode_name\": \"آموزش مباحث هوک\",\n    \"episode_desc\": \"آموزش استفاده از هوک ها در ریکت\",\n    \"duration\": \"۲۳ دقیقه\",\n    \"active\": true\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/training/create-episode",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"training",
+														"create-episode"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Update episode",
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"season_id\": \"1\",\n    \n    \"episode_name\": \"آموزش مباحث هوک\",\n    \"episode_desc\": \"آموزش استفاده از هوک ها در ریکت\",\n    \"duration\": \"۲۳ دقیقه\",\n    \"active\": false\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/traning/edit-episode/1",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"traning",
+														"edit-episode",
+														"1"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "5 -Course Videos",
+									"item": [
+										{
+											"name": "Get All videos",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/training/all-episodes",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"training",
+														"all-episodes"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get video by id",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/training/get-video/2",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"training",
+														"get-video",
+														"2"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Create video",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"course_id\": 1,\n    \"course_season_id\": 2,\n    \"course_episode_id\": 2,\n    \n    \"video_name\": \"آموزش کار با هوک\",\n    \"video_desc\": \"آموزش استفاده از هوک ها در ریکت\",\n    \"video_link\": \"http://asset.boxicode.com/media/video.mp4\",\n    \"video_format\": \"mp4\",\n    \"video_size\": \"25mb\",\n    \"duration\": \"۲۳ دقیقه\",\n    \"active\": \"1\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/training/create-video",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"training",
+														"create-video"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Update video",
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"course_id\": \"1\",\n    \"course_season_id\": \"1\",\n    \"course_episode_id\": \"2\",\n    \n    \"video_name\": \"آموزش کار با هوک\",\n    \"video_desc\": \"آموزش استفاده از هوک ها در ریکت\",\n    \"video_link\": \"http://asset.boxicode.com/media/video.mp4\",\n    \"video_format\": \"mp4\",\n    \"video_size\": \"25mb\",\n    \"duration\": \"۲۳ دقیقه\",\n    \"active\": false\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/training/edit-video/2",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"training",
+														"edit-video",
+														"2"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "5 -Course Files",
+									"item": [
+										{
+											"name": "Get All files",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/training/all-files",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"training",
+														"all-files"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get file by id",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/training/get-file/1",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"training",
+														"get-file",
+														"1"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Create file",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"course_id\": 1,\n    \"file_name\": \"آموزش کار با هوک\",\n    \"file_title\": \"آموزش استفاده از هوک ها در ریکت\",\n    \"file_url\": \"http://asset.boxicode.com/media/video.mp4\",\n    \"file_type\": \"mp4\",\n    \"file_size\": \"25mb\",\n    \"file_tag\": \"وب\",\n    \"duration\": \"۲۳ دقیقه\",\n    \"active\": true\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/training/create-file",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"training",
+														"create-file"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Update file",
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"course_id\": \"1\",\n    \n    \n    \"file_name\": \"آموزش کار با هوک\",\n    \"file_title\": \"آموزش استفاده از هوک ها در ریکت\",\n    \"file_url\": \"http://asset.boxicode.com/media/video.mp4\",\n    \"file_type\": \"mp4\",\n    \"file_size\": \"25mb\",\n    \"file_tag\": \"وب\",\n    \"duration\": \"۲۳ دقیقه\",\n    \"active\": false\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/admin/training/edit-file/1",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"training",
+														"edit-file",
+														"1"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "user",
+							"item": [
+								{
+									"name": "course",
+									"item": [
+										{
+											"name": "course category",
+											"item": [
+												{
+													"name": "Get All course Category",
+													"request": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{authServer-V1}}/api/v1/user/training/all-course-category",
+															"host": [
+																"{{authServer-V1}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"user",
+																"training",
+																"all-course-category"
+															]
+														}
+													},
+													"response": []
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "course",
+									"item": [
+										{
+											"name": "Get All course",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/user/training/all-courses",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														"training",
+														"all-courses"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get All seasons",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/web/course/all-seasons",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"web",
+														"course",
+														"all-seasons"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get course by id",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/web/course/course/5",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"web",
+														"course",
+														"course",
+														"5"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get course by category",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/web/course/category-course/1",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"web",
+														"course",
+														"category-course",
+														"1"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "Training Path",
+									"item": [
+										{
+											"name": "Get All Train Paths",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/user/training/path/all",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														"training",
+														"path",
+														"all"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get Train Paths with id",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/user/training/path/show/1",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														"training",
+														"path",
+														"show",
+														"1"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "teacher",
+							"item": []
+						},
+						{
+							"name": "site",
+							"item": [
+								{
+									"name": "course category",
+									"item": [
+										{
+											"name": "Get All course Category",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/user/training/all-course-category",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														"training",
+														"all-course-category"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "course",
+									"item": [
+										{
+											"name": "Get All course",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/user/training/all-courses",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														"training",
+														"all-courses"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get All seasons",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/web/course/all-seasons",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"web",
+														"course",
+														"all-seasons"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get course by id",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/web/course/course/5",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"web",
+														"course",
+														"course",
+														"5"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get course by category",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{authServer-V1}}/api/v1/web/course/category-course/1",
+													"host": [
+														"{{authServer-V1}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"web",
+														"course",
+														"category-course",
+														"1"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Leads",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Lead Sources",
+							"item": [
+								{
+									"name": "create Lead Source",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"source_name\": \"تست\",\n    \"active\": true\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BackendURL}}/api/v1/admin/lead/source/add",
+											"host": [
+												"{{BackendURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"lead",
+												"source",
+												"add"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get All Lead Sources",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/admin/lead/source/list",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"lead",
+												"source",
+												"list"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Lead Status",
+							"item": [
+								{
+									"name": "Get All Lead Status",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/admin/lead/status/list",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"lead",
+												"status",
+												"list"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "create Lead Status",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"status_name\": \"تssست\",\n    \"color\": \"#f1f1f1\",\n    \"active\": true\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BackendURL}}/api/v1/admin/lead/status/add",
+											"host": [
+												"{{BackendURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"lead",
+												"status",
+												"add"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Leads",
+							"item": [
+								{
+									"name": "create Lead",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var template = `",
+													"<style type=\"text/css\">",
+													"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+													"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+													"    .tftable tr {background-color:#ffffff;}",
+													"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+													"    .tftable tr:hover {background-color:#e0ffff;}",
+													"</style>",
+													"",
+													"<table class=\"tftable\" border=\"1\">",
+													"    <tr>",
+													"        <th>Message</th>",
+													"    </tr>",
+													"    <tr>",
+													"        <td>{{response.data.message}}</td>",
+													"    </tr>",
+													"</table>",
+													"`;",
+													"",
+													"function constructVisualizerPayload() {",
+													"    return {response: pm.response.json()}",
+													"}",
+													"",
+													"pm.visualizer.set(template, constructVisualizerPayload());"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"staff_id\": \"9e95749f-03a7-4d86-b0be-1272e76ea3f0\",\n    \"source_id\": \"9e95749f-07c6-4567-96b9-9d3f68bb5d64\",\n    \"status_id\": \"9e95749f-134a-4b4e-a0c7-a249e427e7b8\",\n    \"first_name\": \"مهدی\",\n    \"last_name\": \"موسوی\",\n    \"email\": \"mahdi@mashssdin.com\",\n    \"country\": \"\",\n    \"city\": \"\",\n    \"address\": \"\",\n    \"zip_code\": \"\",\n    \"website\": \"\",\n    \"phone\": \"\",\n    \"mobile_number\": \"09961409780\",\n    \"company_name\": \"\",\n    \"description\": \"\",\n    \"tags\": \"\",\n    \"is_public\": false,\n    \"active\": true,\n    \"send_welcome_sms\": true,\n    \"send_welcome_email\": false\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BackendURL}}/api/v1/admin/lead/add",
+											"host": [
+												"{{BackendURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"lead",
+												"add"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get All Lead",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/admin/lead/list",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"lead",
+												"list"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Lead Settings",
+							"item": []
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": []
+				}
+			]
+		},
+		{
+			"name": "Localization",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Countries",
+							"item": [
+								{
+									"name": "GetAllCountries",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/admin/localization/country/all",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"localization",
+												"country",
+												"all"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Lead Status",
+							"item": []
+						},
+						{
+							"name": "Leads",
+							"item": []
+						},
+						{
+							"name": "Lead Settings",
+							"item": []
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5ZTk1NzQ5Zi0xNzliLTQyMTctYjRkNS1lNWE4ZTE0ZGY4ZWMiLCJqdGkiOiIxYzcwYjMzZDU1ODhlMDI0ZDcxODg1OTdkMjc0Y2ZjODEyNDYzOGVjNWRkMmFhYjdlNjk1ZDIxOWY2NDMzOTg5MzBhZDNmMTgwNDZjNmIxYyIsImlhdCI6MTc0MzY0NzU1MC45Nzk2MzYsIm5iZiI6MTc0MzY0NzU1MC45Nzk2MzgsImV4cCI6MTc1OTQ1ODc1MC45NzAyOTMsInN1YiI6IjllOTU3NDlmLTAzYTctNGQ4Ni1iMGJlLTEyNzJlNzZlYTNmMCIsInNjb3BlcyI6W119.akB8QyNxFZFA1LP4bJixesQWlbNWUpEmSV7gVUCJPMwmMvkwK06dEjUuITO3KnRaqNlZVoxOdgBGKGJ26NSgSOXqOfhFfJMbD6wGqaX7P4bLUvInvfjTdrquQxOTsnqqSJHCXrbFTueRRwo0fEcH6tN2vnsNccbePTqApZiTV3__pnU_PXRhUp_Y9Ih56ufgmQt_67WOPJREg3kV9pmZjqryeCWWQvrX3SwIztVVRbEtyPWEQJCD5dh6dx_6xgbKKfcB6FYKRmZm02EllcEVEBbq9ceUOIH7uxyjqsaIhKTK2V6qw_quWeXDRONUtSY4L7EoB3HF1VtnZciH7v-Nfc_MFHQurZceYJk4mMUfMgvbC3JxB98Su3mwDf2sDSqW71b9cOZcC2daaKe1E0Hc1_kFgb35O-SKwN74ZemHzj4ZyMkU3UAdQh7pL6jwqXXiQgXSYNmqN5Dq71c_ZgG0i6kAIy9M9zztflAC4Jpx0f6NuQThYLnh9_2GY1SAC2yDdrj-YPadStxVPFI7sM2IOWH0Edtoj9USixYmuJvt8b5vJId3Ily3Rr91mj4_oCrqsc1aK0nvnq_nLtww5kYWmvScg1le6Ju__yNp1jULbMClJqOT6Y-0kvqPr1dKlOliWh7uRSyAYNUTe6mlZEWQna3KZwkuFBDKNtlZbSrLd2w",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

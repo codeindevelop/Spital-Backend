@@ -1,0 +1,31 @@
+{
+    "name": "nwidart/projectmanager",
+    "description": "",
+    "authors": [
+        {
+            "name": "Hadi Mo",
+            "email": "hi@abrebase.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\ProjectManager\\": "",
+            "Modules\\ProjectManager\\App\\": "app/",
+            "Modules\\ProjectManager\\Database\\Factories\\": "database/factories/",
+            "Modules\\ProjectManager\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\ProjectManager\\Tests\\": "tests/"
+        }
+    }
+}

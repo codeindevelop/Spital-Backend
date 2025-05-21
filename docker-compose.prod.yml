@@ -1,0 +1,122 @@
+
+# Network
+networks:
+  abrenet:
+    driver: bridge
+
+# Volumes
+volumes:
+  storage:
+    driver: local
+  postgres:
+    driver: local
+  pgadmin:
+    driver: local
+
+services:
+
+  ####################################################################################################
+  # app
+  ####################################################################################################
+  app-backend:
+    build:
+      args:
+        user: www
+        uid: 1000
+      context: .
+      dockerfile: Dockerfile.prod
+    image: "${APP_IMAGE_NAME}"
+    container_name: "${APP_CONTAINER_NAME}"
+    restart: "${APP_RESTART}"
+    environment:
+      VIRTUAL_HOST: "${VIRTUAL_HOST}"
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+      - ~/.ssh:/root/.ssh
+    depends_on:
+      - postgres
+      - pgadmin
+      - redis-abrecode
+    networks:
+      - abrenet
+
+
+    ####################################################################################################
+    # Postgres
+    ####################################################################################################
+  postgres:
+    container_name: postgres_container
+    image: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
+      POSTGRES_DB: ${POSTGRES_DB}
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - abrenet
+    restart: unless-stopped
+
+    ####################################################################################################
+    # pgAdmin
+    ####################################################################################################
+
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    networks:
+      - abrenet
+    restart: unless-stopped
+
+
+      ####################################################################################################
+    # Redis
+    ####################################################################################################
+
+  redis-abrecode:
+    image: "${REDIS_IMAGE}"
+    container_name: "${REDIS_CONTAINER_NAME}"
+    restart: "${REDIS_RESTART}"
+    ports:
+      - "${REDIS_PORT}:6379"
+    networks:
+      - abrenet
+
+
+
+
+
+  ####################################################################################################
+  # Nginx
+  ####################################################################################################
+  # nginx-abrecode:
+  #   image: "${NGINX_IMG}"
+  #   container_name: "${NGINX_CONTAINER_NAME}"
+  #   restart: "${NGINX_RESTART}"
+  #   ports:
+  #     - "${NGINX_PORT_80}:80"
+  #     - "${NGINX_PORT_443}:443"
+  #   volumes:
+  #     - ./:/var/www
+  #     - ./production/nginx:/etc/nginx/conf.d
+  #   depends_on:
+  #     - app-backend
+  #     - pgadmin
+  #     - redis-abrecode
+  #     - postgres
+  #   networks:
+  #     - abrenet
+

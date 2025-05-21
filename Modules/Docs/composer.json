@@ -1,0 +1,31 @@
+{
+    "name": "nwidart/docs",
+    "description": "",
+    "authors": [
+        {
+            "name": "Hadi Mo",
+            "email": "hi@abrebase.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Docs\\": "",
+            "Modules\\Docs\\App\\": "app/",
+            "Modules\\Docs\\Database\\Factories\\": "database/factories/",
+            "Modules\\Docs\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Docs\\Tests\\": "tests/"
+        }
+    }
+}
