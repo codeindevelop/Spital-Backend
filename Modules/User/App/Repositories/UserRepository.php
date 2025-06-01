@@ -33,46 +33,5 @@ class UserRepository
         return $user;
     }
 
-    public function convertLeadToUserRepo(array $data): User
-    {
 
-        $user = new User([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
-            'email' => $data['email'],
-            'mobile_number' => $data['mobile_number'],
-            'password' => Hash::make($data['password']),
-        ]);
-        $user->save();
-
-        $userVerify = new UserVerify([
-            'user_id' => $user->id,
-            'email_verify_token' => Str::random(60),
-            'status' => 'signup',
-        ]);
-        $userVerify->save();
-
-        return $user;
-    }
-    public function convertLeadToUserWithPassword(array $data): User
-    {
-
-        $user = new User([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
-            'email' => $data['email'],
-            'mobile_number' => $data['mobile_number'],
-            'password' => Hash::make($data['password']),
-        ]);
-        $user->save();
-
-        $userVerify = new UserVerify([
-            'user_id' => $user->id,
-            'email_verify_token' => Str::random(60),
-            'status' => 'signup',
-        ]);
-        $userVerify->save();
-
-        return $user;
-    }
 }

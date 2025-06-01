@@ -1,26 +1,29 @@
 <?php
 
-namespace Modules\Auth\App\Http\Controllers\admin\auth;
+namespace Modules\Auth\App\Http\Controllers\Admin\Auth;
 
-use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
-use Modules\Auth\App\Events\UserLogedinByEmailEvent;
-use Modules\User\App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-
+use Modules\Auth\App\Services\AdminUserService;
+use Modules\RolePermission\App\Models\Role;
+use Modules\User\App\Models\User;
+use Symfony\Component\HttpFoundation\Response;
 
 class AdminAuthController extends Controller
 {
+    private AdminUserService $adminUserService;
+
+    public function __construct(AdminUserService $adminUserService)
+    {
+        $this->adminUserService = $adminUserService;
+    }
+
     // Login Admins
     public function adminLogin(Request $request): JsonResponse
     {
-
-        // Validate Request Data
         $validator = Validator::make($request->all(), [
             'email' => ['required', 'email'],
             'password' => ['required', 'string', 'max:255'],
@@ -28,349 +31,279 @@ class AdminAuthController extends Controller
             '2fa_code' => ['sometimes', 'numeric'],
         ]);
 
-        // If Validator has Error :: return the error
         if ($validator->fails()) {
-            return response()->json([
-                'error' => $validator->errors()->first()
-            ], 422);
-
-
-            // If Validator has Not Error
-        } else {
-            $emailExist = User::where('email', $request->email)->first();
-
-            // If user has not Signup return Error
-            if (!$emailExist) {
-                return response()->json([
-                    'error' => 'user not exist with this email!'
-                ], 422);
-            }
-
-
-            $credentials = request(['email', 'password']);
-            if (!Auth::attempt($credentials)) {
-                return response()->json(['error' => 'user or pass is wrong or whatever.'], 401);
-            }
-
-            $user = Auth::user();
-
-            if ($user->can('admin_area:access')) {
-
-                $tokenResult = $user->createToken('accessToken');
-                $token = $tokenResult->token;
-
-                if ($request->remember_me) {
-                    $token->expires_at = Carbon::now()->addWeeks(1);
-                } else {
-                    $token->expires_at = Carbon::now()->addSeconds(config("auth.password_timeout"));
-                }
-                $token->save();
-
-                $ip = $request->getClientIp();
-
-
-                // Call Dispatch User login Actions
-                UserLogedinByEmailEvent::dispatch($user, $ip);
-
-                return response()->json([
-                    'data' => [
-                        'accessToken' => $tokenResult->accessToken,
-
-                    ]
-                ], Response::HTTP_OK);
-            } else {
-                return response()->json([
-                    'error' => 'you can not access to this area'
-                ], 401);
-            }
+            return response()->json(['error' => $validator->errors()->first()], 422);
         }
+
+        $credentials = $request->only('email', 'password');
+        if (!Auth::attempt($credentials)) {
+            return response()->json(['error' => 'Invalid email or password.'], 401);
+        }
+
+        $user = Auth::user();
+        if (!$user->hasPermissionTo('admin_area:access')) {
+            return response()->json(['error' => 'You cannot access the admin area.'], 403);
+        }
+
+        $tokenResult = $user->createToken('accessToken');
+        $token = $tokenResult->token;
+        $token->expires_at = $request->remember_me
+            ? now()->addWeeks(1)
+            : now()->addSeconds(config('auth.password_timeout', 3600));
+        $token->save();
+
+        $ip = $request->getClientIp();
+        // TODO: Dispatch UserLogedinByEmailEvent if needed
+        // UserLogedinByEmailEvent::dispatch($user, $ip);
+
+        return response()->json([
+            'data' => [
+                'accessToken' => $tokenResult->accessToken,
+            ],
+        ], Response::HTTP_OK);
     }
 
-
-    // get user profile
+    // Get Admin Profile
     public function adminProfile(): JsonResponse
     {
         $user = Auth::user();
-        if ($user->can('mother_area:access')) {
+        if (!$user->hasPermissionTo('admin_area:access')) {
+            return response()->json(['error' => 'You cannot access this area.'], 403);
+        }
 
-            $role = $user->getRoleNames();
-            $permissions = $user->getAllPermissions();
+        $role = $user->getRoleNames();
+        $permissions = $user->getAllPermissions();
 
-            return response()->json([
-                'user' => $user,
+        return response()->json([
+            'data' => [
+                'user' => $user->load('personalInfo', 'verify', 'roles', 'permissions'),
                 'role' => $role,
                 'permissions' => $permissions,
-            ]);
-        } else {
-
-            return response()->json([
-                'error' => 'you can not access to this area'
-            ], 402);
-        }
+            ],
+        ], Response::HTTP_OK);
     }
 
-
-    // Create user by admin
-    public function createUser(Request $request): JsonResponse
+    // Create User by Admin
+    public function adminCreateUser(Request $request): JsonResponse
     {
-
         $operator = Auth::user();
-        if ($operator->can('users:create')) {
-
-            $validate = Validator::make($request->all(), [
-
-                'first_name' => ['required', 'string'],
-                'last_name' => ['required', 'string'],
-                'mobile_number' => ['string', 'unique:users'],
-                'email' => ['email', 'max:255', 'unique:users'],
-                'password' => ['required', 'confirmed'],
-            ]);
-            if ($validate->fails()) {
-                // Check user email has not exist
-                $emailExist = User::where('email', $request->email)->first();
-
-                if ($emailExist) {
-                    return response()->json(
-                        [
-                            'error' => 'email has Exist'
-                        ],
-                        401
-                    );
-                }
-
-                // check user has registered or not by mobile number
-                $checkMobileNumber = User::where('mobile_number', $request->mobile_number)->first();
-
-
-                // If user has Existed
-                if ($checkMobileNumber) {
-                    // If user Email Exist
-                    return response()->json([
-                        'error' => 'mobile_number has Exist'
-                    ], 401);
-                }
-            }
-
-            $user = new User([
-
-                'first_name' => $request->first_name,
-                'last_name' => $request->last_name,
-                'mobile_number' => $request->mobile_number,
-                'email' => $request->email,
-                'email_verify_token' => Str::random(60),
-                'password' => bcrypt($request->password),
-                "father_name" => $request->father_name,
-                'melli_code' => $request->melli_code,
-                'shenasname_no' => $request->shenasname_no,
-                'birth_date' => $request->birth_date,
-                'gender' => $request->gender,
-                'phone_number' => $request->phone_number,
-                'home_address' => $request->home_address,
-                'profile_pic' => $request->profile_pic,
-                'image_mellicard' => $request->image_mellicard,
-                'image_shenasname' => $request->image_shenasname,
-                'image_passport' => $request->image_passport,
-                'image_selfi' => $request->image_selfi,
-                'active' => $request->active,
-                'status' => 'ایجاد توسط'.$operator->first_name,
-
-
-            ]);
-
-            $random_password_code = $request->password;
-
-            $user->save();
-
-//            ProcessCreateUserByOperator::dispatch($user, $random_password_code, $user, $operator);
-
-
-            $user->assignRole('registred-user');
-
-            return response()->json([
-                'message' => 'User has ben Created successful!',
-                'operator_id' => $user->id,
-                'user' => $user,
-
-            ], Response::HTTP_CREATED);
-
-
-            // If admin dos not permission to create user
-        } else {
-            return response()->json([
-                'message' => 'You don have permission  '
-            ], 402);
+        if (!$operator->hasPermissionTo('users:create')) {
+            return response()->json(['error' => 'You do not have permission to create users.'], 403);
         }
+
+        $validator = Validator::make($request->all(), [
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255', 'unique:users,email'],
+            'mobile_number' => ['required', 'string', 'max:20', 'unique:users,mobile_number'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'gender' => ['nullable', 'string', 'in:male,female,other'],
+            'national_id' => ['nullable', 'string', 'max:20'],
+            'phone_number' => ['nullable', 'string', 'max:20'],
+            'home_address' => ['nullable', 'string', 'max:500'],
+            'passport_number' => ['nullable', 'string', 'max:50'],
+            'shenasname_number' => ['nullable', 'string', 'max:50'],
+            'mellicard_number' => ['nullable', 'string', 'max:50'],
+            'active' => ['boolean'],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()->first()], 422);
+        }
+
+        $ip = $request->getClientIp();
+        $response = $this->adminUserService->createUser($request->all() + ['ip' => $ip, 'operator_id' => $operator->id]);
+
+        return response()->json([
+            'data' => [
+                'message' => 'User created successfully.',
+                'user' => $response['user'],
+                'accessToken' => $response['accessToken'],
+            ],
+        ], Response::HTTP_CREATED);
     }
 
-    // Update user
+    // Update User
     public function update(Request $request, $id): JsonResponse
     {
-        $user = Auth::user();
-
-
-        if ($user->can('users:edit')) {
-            $targetUser = User::findOrFail($id);
-
-            $targetUser->update([
-                'first_name' => $request->has('first_name') ? $request->first_name : $targetUser->first_name,
-                'last_name' => $request->has('last_name') ? $request->last_name : $targetUser->last_name,
-                'email' => $request->has('email') ? $request->email : $targetUser->email,
-                'mobile_number' => $request->has('mobile_number') ? $request->mobile_number : $targetUser->mobile_number,
-                // 'active' => $request->active,
-                'password' => $request->password != "" ? bcrypt($request->password) : $targetUser->password
-            ]);
-
-            return response()->json([
-                'message' => 'User has ben Updated!',
-                'updated_user' => $targetUser
-            ], 202);
-        } else {
-            return response()->json([
-                'message' => 'you dont have permission',
-
-            ], 402);
+        $operator = Auth::user();
+        if (!$operator->hasPermissionTo('users:edit')) {
+            return response()->json(['error' => 'You do not have permission to edit users.'], 403);
         }
+
+        $validator = Validator::make($request->all(), [
+            'first_name' => ['sometimes', 'string', 'max:255'],
+            'last_name' => ['sometimes', 'string', 'max:255'],
+            'email' => ['sometimes', 'email', 'max:255', 'unique:users,email,' . $id . ',id'],
+            'mobile_number' => ['sometimes', 'string', 'max:20', 'unique:users,mobile_number,' . $id . ',id'],
+            'password' => ['nullable', 'string', 'min:8', 'confirmed'],
+            'gender' => ['nullable', 'string', 'in:male,female,other'],
+            'national_id' => ['nullable', 'string', 'max:20'],
+            'phone_number' => ['nullable', 'string', 'max:20'],
+            'home_address' => ['nullable', 'string', 'max:500'],
+            'active' => ['boolean'],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()->first()], 422);
+        }
+
+        $user = $this->adminUserService->updateUser($id, $request->all(), $operator->id);
+
+        return response()->json([
+            'data' => [
+                'message' => 'User updated successfully.',
+                'user' => $user,
+            ],
+        ], Response::HTTP_OK);
     }
 
-    // Update user
+    // Suspend/Activate User
     public function suspendUser(Request $request, $id): JsonResponse
     {
-        $user = Auth::user();
-
-
-        if ($user->can('susbend user')) {
-            $targetUser = User::findOrFail($id);
-
-            $targetUser->update([
-                // 'first_name' => $request->has('first_name') ? $request->first_name : $targetUser->first_name,
-                // 'last_name' => $request->has('last_name') ? $request->last_name : $targetUser->last_name,
-                // 'email' => $request->has('email') ? $request->email : $targetUser->email,
-                // 'mobile_number' => $request->has('mobile_number') ? $request->mobile_number : $targetUser->mobile_number,
-                'active' => $request->active,
-                // 'password' => $request->password != "" ? bcrypt($request->password) : $targetUser->password
-            ]);
-
-            return response()->json([
-                'message' => 'User has ben susbended!',
-                'updated_user' => $targetUser
-            ], 202);
-        } else {
-            return response()->json([
-                'message' => 'you dont have permission',
-
-            ], 402);
+        $operator = Auth::user();
+        if (!$operator->hasPermissionTo('users:suspend')) {
+            return response()->json(['error' => 'You do not have permission to suspend users.'], 403);
         }
+
+        $validator = Validator::make($request->all(), [
+            'active' => ['required', 'boolean'],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()->first()], 422);
+        }
+
+        $user = $this->adminUserService->suspendUser($id, $request->active, $operator->id);
+
+        return response()->json([
+            'data' => [
+                'message' => $user->active ? 'User activated successfully.' : 'User suspended successfully.',
+                'user' => $user,
+            ],
+        ], Response::HTTP_OK);
     }
 
+    // Verify User
+    public function verifyUser(Request $request, $id): JsonResponse
+    {
+        $operator = Auth::user();
+        if (!$operator->hasPermissionTo('users:verify')) {
+            return response()->json(['error' => 'You do not have permission to verify users.'], 403);
+        }
 
-    // Get All !not trashed users List
+        $validator = Validator::make($request->all(), [
+            'status' => ['required', 'string', 'in:verified,pending,rejected'],
+            'reject_status' => ['nullable', 'string', 'max:255', 'required_if:status,rejected'],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()->first()], 422);
+        }
+
+        $verify = $this->adminUserService->verifyUser($id, $request->all(), $operator->id);
+
+        return response()->json([
+            'data' => [
+                'message' => 'User verification status updated successfully.',
+                'verify' => $verify,
+            ],
+        ], Response::HTTP_OK);
+    }
+
+    // Get All Users
     public function getAllUsers(): JsonResponse
     {
-        $user = Auth::user();
-
-
-        if ($user->can('view all users')) {
-
-
-            $users = User::with('personalInfos')->with('roles')->get();
-            $usersCount = $users->count();
-
-
-            return response()->json([
-                'data' => [
-                    'users' =>  $users,
-                    'usersCounts' => $usersCount,
-                ]
-            ], 200);
-        } else {
-            return response()->json([
-                'message' => 'You don have permission to see all Users'
-            ], 402);
+        $operator = Auth::user();
+        if (!$operator->hasPermissionTo('users:view')) {
+            return response()->json(['error' => 'You do not have permission to view users.'], 403);
         }
+
+        $users = $this->adminUserService->getAllUsers();
+
+        return response()->json([
+            'data' => [
+                'users' => $users,
+                'usersCount' => $users->count(),
+            ],
+        ], Response::HTTP_OK);
     }
 
-    // Get User By Id
+    // Get User By ID
     public function getUserById(Request $request): JsonResponse
     {
-        $user = Auth::user();
-
-        if ($user->can('users:view')) {
-            $targetUser = User::where('id',
-                $request->user_id)->with('personalInfos')->with('roles')->with('permissions')->get();
-
-            return response()->json([
-                'data' => [
-                    'user' => $targetUser
-                ]
-            ], 200);
-        } else {
-            return response()->json([
-                'message' => 'You don have permission'
-            ], 402);
+        $operator = Auth::user();
+        if (!$operator->hasPermissionTo('users:view')) {
+            return response()->json(['error' => 'You do not have permission to view users.'], 403);
         }
+
+        $validator = Validator::make($request->all(), [
+            'user_id' => ['required', 'uuid', 'exists:users,id'],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()->first()], 422);
+        }
+
+        $user = $this->adminUserService->getUserById($request->user_id);
+
+        return response()->json([
+            'data' => [
+                'user' => $user,
+            ],
+        ], Response::HTTP_OK);
     }
 
-    // Get All trashed users List
+    // Get Trashed Users
     public function getTrashedUsers(): JsonResponse
     {
-        $user = Auth::user();
-
-        // Check Deleted Users
-        $users = User::onlyTrashed()->get();
-
-        if ($user->can('susbend users')) {
-
-            $trashedUsersCount = $users->count();
-
-            return response()->json([
-                'users' => $users,
-                'trashedUsersCount' => $trashedUsersCount,
-            ], 200);
-        } else {
-            return response()->json([
-                'message' => 'You don have permission to see Trashed Users'
-            ], 500);
+        $operator = Auth::user();
+        if (!$operator->hasPermissionTo('users:view')) {
+            return response()->json(['error' => 'You do not have permission to view trashed users.'], 403);
         }
+
+        $users = $this->adminUserService->getTrashedUsers();
+
+        return response()->json([
+            'data' => [
+                'users' => $users,
+                'trashedUsersCount' => $users->count(),
+            ],
+        ], Response::HTTP_OK);
     }
 
-    // restore trashed user by ID
+    // Restore Trashed User
     public function restoreTrashedUsers($id): JsonResponse
     {
-        $user = Auth::user();
-
-        // Check Deleted User
-        $targetUser = User::withTrashed()->find($id);
-
-        if ($user->can('susbend user')) {
-
-            $targetUser->restore();
-
-            return response()->json([
-                'message' => 'user has ben restored successful'
-            ], 200);
-        } else {
-            return response()->json([
-                'message' => 'You dont have permission'
-            ], 500);
+        $operator = Auth::user();
+        if (!$operator->hasPermissionTo('users:restore')) {
+            return response()->json(['error' => 'You do not have permission to restore users.'], 403);
         }
+
+        $user = $this->adminUserService->restoreUser($id, $operator->id);
+
+        return response()->json([
+            'data' => [
+                'message' => 'User restored successfully.',
+                'user' => $user,
+            ],
+        ], Response::HTTP_OK);
     }
 
-    // Delete User By Id
+    // Delete User
     public function destroy($id): JsonResponse
     {
-        $user = Auth::user();
-
-        if ($user->can('users:delete')) {
-            $targeted = User::findOrFail($id);
-            $targeted->delete();
-
-            return response()->json(['message' => 'User has ben Deleted!'], 200);
-        } else {
-            return response()->json([
-                'message' => 'You don have permission '
-            ], 402);
+        $operator = Auth::user();
+        if (!$operator->hasPermissionTo('users:delete')) {
+            return response()->json(['error' => 'You do not have permission to delete users.'], 403);
         }
+
+        $this->adminUserService->deleteUser($id, $operator->id);
+
+        return response()->json([
+            'data' => [
+                'message' => 'User deleted successfully.',
+            ],
+        ], Response::HTTP_OK);
     }
-
-
 }

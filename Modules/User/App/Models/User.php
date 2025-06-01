@@ -9,25 +9,25 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
 use Laravel\Passport\HasApiTokens;
-
 use Spatie\Permission\Traits\HasRoles;
-
 
 /**
  * @method static create(array $array)
  * @method static where(string $string, int $int)
  * @method static has(string $string)
  * @method static withTrashed()
+ * @method static findOrFail(string $id)
+ * @method static onlyTrashed()
  * @property mixed $id
  * @property mixed $activation_token
  * @property mixed $first_name
  * @property mixed $mobile_number
  * @property Carbon $suspended_at
+ * @property mixed $verify
  */
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles, HasUuids;
-
 
     /**
      * The attributes that are mass assignable.
@@ -35,11 +35,11 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-
         'email',
         'password',
         'last_password_change',
         'active',
+        'mobile_number', // اضافه شده چون توی $logAttributes استفاده شده
     ];
 
     /**
@@ -49,7 +49,6 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-//        'roles',
         'permissions',
         'last_password_change',
         'deleted_at',
@@ -69,33 +68,27 @@ class User extends Authenticatable
         'last_password' => 'hashed',
     ];
 
-//    protected $guard_name = 'api';
     protected array $guard_name = ['api', 'mother'];
 
-
     protected static array $logAttributes = [
-
         'mobile_number',
         'active',
         'email',
         'password',
         'last_password',
-
     ];
 
     protected static string $logName = 'auth';
 
     // Get user personal information
-    public function personalInfos(): HasOne
+    public function personalInfo(): HasOne
     {
-        return $this->hasOne(UserPersonalInfo::class,);
+        return $this->hasOne(UserPersonalInfo::class, 'user_id', 'id');
     }
 
-    // Get user Verify information
-    public function verifyInfo(): HasOne
+    // Get user verify information
+    public function verify(): HasOne
     {
-        return $this->hasOne(UserVerify::class);
+        return $this->hasOne(UserVerify::class, 'user_id', 'id');
     }
-
-
 }

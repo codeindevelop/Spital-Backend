@@ -6,7 +6,7 @@ namespace Modules\Auth\App\Services;
 use Illuminate\Support\Str;
 use Modules\Auth\App\Events\LeadConvertToUserEvent;
 use Modules\Auth\App\Events\UserRegisteredEvent;
-use Modules\User\App\Repositories\UserRepository;
+use Modules\Auth\App\Repositories\UserRepository;
 
 class CreateUserByAdminService
 {

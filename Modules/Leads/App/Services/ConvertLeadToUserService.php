@@ -10,7 +10,7 @@ use Modules\Leads\App\Events\CreateLeadEvent;
 use Modules\Leads\App\Models\Lead;
 use Modules\User\App\Models\User;
 use Modules\User\App\Models\UserVerify;
-use Modules\User\App\Repositories\UserRepository;
+use Modules\Auth\App\Repositories\UserRepository;
 
 
 class ConvertLeadToUserService
