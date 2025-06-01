@@ -36,17 +36,9 @@ class User extends Authenticatable
      */
     protected $fillable = [
 
-        'user_name',
-        'first_name',
-        'last_name',
-
-        'mobile_number',
-
         'email',
         'password',
-        'register_ip',
         'last_password_change',
-        'suspended_at',
         'active',
     ];
 
@@ -62,8 +54,6 @@ class User extends Authenticatable
         'last_password_change',
         'deleted_at',
         'last_password',
-        'verifyInfo',
-
         'remember_token',
         'updated_at',
         'suspended_at',
@@ -75,8 +65,6 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
-        'suspended_at' => 'datetime',
         'password' => 'hashed',
         'last_password' => 'hashed',
     ];
@@ -86,16 +74,13 @@ class User extends Authenticatable
 
 
     protected static array $logAttributes = [
-        'group_id',
-        'first_name',
-        'last_name',
+
         'mobile_number',
-        'activation_token',
         'active',
         'email',
         'password',
         'last_password',
-        'suspended_at',
+
     ];
 
     protected static string $logName = 'auth';
@@ -112,11 +97,5 @@ class User extends Authenticatable
         return $this->hasOne(UserVerify::class);
     }
 
-    // Suspend user
-    public function suspend(): void
-    {
-        $this->suspended_at = now();
-        $this->save();
-    }
 
 }
