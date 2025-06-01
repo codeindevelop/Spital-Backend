@@ -15,7 +15,7 @@ class UsersAuthController extends Controller
 {
 
     // Create user by admin
-    public function createUser(Request $request)
+    public function createUser(Request $request): \Illuminate\Http\JsonResponse
     {
 
         $operator = Auth::user();
@@ -84,13 +84,6 @@ class UsersAuthController extends Controller
             $user->save();
             $user->assignRole('registred-user');
 
-            // assign user to portal
-            $portal = new PortalUser([
-                'portal_id' => $request->portal_id,
-                'user_id' => $user->id,
-                'access' => true,
-            ]);
-            $portal->save();
 
             $SendVerifyEmail = $request->send_verify_email;
             $SendWelcomeSms = $request->send_welcome_sms;

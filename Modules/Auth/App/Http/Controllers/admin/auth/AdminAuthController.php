@@ -111,7 +111,7 @@ class AdminAuthController extends Controller
 
 
     // Create user by admin
-    public function createUser(Request $request)
+    public function createUser(Request $request): JsonResponse
     {
 
         $operator = Auth::user();
