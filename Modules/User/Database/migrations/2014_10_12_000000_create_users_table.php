@@ -13,9 +13,6 @@ return new class extends Migration {
         Schema::create('users', function (Blueprint $table) {
             $table->uuid('id')->primary();
 
-            $table->string('user_name')->unique()->nullable();
-            $table->string('first_name')->nullable();
-            $table->string('last_name')->nullable();
 
             $table->string('email')->unique()->nullable();
             $table->string('mobile_number')->unique()->nullable();
@@ -23,8 +20,7 @@ return new class extends Migration {
             $table->string('password')->nullable();
             $table->string('last_password')->nullable();
             $table->timestamp('last_password_change')->nullable();
-            $table->string('register_ip')->nullable();
-            $table->timestamp('suspended_at')->nullable();
+
             $table->boolean('active')->default(true);
             $table->rememberToken();
             $table->timestamps();

@@ -4,7 +4,7 @@ namespace Modules\Auth\App\Services;
 
 
 use Modules\Auth\App\Events\UserRegisteredEvent;
-use Modules\User\App\Repositories\UserRepository;
+use Modules\Auth\App\Repositories\UserRepository;
 
 class SignupByEmailService
 {
