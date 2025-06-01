@@ -3,12 +3,13 @@
 namespace Modules\RolePermission\App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Modules\User\App\Models\User;
 use Spatie\Permission\Models\Permission;
 
 class PermissionController extends Controller
