@@ -27,7 +27,8 @@ class AdminUserService
         $user = $this->adminUserRepository->createUser($data);
         $user->assignRole('regular-user');
 
-        if ($data['send_verify_email']) {
+        // ارسال ایمیل تأیید (فقط اگر ایمیل وجود داشته باشد)
+        if ($data['send_verify_email'] && !empty($data['email'])) {
             $verify = $user->verify;
             Mail::raw("لطفاً برای تأیید ایمیل خود روی این لینک کلیک کنید: ".env('EMAIL_ACTIVE_LINK_PREFIX').$verify->email_verify_token,
                 function ($message) use ($user) {
@@ -36,7 +37,8 @@ class AdminUserService
                 });
         }
 
-        if ($data['send_welcome_sms']) {
+        // ارسال پیامک خوش‌آمدگویی (فقط اگر شماره موبایل وجود داشته باشد)
+        if ($data['send_welcome_sms'] && !empty($data['mobile_number'])) {
             $smsData = [
                 'pattern_code' => 'welcome_pattern',
                 'originator' => env('SEND_SMS_NUMBER', '3000505'),
@@ -56,11 +58,12 @@ class AdminUserService
 //            ->performedOn($user)
 //            ->event('user_created')
 //            ->withProperties(['user_id' => $user->id])
-//            ->log('User created by admin.');
+//            ->log('کاربر توسط ادمین ایجاد شد.');
 
         $accessToken = $user->createToken('authToken')->accessToken;
 
-        if ($data['create_password'] && $data['send_verify_email']) {
+        // ارسال پسورد تصادفی (فقط اگر ایمیل وجود داشته باشد)
+        if ($data['create_password'] && !empty($data['email']) && $data['send_verify_email']) {
             Mail::raw("حساب شما ایجاد شد. پسورد شما: {$data['password']}", function ($message) use ($user) {
                 $message->to($user->email)
                     ->subject('خوش‌آمدگویی به اسپیرال');

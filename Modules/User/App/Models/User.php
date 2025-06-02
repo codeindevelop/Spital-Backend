@@ -23,6 +23,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @property mixed $mobile_number
  * @property Carbon $suspended_at
  * @property mixed $verify
+ * @property mixed $email
  */
 class User extends Authenticatable
 {

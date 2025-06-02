@@ -19,8 +19,8 @@ class AdminUserRepository
     {
         $user = User::create([
             'id' => (string) Str::uuid(),
-            'email' => $data['email'],
-            'mobile_number' => $data['mobile_number'],
+            'email' => $data['email'] ?? null,
+            'mobile_number' => $data['mobile_number'] ?? null,
             'password' => Hash::make($data['password']),
             'active' => $data['active'] ?? true,
         ]);
