@@ -11,9 +11,9 @@ use Modules\RolePermission\App\Http\Controllers\admin\RoleController;
 
 Route::prefix('v1/admin')->group(function () {
 
+    Route::post('login-managers', [AdminAuthController::class, 'adminLogin']);
 
     Route::middleware("auth:api")->group(function () {
-        Route::post('login-managers', [AdminAuthController::class, 'adminLogin']);
         Route::get('profile', [AdminAuthController::class, 'adminProfile']);
         Route::post('create-user', [AdminAuthController::class, 'adminCreateUser']);
         Route::put('users/{id}', [AdminAuthController::class, 'update']);

@@ -1,9 +1,8 @@
 <?php
 
 namespace Modules\User\App\Services;
+
 use Illuminate\Support\Facades\Auth;
-
-
 
 
 class GetUserProfileService
