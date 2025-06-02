@@ -29,7 +29,6 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->mapUserApiRoutes();
         $this->mapAdminApiRoutes();
-        $this->mapAdminAuthApiRoutes();
 
 
     }
@@ -52,12 +51,5 @@ class RouteServiceProvider extends ServiceProvider
             ->namespace($this->moduleNamespace)
             ->group(module_path('Auth', '/routes/API_admin.php'));
     }
-    // Admin Api Routes
-    protected function mapAdminAuthApiRoutes(): void
-    {
-        Route::prefix('api')
-            ->middleware('api')
-            ->namespace($this->moduleNamespace)
-            ->group(module_path('Auth', '/routes/AdminAuth_API.php'));
-    }
+
 }
