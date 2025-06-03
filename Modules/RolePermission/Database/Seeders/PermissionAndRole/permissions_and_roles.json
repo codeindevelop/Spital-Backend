@@ -30,6 +30,22 @@
         },
         {
             "guard_name": "api",
+            "name": "page:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "page:create"
+        },
+        {
+            "guard_name": "api",
+            "name": "page:edit"
+        },
+        {
+            "guard_name": "api",
+            "name": "page:delete"
+        },
+        {
+            "guard_name": "api",
             "name": "users:suspend"
         },
         {
@@ -437,6 +453,10 @@
                 "users:edit",
                 "users:delete",
                 "users:suspend",
+                "page:view",
+                "page:create",
+                "page:edit",
+                "page:delete",
                 "course_category:view",
                 "course_category:create",
                 "course_category:edit",
@@ -463,6 +483,10 @@
                 "users:edit",
                 "users:delete",
                 "users:suspend",
+                "page:view",
+                "page:create",
+                "page:edit",
+                "page:delete",
                 "course_category:view",
                 "course_category:create",
                 "course_category:edit",
