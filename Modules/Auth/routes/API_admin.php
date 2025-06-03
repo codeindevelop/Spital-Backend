@@ -20,7 +20,7 @@ Route::prefix('v1/admin')->group(function () {
         Route::put('users/{id}/suspend', [AdminAuthController::class, 'suspendUser']);
         Route::put('users/{id}/verify', [AdminAuthController::class, 'verifyUser']);
         Route::get('users', [AdminAuthController::class, 'getAllUsers']);
-        Route::get('users/{id}', [AdminAuthController::class, 'getUserById']);
+        Route::post('getuser', [AdminAuthController::class, 'getUserById']);
         Route::get('users/trashed', [AdminAuthController::class, 'getTrashedUsers']);
         Route::post('users/{id}/restore', [AdminAuthController::class, 'restoreTrashedUsers']);
         Route::delete('users/{id}', [AdminAuthController::class, 'destroy']);

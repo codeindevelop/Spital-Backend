@@ -21,7 +21,8 @@ class AdminUserService
     public function createUser(array $data): array
     {
         if ($data['create_password']) {
-            $data['password'] = Str::random(12);
+            $data['password'] = Str::random(12); // رمز تصادفی
+            unset($data['password_confirmation']); // حذف password_confirmation
         }
 
         $user = $this->adminUserRepository->createUser($data);
@@ -81,5 +82,11 @@ class AdminUserService
         return $this->adminUserRepository->getAllUsers();
     }
 
-    // ... (بقیه متدها مثل updateUser, suspendUser, verifyUser بدون تغییر)
+    public function getUserById(string $userId
+    ): \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Builder|array {
+        $user = $this->adminUserRepository->getUserById($userId);
+        return $user;
+    }
+
+
 }

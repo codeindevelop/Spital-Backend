@@ -99,7 +99,7 @@ class AdminAuthController extends Controller
                 'gender' => ['required', 'string', 'in:male,female,other'],
                 'mobile_number' => ['nullable', 'string', 'max:20', 'unique:users,mobile_number'],
                 'email' => ['nullable', 'email', 'max:255', 'unique:users,email'],
-                'password' => ['required_unless:create_password,true', 'string', 'min:8', 'confirmed'],
+                'password' => ['nullable:create_password,true', 'string', 'min:8', 'confirmed'],
                 'send_verify_email' => ['required', 'boolean'],
                 'send_welcome_sms' => ['required', 'boolean'],
                 'active' => ['required', 'boolean'],
