@@ -21,5 +21,6 @@
     "Backup": true,
     "Docs": true,
     "Leads": true,
-    "Localization": true
+    "Localization": true,
+    "Page": true
 }
