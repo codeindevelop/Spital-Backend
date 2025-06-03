@@ -41,7 +41,7 @@ class AdminAuthController extends Controller
         }
 
         $user = Auth::user();
-        if (!$user->hasPermissionTo('admin_area:access')) {
+        if (!$user->can('admin_area:access')) {
             return response()->json(['error' => 'You cannot access the admin area.'], 403);
         }
 
@@ -67,7 +67,7 @@ class AdminAuthController extends Controller
     public function adminProfile(): JsonResponse
     {
         $user = Auth::user();
-        if (!$user->hasPermissionTo('admin_area:access')) {
+        if (!$user->can('admin_area:access')) {
             return response()->json(['error' => 'You cannot access this area.'], 403);
         }
 
@@ -86,56 +86,71 @@ class AdminAuthController extends Controller
     // Create User by Admin
     public function adminCreateUser(Request $request): JsonResponse
     {
-        $operator = Auth::user();
-        if (!$operator->hasPermissionTo('users:create')) {
-            return response()->json(['error' => 'You do not have permission to create users.'], 403);
+        {
+            $operator = Auth::user();
+            if (!$operator->can('users:create')) {
+                return response()->json(['error' => 'You do not have permission to create users.'], 403);
+            }
+
+            $validator = Validator::make($request->all(), [
+                'user_name' => ['required', 'string', 'max:255', 'unique:user_personal_infos,user_name'],
+                'first_name' => ['required', 'string', 'max:255'],
+                'last_name' => ['required', 'string', 'max:255'],
+                'gender' => ['required', 'string', 'in:male,female,other'],
+                'mobile_number' => ['nullable', 'string', 'max:20', 'unique:users,mobile_number'],
+                'email' => ['nullable', 'email', 'max:255', 'unique:users,email'],
+                'password' => ['nullable:create_password,true', 'string', 'min:8', 'confirmed'],
+                'send_verify_email' => ['required', 'boolean'],
+                'send_welcome_sms' => ['required', 'boolean'],
+                'active' => ['required', 'boolean'],
+                'create_password' => ['required', 'boolean'],
+                'national_id' => ['nullable', 'string', 'max:20'],
+                'phone_number' => ['nullable', 'string', 'max:20'],
+                'home_address' => ['nullable', 'string', 'max:500'],
+                'passport_number' => ['nullable', 'string', 'max:50'],
+                'shenasname_number' => ['nullable', 'string', 'max:50'],
+                'mellicard_number' => ['nullable', 'string', 'max:50'],
+            ]);
+
+            // اعتبارسنجی سفارشی: حداقل یکی از mobile_number یا email باید پر شده باشد
+            $validator->after(function ($validator) use ($request) {
+                if (!$request->filled('mobile_number') && !$request->filled('email')) {
+                    $validator->errors()->add('contact_info', 'حداقل یکی از شماره موبایل یا ایمیل باید وارد شود.');
+                }
+            });
+
+            if ($validator->fails()) {
+                return response()->json(['error' => $validator->errors()->first()], 422);
+            }
+
+            $ip = $request->getClientIp();
+            $response = $this->adminUserService->createUser($request->all() + [
+                    'ip' => $ip, 'operator_id' => $operator->id
+                ]);
+
+            return response()->json([
+                'data' => [
+                    'message' => 'کاربر با موفقیت ایجاد شد.',
+                    'user' => $response['user'],
+                    'accessToken' => $response['accessToken'],
+                ],
+            ], Response::HTTP_CREATED);
         }
-
-        $validator = Validator::make($request->all(), [
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'max:255', 'unique:users,email'],
-            'mobile_number' => ['required', 'string', 'max:20', 'unique:users,mobile_number'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'gender' => ['nullable', 'string', 'in:male,female,other'],
-            'national_id' => ['nullable', 'string', 'max:20'],
-            'phone_number' => ['nullable', 'string', 'max:20'],
-            'home_address' => ['nullable', 'string', 'max:500'],
-            'passport_number' => ['nullable', 'string', 'max:50'],
-            'shenasname_number' => ['nullable', 'string', 'max:50'],
-            'mellicard_number' => ['nullable', 'string', 'max:50'],
-            'active' => ['boolean'],
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()->first()], 422);
-        }
-
-        $ip = $request->getClientIp();
-        $response = $this->adminUserService->createUser($request->all() + ['ip' => $ip, 'operator_id' => $operator->id]);
-
-        return response()->json([
-            'data' => [
-                'message' => 'User created successfully.',
-                'user' => $response['user'],
-                'accessToken' => $response['accessToken'],
-            ],
-        ], Response::HTTP_CREATED);
     }
 
     // Update User
     public function update(Request $request, $id): JsonResponse
     {
         $operator = Auth::user();
-        if (!$operator->hasPermissionTo('users:edit')) {
+        if (!$operator->can('users:edit')) {
             return response()->json(['error' => 'You do not have permission to edit users.'], 403);
         }
 
         $validator = Validator::make($request->all(), [
             'first_name' => ['sometimes', 'string', 'max:255'],
             'last_name' => ['sometimes', 'string', 'max:255'],
-            'email' => ['sometimes', 'email', 'max:255', 'unique:users,email,' . $id . ',id'],
-            'mobile_number' => ['sometimes', 'string', 'max:20', 'unique:users,mobile_number,' . $id . ',id'],
+            'email' => ['sometimes', 'email', 'max:255', 'unique:users,email,'.$id.',id'],
+            'mobile_number' => ['sometimes', 'string', 'max:20', 'unique:users,mobile_number,'.$id.',id'],
             'password' => ['nullable', 'string', 'min:8', 'confirmed'],
             'gender' => ['nullable', 'string', 'in:male,female,other'],
             'national_id' => ['nullable', 'string', 'max:20'],
@@ -162,7 +177,7 @@ class AdminAuthController extends Controller
     public function suspendUser(Request $request, $id): JsonResponse
     {
         $operator = Auth::user();
-        if (!$operator->hasPermissionTo('users:suspend')) {
+        if (!$operator->can('users:suspend')) {
             return response()->json(['error' => 'You do not have permission to suspend users.'], 403);
         }
 
@@ -188,7 +203,7 @@ class AdminAuthController extends Controller
     public function verifyUser(Request $request, $id): JsonResponse
     {
         $operator = Auth::user();
-        if (!$operator->hasPermissionTo('users:verify')) {
+        if (!$operator->can('users:verify')) {
             return response()->json(['error' => 'You do not have permission to verify users.'], 403);
         }
 
@@ -215,7 +230,7 @@ class AdminAuthController extends Controller
     public function getAllUsers(): JsonResponse
     {
         $operator = Auth::user();
-        if (!$operator->hasPermissionTo('users:view')) {
+        if (!$operator->can('users:view')) {
             return response()->json(['error' => 'You do not have permission to view users.'], 403);
         }
 
@@ -233,7 +248,7 @@ class AdminAuthController extends Controller
     public function getUserById(Request $request): JsonResponse
     {
         $operator = Auth::user();
-        if (!$operator->hasPermissionTo('users:view')) {
+        if (!$operator->can('users:view')) {
             return response()->json(['error' => 'You do not have permission to view users.'], 403);
         }
 
@@ -258,7 +273,7 @@ class AdminAuthController extends Controller
     public function getTrashedUsers(): JsonResponse
     {
         $operator = Auth::user();
-        if (!$operator->hasPermissionTo('users:view')) {
+        if (!$operator->can('users:view')) {
             return response()->json(['error' => 'You do not have permission to view trashed users.'], 403);
         }
 
@@ -276,7 +291,7 @@ class AdminAuthController extends Controller
     public function restoreTrashedUsers($id): JsonResponse
     {
         $operator = Auth::user();
-        if (!$operator->hasPermissionTo('users:restore')) {
+        if (!$operator->can('users:restore')) {
             return response()->json(['error' => 'You do not have permission to restore users.'], 403);
         }
 
@@ -294,7 +309,7 @@ class AdminAuthController extends Controller
     public function destroy($id): JsonResponse
     {
         $operator = Auth::user();
-        if (!$operator->hasPermissionTo('users:delete')) {
+        if (!$operator->can('users:delete')) {
             return response()->json(['error' => 'You do not have permission to delete users.'], 403);
         }
 

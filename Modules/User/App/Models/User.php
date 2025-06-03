@@ -18,12 +18,12 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static withTrashed()
  * @method static findOrFail(string $id)
  * @method static onlyTrashed()
- * @property mixed $id
  * @property mixed $activation_token
  * @property mixed $first_name
  * @property mixed $mobile_number
  * @property Carbon $suspended_at
  * @property mixed $verify
+ * @property mixed $email
  */
 class User extends Authenticatable
 {

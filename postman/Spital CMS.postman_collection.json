@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b2dff018-263b-41fd-b5a4-baa078a34421",
+		"_postman_id": "c8a3bce1-6a45-40f3-ba8e-ebac7e31e5da",
 		"name": "Spital CMS",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "11489907"
@@ -115,7 +115,7 @@
 												"header": [],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n    \"email\" : \"hadiyoodream@gmail.com\",\n    \"password\" :  \"supersuper\"\n}",
+													"raw": "{\n    \"email\" : \"superadmin@abrebase.com\",\n    \"password\" :  \"supersuper\"\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -144,7 +144,7 @@
 												"header": [],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n    \"email\" : \"codeindevelopment@gmail.com\",\n    \"password\" :  \"adminadmin\"\n}",
+													"raw": "{\n    \"email\" : \"admin@abrebase.com\",\n    \"password\" :  \"adminadmin\"\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -161,6 +161,31 @@
 														"v1",
 														"admin",
 														"login-managers"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "Profile",
+									"item": [
+										{
+											"name": "Get Admin Profile",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{BackendURL}}/api/v1/admin/profile",
+													"host": [
+														"{{BackendURL}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"profile"
 													]
 												}
 											},
@@ -299,7 +324,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"user_group_id\": 1,\r\n    \"portal_id\": 1,\r\n    \"user_name\": \"usersss\",\r\n    \"first_name\": \"جعفر\",\r\n    \"last_name\": \"موسوی\",\r\n    \"gender\": \"آقا\",\r\n    \"mobile_number\": \"09331292288\",\r\n    \"email\": \"testusaer@exampl4e3.com\",\r\n    \"send_verify_email\": 1,\r\n    \"send_welcome_sms\": 1,\r\n    \"active\": 1,\r\n    \"create_password\": true\r\n}",
+											"raw": "{\r\n    \"user_name\": \"userssdszs\",\r\n    \"first_name\": \"جعفر\",\r\n    \"last_name\": \"موسوی\",\r\n    \"gender\": \"male\",\r\n    \"mobile_number\": \"0933129422122288\",\r\n    \"email\": \"testuser@exassfsmplseس.com\",\r\n    \"password\": \"password123\",\r\n    \"password_confirmation\": \"password123\",\r\n    \"send_verify_email\": true,\r\n    \"send_welcome_sms\": false,\r\n    \"active\": true,\r\n    \"create_password\": true,\r\n    \"national_id\": \"12345678290\",\r\n    \"phone_number\": \"0933122292288\",\r\n    \"home_address\": \"تهران، خیابان نمونه، پلاک 123\",\r\n    \"passport_number\": \"A12345678\",\r\n    \"shenasname_number\": \"9876543210\",\r\n    \"mellicard_number\": \"5432109876\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -3133,7 +3158,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5ZTk1NzQ5Zi0xNzliLTQyMTctYjRkNS1lNWE4ZTE0ZGY4ZWMiLCJqdGkiOiIxYzcwYjMzZDU1ODhlMDI0ZDcxODg1OTdkMjc0Y2ZjODEyNDYzOGVjNWRkMmFhYjdlNjk1ZDIxOWY2NDMzOTg5MzBhZDNmMTgwNDZjNmIxYyIsImlhdCI6MTc0MzY0NzU1MC45Nzk2MzYsIm5iZiI6MTc0MzY0NzU1MC45Nzk2MzgsImV4cCI6MTc1OTQ1ODc1MC45NzAyOTMsInN1YiI6IjllOTU3NDlmLTAzYTctNGQ4Ni1iMGJlLTEyNzJlNzZlYTNmMCIsInNjb3BlcyI6W119.akB8QyNxFZFA1LP4bJixesQWlbNWUpEmSV7gVUCJPMwmMvkwK06dEjUuITO3KnRaqNlZVoxOdgBGKGJ26NSgSOXqOfhFfJMbD6wGqaX7P4bLUvInvfjTdrquQxOTsnqqSJHCXrbFTueRRwo0fEcH6tN2vnsNccbePTqApZiTV3__pnU_PXRhUp_Y9Ih56ufgmQt_67WOPJREg3kV9pmZjqryeCWWQvrX3SwIztVVRbEtyPWEQJCD5dh6dx_6xgbKKfcB6FYKRmZm02EllcEVEBbq9ceUOIH7uxyjqsaIhKTK2V6qw_quWeXDRONUtSY4L7EoB3HF1VtnZciH7v-Nfc_MFHQurZceYJk4mMUfMgvbC3JxB98Su3mwDf2sDSqW71b9cOZcC2daaKe1E0Hc1_kFgb35O-SKwN74ZemHzj4ZyMkU3UAdQh7pL6jwqXXiQgXSYNmqN5Dq71c_ZgG0i6kAIy9M9zztflAC4Jpx0f6NuQThYLnh9_2GY1SAC2yDdrj-YPadStxVPFI7sM2IOWH0Edtoj9USixYmuJvt8b5vJId3Ily3Rr91mj4_oCrqsc1aK0nvnq_nLtww5kYWmvScg1le6Ju__yNp1jULbMClJqOT6Y-0kvqPr1dKlOliWh7uRSyAYNUTe6mlZEWQna3KZwkuFBDKNtlZbSrLd2w",
+				"value": "{{spital admin tokem}}",
 				"type": "string"
 			}
 		]
@@ -3158,6 +3183,13 @@
 					""
 				]
 			}
+		}
+	],
+	"variable": [
+		{
+			"key": "spital admin tokem",
+			"value": "",
+			"type": "default"
 		}
 	]
 }

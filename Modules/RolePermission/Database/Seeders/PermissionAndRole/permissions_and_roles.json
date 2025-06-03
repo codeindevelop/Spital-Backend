@@ -1,0 +1,500 @@
+{
+    "permissions": [
+        {
+            "guard_name": "api",
+            "name": "super_admin_area:access"
+        },
+        {
+            "guard_name": "api",
+            "name": "admin_area:access"
+        },
+        {
+            "guard_name": "api",
+            "name": "view all users"
+        },
+        {
+            "guard_name": "api",
+            "name": "users:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "users:create"
+        },
+        {
+            "guard_name": "api",
+            "name": "users:edit"
+        },
+        {
+            "guard_name": "api",
+            "name": "users:delete"
+        },
+        {
+            "guard_name": "api",
+            "name": "users:suspend"
+        },
+        {
+            "guard_name": "api",
+            "name": "roles:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "roles:create"
+        },
+        {
+            "guard_name": "api",
+            "name": "roles:edit"
+        },
+        {
+            "guard_name": "api",
+            "name": "roles:delete"
+        },
+        {
+            "guard_name": "api",
+            "name": "permissions:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "permissions:create"
+        },
+        {
+            "guard_name": "api",
+            "name": "permissions:edit"
+        },
+        {
+            "guard_name": "api",
+            "name": "permissions:delete"
+        },
+        {
+            "guard_name": "api",
+            "name": "post:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "post:create"
+        },
+        {
+            "guard_name": "api",
+            "name": "post:edit"
+        },
+        {
+            "guard_name": "api",
+            "name": "post:delete"
+        },
+        {
+            "guard_name": "api",
+            "name": "server:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "server:create"
+        },
+        {
+            "guard_name": "api",
+            "name": "server:edit"
+        },
+        {
+            "guard_name": "api",
+            "name": "server:delete"
+        },
+        {
+            "guard_name": "api",
+            "name": "host:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "host:create"
+        },
+        {
+            "guard_name": "api",
+            "name": "host:edit"
+        },
+        {
+            "guard_name": "api",
+            "name": "host:delete"
+        },
+        {
+            "guard_name": "api",
+            "name": "project:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "project:create"
+        },
+        {
+            "guard_name": "api",
+            "name": "project:edit"
+        },
+        {
+            "guard_name": "api",
+            "name": "project:delete"
+        },
+        {
+            "guard_name": "api",
+            "name": "all_todos:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "todo:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "todo:create"
+        },
+        {
+            "guard_name": "api",
+            "name": "todo:edit"
+        },
+        {
+            "guard_name": "api",
+            "name": "todo:delete"
+        },
+        {
+            "guard_name": "api",
+            "name": "all_sources:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "source:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "source:create"
+        },
+        {
+            "guard_name": "api",
+            "name": "source:edit"
+        },
+        {
+            "guard_name": "api",
+            "name": "source:delete"
+        },
+        {
+            "guard_name": "api",
+            "name": "support_department:edit"
+        },
+        {
+            "guard_name": "api",
+            "name": "all_tickets:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "ticket:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "ticket:create"
+        },
+        {
+            "guard_name": "api",
+            "name": "ticket:edit"
+        },
+        {
+            "guard_name": "api",
+            "name": "ticket:response"
+        },
+        {
+            "guard_name": "api",
+            "name": "ticket:delete"
+        },
+        {
+            "guard_name": "api",
+            "name": "contact_req:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "contact_req:create"
+        },
+        {
+            "guard_name": "api",
+            "name": "contact_req:edit"
+        },
+        {
+            "guard_name": "api",
+            "name": "contact_req:delete"
+        },
+        {
+            "guard_name": "api",
+            "name": "all_transactions:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "transaction:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "transaction:create"
+        },
+        {
+            "guard_name": "api",
+            "name": "transaction:edit"
+        },
+        {
+            "guard_name": "api",
+            "name": "transaction:delete"
+        },
+        {
+            "guard_name": "api",
+            "name": "all_invoices:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "invoice:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "invoice:create"
+        },
+        {
+            "guard_name": "api",
+            "name": "invoice:edit"
+        },
+        {
+            "guard_name": "api",
+            "name": "invoice:delete"
+        },
+        {
+            "guard_name": "api",
+            "name": "all_deposits:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "deposit:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "deposit:create"
+        },
+        {
+            "guard_name": "api",
+            "name": "deposit:edit"
+        },
+        {
+            "guard_name": "api",
+            "name": "deposit:delete"
+        },
+        {
+            "guard_name": "api",
+            "name": "all_discount:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "discount:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "discount:create"
+        },
+        {
+            "guard_name": "api",
+            "name": "discount:edit"
+        },
+        {
+            "guard_name": "api",
+            "name": "discount:delete"
+        },
+        {
+            "guard_name": "api",
+            "name": "view settings"
+        },
+        {
+            "guard_name": "api",
+            "name": "create settings"
+        },
+        {
+            "guard_name": "api",
+            "name": "edit settings"
+        },
+        {
+            "guard_name": "api",
+            "name": "check settings"
+        },
+        {
+            "guard_name": "api",
+            "name": "delete settings"
+        },
+        {
+            "guard_name": "api",
+            "name": "maintenance:edit"
+        },
+        {
+            "guard_name": "api",
+            "name": "all_orders:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "order:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "order:create"
+        },
+        {
+            "guard_name": "api",
+            "name": "order:edit"
+        },
+        {
+            "guard_name": "api",
+            "name": "order:delete"
+        },
+        {
+            "guard_name": "api",
+            "name": "employer:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "employer:create"
+        },
+        {
+            "guard_name": "api",
+            "name": "employer:edit"
+        },
+        {
+            "guard_name": "api",
+            "name": "employer:delete"
+        },
+        {
+            "guard_name": "api",
+            "name": "course_category:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "course_category:create"
+        },
+        {
+            "guard_name": "api",
+            "name": "course_category:edit"
+        },
+        {
+            "guard_name": "api",
+            "name": "course_category:delete"
+        },
+        {
+            "guard_name": "api",
+            "name": "course:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "course:create"
+        },
+        {
+            "guard_name": "api",
+            "name": "course:edit"
+        },
+        {
+            "guard_name": "api",
+            "name": "course:delete"
+        },
+        {
+            "guard_name": "api",
+            "name": "instructor:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "instructor:create"
+        },
+        {
+            "guard_name": "api",
+            "name": "instructor:edit"
+        },
+        {
+            "guard_name": "api",
+            "name": "instructor:delete"
+        },
+        {
+            "guard_name": "api",
+            "name": "all_contracts:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "contract:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "contract:create"
+        },
+        {
+            "guard_name": "api",
+            "name": "contract:edit"
+        },
+        {
+            "guard_name": "api",
+            "name": "contract:delete"
+        },
+        {
+            "guard_name": "api",
+            "name": "user_panel:access"
+        }
+    ],
+    "roles": [
+        {
+            "guard_name": "api",
+            "name": "super-admin",
+            "permissions": [
+                "admin_area:access",
+                "view all users",
+                "users:view",
+                "users:create",
+                "users:edit",
+                "users:delete",
+                "users:suspend",
+                "course_category:view",
+                "course_category:create",
+                "course_category:edit",
+                "course_category:delete",
+                "course:view",
+                "course:create",
+                "course:edit",
+                "course:delete",
+                "instructor:view",
+                "instructor:create",
+                "instructor:edit",
+                "instructor:delete"
+            ]
+        },
+        {
+            "guard_name": "api",
+            "name": "admin",
+            "permissions": [
+                "admin_area:access",
+                "view all users",
+                "roles:view",
+                "users:view",
+                "users:create",
+                "users:edit",
+                "users:delete",
+                "users:suspend",
+                "course_category:view",
+                "course_category:create",
+                "course_category:edit",
+                "course_category:delete",
+                "course:view",
+                "course:create",
+                "course:edit",
+                "course:delete",
+                "instructor:view",
+                "instructor:create",
+                "instructor:edit",
+                "instructor:delete"
+            ]
+        },
+        {
+            "guard_name": "api",
+            "name": "business-owner",
+            "permissions": [
+                "user_panel:access"
+            ]
+        },
+        {
+            "guard_name": "api",
+            "name": "regular-user",
+            "permissions": [
+                "user_panel:access"
+            ]
+        },
+        {
+            "guard_name": "api",
+            "name": "suspended",
+            "permissions": []
+        }
+    ]
+}

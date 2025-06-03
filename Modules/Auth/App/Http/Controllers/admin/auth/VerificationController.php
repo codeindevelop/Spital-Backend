@@ -42,7 +42,6 @@ class VerificationController extends Controller
 
                     // Assign Role for user
                     $user->removeRole('regular-user');
-                    $user->removeRole('registred-user');
                     $user->removeRole('under-review-user');
                     $user->removeRole('under-review-user');
                     $user->assignRole('verified-user');
