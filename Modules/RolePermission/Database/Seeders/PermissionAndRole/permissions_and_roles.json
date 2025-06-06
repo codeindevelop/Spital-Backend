@@ -310,23 +310,11 @@
         },
         {
             "guard_name": "api",
-            "name": "view settings"
+            "name": "settings:seo:view"
         },
         {
             "guard_name": "api",
-            "name": "create settings"
-        },
-        {
-            "guard_name": "api",
-            "name": "edit settings"
-        },
-        {
-            "guard_name": "api",
-            "name": "check settings"
-        },
-        {
-            "guard_name": "api",
-            "name": "delete settings"
+            "name": "settings:seo:update"
         },
         {
             "guard_name": "api",
@@ -457,6 +445,7 @@
                 "page:create",
                 "page:edit",
                 "page:delete",
+                "page:delete",
                 "course_category:view",
                 "course_category:create",
                 "course_category:edit",
@@ -468,7 +457,9 @@
                 "instructor:view",
                 "instructor:create",
                 "instructor:edit",
-                "instructor:delete"
+                "instructor:delete",
+                "settings:seo:view",
+                "settings:seo:update"
             ]
         },
         {
@@ -498,7 +489,9 @@
                 "instructor:view",
                 "instructor:create",
                 "instructor:edit",
-                "instructor:delete"
+                "instructor:delete",
+                "settings:seo:view",
+                "settings:seo:update"
             ]
         },
         {

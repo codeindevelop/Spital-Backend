@@ -9,6 +9,7 @@ use Modules\Settings\Database\Seeders\AuthSettings\AuthSettingsSeeder;
 use Modules\Settings\Database\Seeders\EmailSettings\EmailSettingsSeeder;
 use Modules\Settings\Database\Seeders\GeneralSettings\GeneralSettingsSeeder;
 use Modules\Settings\Database\Seeders\PaymentGatewaySettings\PaymentGatewaysSettingsSeeder;
+use Modules\Settings\Database\Seeders\Seo\SeoGeneralSettingsSeeder;
 use Modules\Settings\Database\Seeders\SmsSettings\SmsSettingsSeeder;
 use Modules\Settings\Database\Seeders\SocialSettings\SocialSettingsSeeder;
 use Modules\Settings\Database\Seeders\TelegramBotSettings\TelegramBotSettingsSeeder;
@@ -22,6 +23,8 @@ class SettingsDatabaseSeeder extends Seeder
     {
         // General Settings Seed Data
         $this->call(GeneralSettingsSeeder::class);
+
+
 
         //  Auth Settings Seed Data
         $this->call(AuthSettingsSeeder::class);
@@ -43,6 +46,10 @@ class SettingsDatabaseSeeder extends Seeder
 
         //   social Settings Seed Data
         $this->call(SocialSettingsSeeder::class);
+
+
+        //   SEO Settings Seed Data
+        $this->call(SeoGeneralSettingsSeeder::class);
 
 
     }

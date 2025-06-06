@@ -3208,7 +3208,136 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"parent_id\": \"9f118c7d-87ae-4b1c-ac4d-5ca784f627f1\",\n    \"title\": \"tell\",\n    \"slug\": \"tell\",\n    \"description\": \"description\",\n    \"content\": \"description\",\n    \"order\": 1,\n    \"template\": \"template\",\n    \"status\": \"published\",\n    \"visibility\": \"public\",\n    \"custom_css\": \"custom_css\",\n    \"custom_js\": \"custom_css\",\n    \"seo\": {\n        \"meta_title\": \"Home | My Site\",\n        \"meta_keywords\": null,\n        \"meta_description\": \"Welcome to our site\",\n        \"canonical_url\": null,\n        \"favicon\": null,\n        \"robots_index\": \"index\",\n        \"robots_follow\": \"follow\",\n        \"theme_color\": null,\n        \"language\": \"en\",\n        \"region\": null,\n        \"timezone\": \"UTC\",\n        \"author\": null,\n        \"og_title\": \"Home Page\",\n        \"og_description\": null,\n        \"og_image\": \"https://example.com/images/home.jpg\",\n        \"og_type\": \"website\",\n        \"og_url\": null,\n        \"og_site_name\": null,\n        \"og_locale\": \"en_US\",\n        \"og_image_alt\": null,\n        \"og_image_width\": null,\n        \"og_image_height\": null,\n        \"og_image_type\": \"image/jpeg\",\n        \"twitter_title\": null,\n        \"twitter_description\": null,\n        \"twitter_site\": null,\n        \"twitter_creator\": null,\n        \"twitter_image\": null,\n        \"twitter_card_type\": \"summary_large_image\",\n        \"twitter_site_handle\": null,\n        \"twitter_creator_handle\": null,\n        \"twitter_image_alt\": null,\n        \"twitter_image_width\": null,\n        \"twitter_image_height\": null\n    },\n    \"schema\": {\n        \"title\": \"tell\",\n        \"slug\": \"tell\",\n        \"schema_json\": \"{\\\"@type\\\":\\\"WebPage\\\",\\\"name\\\":\\\"Home\\\"}\"\n    },\n    \"published_at\": \"\", //must be a valid date\n    \"is_active\": true\n}",
+									"raw": "{\n    \"parent_id\": \"9f118c7d-87ae-4b1c-ac4d-5ca784f627f1\",\n    \"title\": \"tells\",\n    \"slug\": \"tells\",\n    \"description\": \"description\",\n    \"content\": \"description\",\n    \"order\": 1,\n    \"template\": \"template\",\n    \"status\": \"published\",\n    \"visibility\": \"private\",\n    \"custom_css\": \"custom_css\",\n    \"custom_js\": \"custom_css\",\n    \"seo\": {\n        \"meta_title\": \"Home | My Site\",\n        \"meta_keywords\": null,\n        \"meta_description\": \"Welcome to our site\",\n        \"canonical_url\": null,\n        \"favicon\": null,\n        \"robots_index\": \"index\",\n        \"robots_follow\": \"follow\",\n        \"theme_color\": null,\n        \"language\": \"en\",\n        \"region\": null,\n        \"timezone\": \"UTC\",\n        \"author\": null,\n        \"og_title\": \"Home Page\",\n        \"og_description\": null,\n        \"og_image\": \"https://example.com/images/home.jpg\",\n        \"og_type\": \"website\",\n        \"og_url\": null,\n        \"og_site_name\": null,\n        \"og_locale\": \"en_US\",\n        \"og_image_alt\": null,\n        \"og_image_width\": null,\n        \"og_image_height\": null,\n        \"og_image_type\": \"image/jpeg\",\n        \"twitter_title\": null,\n        \"twitter_description\": null,\n        \"twitter_site\": null,\n        \"twitter_creator\": null,\n        \"twitter_image\": null,\n        \"twitter_card_type\": \"summary_large_image\",\n        \"twitter_site_handle\": null,\n        \"twitter_creator_handle\": null,\n        \"twitter_image_alt\": null,\n        \"twitter_image_width\": null,\n        \"twitter_image_height\": null\n    },\n    \"schema\": {\n        \"title\": \"tells\",\n        \"slug\": \"tells\",\n        \"schema_json\": \"{\\\"@type\\\":\\\"WebPage\\\",\\\"name\\\":\\\"Home\\\"}\"\n    },\n    \"published_at\": \"\", //must be a valid date\n    \"is_active\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/api/v1/admin/page/create",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"page",
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": []
+				}
+			]
+		},
+		{
+			"name": "Settings",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Seo",
+							"item": [
+								{
+									"name": "General Settings",
+									"item": [
+										{
+											"name": "get",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseURL}}/api/v1/admin/setting/seo/general",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"setting",
+														"seo",
+														"general"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "get Copy",
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"site_name\": \"ابریکد\",\n    \"site_slogan\": \"New Slogan\",\n    \"title_separator\": \"|\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseURL}}/api/v1/admin/setting/seo/general",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"setting",
+														"seo",
+														"general"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "get page by slug",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/api/v1/page/get-by-link/contact/tell",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"page",
+										"get-by-link",
+										"contact",
+										"tell"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Page",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"parent_id\": \"9f118c7d-87ae-4b1c-ac4d-5ca784f627f1\",\n    \"title\": \"tells\",\n    \"slug\": \"tells\",\n    \"description\": \"description\",\n    \"content\": \"description\",\n    \"order\": 1,\n    \"template\": \"template\",\n    \"status\": \"published\",\n    \"visibility\": \"private\",\n    \"custom_css\": \"custom_css\",\n    \"custom_js\": \"custom_css\",\n    \"seo\": {\n        \"meta_title\": \"Home | My Site\",\n        \"meta_keywords\": null,\n        \"meta_description\": \"Welcome to our site\",\n        \"canonical_url\": null,\n        \"favicon\": null,\n        \"robots_index\": \"index\",\n        \"robots_follow\": \"follow\",\n        \"theme_color\": null,\n        \"language\": \"en\",\n        \"region\": null,\n        \"timezone\": \"UTC\",\n        \"author\": null,\n        \"og_title\": \"Home Page\",\n        \"og_description\": null,\n        \"og_image\": \"https://example.com/images/home.jpg\",\n        \"og_type\": \"website\",\n        \"og_url\": null,\n        \"og_site_name\": null,\n        \"og_locale\": \"en_US\",\n        \"og_image_alt\": null,\n        \"og_image_width\": null,\n        \"og_image_height\": null,\n        \"og_image_type\": \"image/jpeg\",\n        \"twitter_title\": null,\n        \"twitter_description\": null,\n        \"twitter_site\": null,\n        \"twitter_creator\": null,\n        \"twitter_image\": null,\n        \"twitter_card_type\": \"summary_large_image\",\n        \"twitter_site_handle\": null,\n        \"twitter_creator_handle\": null,\n        \"twitter_image_alt\": null,\n        \"twitter_image_width\": null,\n        \"twitter_image_height\": null\n    },\n    \"schema\": {\n        \"title\": \"tells\",\n        \"slug\": \"tells\",\n        \"schema_json\": \"{\\\"@type\\\":\\\"WebPage\\\",\\\"name\\\":\\\"Home\\\"}\"\n    },\n    \"published_at\": \"\", //must be a valid date\n    \"is_active\": true\n}",
 									"options": {
 										"raw": {
 											"language": "json"

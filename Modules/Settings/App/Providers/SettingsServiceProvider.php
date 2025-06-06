@@ -21,7 +21,13 @@ class SettingsServiceProvider extends ServiceProvider
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
-        $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/migrations'));
+
+
+        // Modify default Migrations Path
+        $mainPath = module_path($this->moduleName, 'Database/migrations');
+        $directories = glob($mainPath.'/*', GLOB_ONLYDIR);
+        $paths = array_merge([$mainPath], $directories);
+        $this->loadMigrationsFrom($paths);
     }
 
     /**
@@ -72,7 +78,9 @@ class SettingsServiceProvider extends ServiceProvider
      */
     protected function registerConfig(): void
     {
-        $this->publishes([module_path($this->moduleName, 'config/config.php') => config_path($this->moduleNameLower.'.php')], 'config');
+        $this->publishes([
+            module_path($this->moduleName, 'config/config.php') => config_path($this->moduleNameLower.'.php')
+        ], 'config');
         $this->mergeConfigFrom(module_path($this->moduleName, 'config/config.php'), $this->moduleNameLower);
     }
 
@@ -88,7 +96,8 @@ class SettingsServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(array_merge($this->getPublishableViewPaths(), [$sourcePath]), $this->moduleNameLower);
 
-        $componentNamespace = str_replace('/', '\\', config('modules.namespace').'\\'.$this->moduleName.'\\'.config('modules.paths.generator.component-class.path'));
+        $componentNamespace = str_replace('/', '\\',
+            config('modules.namespace').'\\'.$this->moduleName.'\\'.config('modules.paths.generator.component-class.path'));
         Blade::componentNamespace($componentNamespace, $this->moduleNameLower);
     }
 
