@@ -8,6 +8,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * @method static firstOrFail()
+ * @method static create(string[] $array)
  * @property mixed $og_image
  * @property mixed $site_name
  * @property mixed $site_slogan

@@ -13,8 +13,9 @@ class CreateActivityLogTable extends Migration
                 $table->bigIncrements('id');
                 $table->string('log_name')->nullable();
                 $table->text('description');
-                $table->nullableMorphs('subject', 'subject');
-                // تعریف causer_id به‌صورت uuid
+                $table->string('subject_id', 36)->nullable(); // UUID به‌صورت string
+                $table->string('subject_type')->nullable();
+                $table->index(['subject_id', 'subject_type'], 'subject_subject_id_subject_type_index');
                 $table->uuid('causer_id')->nullable();
                 $table->string('causer_type')->nullable();
                 $table->index(['causer_type', 'causer_id'], 'causer_causer_type_causer_id_index');

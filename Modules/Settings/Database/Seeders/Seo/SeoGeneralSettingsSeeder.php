@@ -15,7 +15,7 @@ class SeoGeneralSettingsSeeder extends Seeder
             'site_name' => 'My Site',
             'site_alternative_name' => 'My Site Alternative',
             'site_slogan' => 'Welcome to Our Awesome Site!',
-            'og_image' => 'https://spital.com/images/default-og.jpg',
+            'og_image' => 'https://abrecode.com/images/default-og.jpg',
             'title_separator' => '-',
         ]);
     }

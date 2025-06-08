@@ -18,6 +18,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static withTrashed()
  * @method static findOrFail(string $id)
  * @method static onlyTrashed()
+ * @method static find(string $userId)
  * @property mixed $activation_token
  * @property mixed $first_name
  * @property mixed $mobile_number

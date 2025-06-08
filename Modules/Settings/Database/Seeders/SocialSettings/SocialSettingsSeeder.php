@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Settings\Database\Seeders\SocialSettings;
+namespace Modules\Settings\Database\Seeders\Seo\SocialSettings;
 
 
 use Illuminate\Database\Seeder;

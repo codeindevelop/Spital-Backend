@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Settings\Database\Seeders\AuthSettings;
+namespace Modules\Settings\Database\Seeders\Seo\AuthSettings;
 
 
 use Illuminate\Database\Seeder;
