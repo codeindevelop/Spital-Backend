@@ -24,6 +24,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @property Carbon $suspended_at
  * @property mixed $verify
  * @property mixed $email
+ * @property mixed $personalInfo
  */
 class User extends Authenticatable
 {

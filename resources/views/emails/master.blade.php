@@ -9,103 +9,58 @@
     <meta name="supported-color-schemes" content="light dark">
     <style>
         .hover-bg-slate-800:hover {
-            background-color: #1e293b !important
+            background-color: #1e293b !important;
         }
-
         @media (max-width: 600px) {
-            .sm-p-6 {
-                padding: 24px !important
-            }
-
-            .sm-px-4 {
-                padding-left: 16px !important;
-                padding-right: 16px !important
-            }
-
-            .sm-px-6 {
-                padding-left: 24px !important;
-                padding-right: 24px !important
-            }
+            .sm-p-6 { padding: 24px !important; }
+            .sm-px-4 { padding-left: 16px !important; padding-right: 16px !important; }
+            .sm-px-6 { padding-left: 24px !important; padding-right: 24px !important; }
         }
+        /* بهبود سازگاری با کلاینت‌های ایمیل */
+        body, table, td, p, a, h1, h2, h3, h4, h5, h6 { font-family: Tahoma, Arial, sans-serif !important; }
+        a { text-decoration: none; }
+        img { border: 0; outline: none; }
     </style>
 </head>
-
-<body
-    style="margin: 0; width: 100%; background-color: #f8fafc; padding: 0; font-family: Tahoma,serif; word-break: break-word">
-
-<div role="article" aria-roledescription="email" aria-label lang="en">
+<body style="margin: 0; width: 100%; background-color: #f8fafc; padding: 0; font-family: Tahoma, Arial, sans-serif; word-break: break-word">
+<div role="article" aria-roledescription="email" aria-label lang="fa">
     <div class="sm-px-4" style="background-color: #f8fafc">
-        <table align="center" style="margin: 0 auto" cellpadding="0" cellspacing="0" role="none">
+        <table align="center" style="margin: 0 auto; max-width: 600px;" cellpadding="0" cellspacing="0" role="none">
             <tr>
-                <td style="width: 552px; max-width: 100%">
-                    <div role="separator" style="line-height: 24px">&zwj;</div>
-                    <table style="width: 100%" cellpadding="0" cellspacing="0" role="none">
+                <td style="width: 100%;">
+                    <div role="separator" style="line-height: 24px">&nbsp;</div>
+                    <table style="width: 100%;" cellpadding="0" cellspacing="0" role="none">
                         <tr>
                             <td class="sm-p-6"
-                                style="display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 8px; background-color: #fffffe; padding: 24px 36px; border: 1px solid #e2e8f0">
+                                style="display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 8px; background-color: #ffffff; padding: 24px 36px; border: 1px solid #e2e8f0;">
                                 <a href="https://abrecode.com">
-                                    <img src="{{url('/assets/img/logo.png')}}" width=" 50" alt="ابریکد"
-                                         style="max-width: 100%; vertical-align: middle">
+                                    <img src="{{ url('/assets/img/logo.png') }}" width="50" alt="ابریکد" style="max-width: 100%; vertical-align: middle;">
                                 </a>
-                                <div role="separator" style="line-height: 24px">&zwj;</div>
+                                <div role="separator" style="line-height: 24px">&nbsp;</div>
                                 @yield('content')
-
-
                             </td>
                         </tr>
                     </table>
-                    <table
-                        style="margin-top: 16px; display: flex; width: 100%; flex-direction: column; align-items: center; justify-content: center; text-align: center"
-                        cellpadding="0" cellspacing="0" role="none">
+                    <table style="margin-top: 16px; width: 100%; text-align: center;" cellpadding="0" cellspacing="0" role="none">
                         <tr>
                             <td class="sm-px-6 sm-p-6"
-                                style="margin-top: 20px; height: 100%; border-radius: 8px; background-color: #fffffe; padding: 24px 36px; border: 1px solid #e2e8f0">
-                                <p style="display: flex; width: 100%; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #64748b">
-                                    ابریکُد اولین و بزرگترین مارکت تخصصی برنامه نویسی و آموزش
-                                    برنامه نویسی جهت ورود به بازار کار در ایران
-                                    <br>
+                                style="margin-top: 20px; border-radius: 8px; background-color: #ffffff; padding: 24px 36px; border: 1px solid #e2e8f0;">
+                                <p style="color: #64748b; font-size: 14px; line-height: 22px;">
+                                    ابریکُد اولین و بزرگ‌ترین مارکت تخصصی برنامه‌نویسی و آموزش برنامه‌نویسی برای ورود به بازار کار در ایران
                                 </p>
-                                <div
-                                    style="margin-top: 24px; margin-bottom: 24px; display: flex; width: 100%; align-items: center; justify-content: center; gap: 20px">
-                                    <a href="https://www.instagram.com/abrecode/">
-                                        <img src="{{url('/assets/img/Aut_Logo_Instagram_grey_60x59.png')}}" width="40"
-                                             alt="instagram"
-                                             style="max-width: 100%; vertical-align: middle">
-                                    </a>
-                                    <a href="https://www.x.com/abrecode_fa">
-                                        <img src="{{url('/assets/img/Aut_Logo_X_gray_60x60.png')}}" width="40"
-                                             alt="twitter"
-                                             style="max-width: 100%; vertical-align: middle">
-                                    </a>
-                                    <a href="https://www.facebook.com/abrecode">
-                                        <img src="{{url('/assets/img/Aut_Logo_Facebook_grey_59x59.png')}}" width="40"
-                                             alt="facebook"
-                                             style="max-width: 100%; vertical-align: middle">
-                                    </a>
-                                    <a href="https://www.t.me/abrecode">
-                                        <img src="{{url('/assets/img/telegram-xxl.png')}}" width="25" alt="telegram"
-                                             style="max-width: 100%; vertical-align: middle">
-                                    </a>
-                                    <a href="https://www.youtube.com/@abrecode">
-                                        <img src="{{url('/assets/img/gray_circle_youtube_icon.png')}}" width="40"
-                                             alt="youtube"
-                                             style="max-width: 100%; vertical-align: middle">
-                                    </a>
+                                <div style="margin: 24px 0; display: flex; justify-content: center; gap: 20px;">
+                                    <a href="https://www.instagram.com/abrecode/"><img src="{{ url('/assets/img/Aut_Logo_Instagram_grey_60x59.png') }}" width="30" alt="instagram"></a>
+                                    <a href="https://www.x.com/abrecode_fa"><img src="{{ url('/assets/img/Aut_Logo_X.png') }}" width="30" alt="x"></a>
+                                    <a href="https://www.facebook.com/abrecode"><img src="{{ url('/assets/img/Aut_Logo_Facebook_grey_59x59.png') }}" width="30" alt="facebook"></a>
+                                    <a href="https://www.t.me/abrecode"><img src="{{ url('/assets/img/telegram-xxl.png') }}" width="30" alt="telegram"></a>
+                                    <a href="https://www.youtube.com/@abrecode"><img src="{{ url('/assets/img/gray_circle_youtube_icon.png') }}" width="30" alt="youtube"></a>
                                 </div>
-                                <div style="display: flex; width: 100%; align-items: center; justify-content: center">
-                                    <a href="https://abrecode.com"
-                                       style="width: 100%; align-items: center; justify-content: center; text-align: center; font-size: 0.9rem; color: #1e293b">
-                                        وب سایت ابریکُد </a>
-                                    <a href="https://abrecode.com/blog"
-                                       style="width: 100%; align-items: center; justify-content: center; text-align: center; font-size: 0.9rem; color: #1e293b">وبلاگ</a>
-                                    <a href="https://www.abrecode.com/aboutus/legal/terms"
-                                       style="width: 100%; align-items: center; justify-content: center; text-align: center; font-size: 0.9rem; color: #1e293b">شرایط
-                                        استفاده</a>
-                                    <a href="https://www.abrecode.com/aboutus/legal/privacy-policy"
-                                       style="width: 100%; align-items: center; justify-content: center; text-align: center; font-size: 0.9rem; color: #1e293b">
-                                        حفظ حریم خصوصی</a>
+                                <div style="display: flex; justify-content: center; gap: 20px; font-size: 14px; color: #1e293b;">
+                                    <a href="https://abrecode.com">وب‌سایت ابریکُد</a>
+                                    <a href="https://abrecode.com/blog">وبلاگ</a>
+                                    <a href="https://www.abrecode.com/aboutus/legal/terms">شرایط استفاده</a>
+                                    <a href="https://www.abrecode.com/aboutus/legal/privacy-policy">حریم خصوصی</a>
                                 </div>
-                                <p></p>
                             </td>
                         </tr>
                     </table>
@@ -115,5 +70,4 @@
     </div>
 </div>
 </body>
-
 </html>

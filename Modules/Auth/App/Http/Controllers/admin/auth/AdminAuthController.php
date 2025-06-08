@@ -7,6 +7,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Modules\Auth\App\Events\Admin\AdminLoginErrorEvent;
 use Modules\Auth\App\Services\AdminUserService;
 use Modules\RolePermission\App\Models\Role;
 use Modules\User\App\Models\User;
@@ -21,7 +22,6 @@ class AdminAuthController extends Controller
         $this->adminUserService = $adminUserService;
     }
 
-    // Login Admins
     public function adminLogin(Request $request): JsonResponse
     {
         $validator = Validator::make($request->all(), [
@@ -37,6 +37,18 @@ class AdminAuthController extends Controller
 
         $credentials = $request->only('email', 'password');
         if (!Auth::attempt($credentials)) {
+            $targetAdmin = User::where('email', $request->email)->with('personalInfo')->first();
+            if ($targetAdmin) {
+                AdminLoginErrorEvent::dispatch($targetAdmin, $request->getClientIp());
+                activity()
+                    ->causedByAnonymous()
+                    ->withProperties([
+                        'email' => $targetAdmin->email,
+                        'ip' => $request->getClientIp(),
+                    ])
+                    ->log('تلاش ناموفق برای ورود به پنل ادمین');
+            }
+
             return response()->json(['error' => 'Invalid email or password.'], 401);
         }
 
@@ -53,8 +65,10 @@ class AdminAuthController extends Controller
         $token->save();
 
         $ip = $request->getClientIp();
-        // TODO: Dispatch UserLogedinByEmailEvent if needed
-        // UserLogedinByEmailEvent::dispatch($user, $ip);
+        activity()
+            ->causedBy($user)
+            ->withProperties(['ip' => $ip])
+            ->log('ورود موفق به پنل ادمین');
 
         return response()->json([
             'data' => [
