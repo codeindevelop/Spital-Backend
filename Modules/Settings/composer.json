@@ -11,16 +11,15 @@
         "laravel": {
             "providers": [],
             "aliases": {
-
             }
         }
     },
     "autoload": {
         "psr-4": {
             "Modules\\Settings\\": "",
-            "Modules\\Settings\\App\\": "app/",
-            "Modules\\Settings\\Database\\Factories\\": "database/factories/",
-            "Modules\\Settings\\Database\\Seeders\\": "database/seeders/"
+            "Modules\\Settings\\App\\": "App/",
+            "Modules\\Settings\\Database\\Factories\\": "Database/factories/",
+            "Modules\\Settings\\Database\\Seeders\\": "Database/seeders/"
         }
     },
     "autoload-dev": {

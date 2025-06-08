@@ -8,12 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 
-/**
- * @method static firstOrFail()
- * @method static count()
- * @method static create(array $array)
- * @method static first()
- */
+
 class SeoRepresentationSetting extends Model
 {
     use HasFactory, HasUuids, LogsActivity;

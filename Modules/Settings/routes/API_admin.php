@@ -11,7 +11,6 @@ Route::prefix('v1/admin')->group(function () {
 
     Route::middleware("auth:api")->group(function () {
 
-
         Route::prefix('setting')->group(function () {
 
             // SEO Settings
@@ -23,6 +22,8 @@ Route::prefix('v1/admin')->group(function () {
                 // Seo Representation Settings
                 Route::get('representation', [SeoRepresentationSettingController::class, 'getSettings']);
                 Route::post('representation', [SeoRepresentationSettingController::class, 'updateSettings']);
+
+
 
 
             });

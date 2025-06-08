@@ -10,19 +10,25 @@ class SeoRepresentationSettingRepository
 {
     public function getSettings(): SeoRepresentationSetting
     {
-        $user = Auth::user();
-        $settings = SeoRepresentationSetting::firstOrFail();
+        $user = Auth::guard('api')->user();
+        $settings = SeoRepresentationSetting::firstOrCreate(
+            [], // شرط خالی برای پیدا کردن اولین رکورد
+            ['site_type' => 'personal'] // مقادیر پیش‌فرض اگه رکوردی ساخته شد
+        );
         activity()
             ->performedOn($settings)
             ->causedBy($user)
-            ->withProperties(['settings' => $settings])
+            ->withProperties(['settings' => $settings->toArray()])
             ->log('دریافت تنظیمات نمایندگی SEO از دیتابیس');
         return $settings;
     }
 
     public function updateSettings(array $data, string $userId): SeoRepresentationSetting
     {
-        $settings = SeoRepresentationSetting::firstOrFail();
+        $settings = SeoRepresentationSetting::firstOrCreate(
+            [], // شرط خالی
+            ['site_type' => 'personal'] // مقادیر پیش‌فرض
+        );
         $settings->update($data);
         activity()
             ->performedOn($settings)

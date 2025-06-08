@@ -23,20 +23,20 @@ class SeoRepresentationSettingController extends Controller
     {
         $user = Auth::user();
         if (!$user->can('settings:seo:view')) {
-//            activity()
-//                ->causedBy($user)
-//                ->withProperties(['user_id' => $user ? $user->id : null])
-//                ->log('تلاش ناموفق برای مشاهده تنظیمات نمایندگی SEO به دلیل عدم دسترسی');
+            activity()
+                ->causedBy($user)
+                ->withProperties(['user_id' => $user ? $user->id : null])
+                ->log('تلاش ناموفق برای مشاهده تنظیمات نمایندگی SEO به دلیل عدم دسترسی');
             return response()->json(['error' => 'شما اجازه مشاهده تنظیمات را ندارید.'], 403);
         }
 
         $settings = $this->service->getSettings();
 
-//        activity()
-//            ->performedOn($settings)
-//            ->causedBy($user)
-//            ->withProperties(['settings' => $settings])
-//            ->log('مشاهده تنظیمات نمایندگی SEO');
+        activity()
+            ->performedOn($settings)
+            ->causedBy($user)
+            ->withProperties(['settings' => $settings])
+            ->log('مشاهده تنظیمات نمایندگی SEO');
 
         return response()->json([
             'data' => [
