@@ -17,7 +17,6 @@ class SeoGeneralSettingsSeeder extends Seeder
             'site_slogan' => 'Welcome to Our Awesome Site!',
             'og_image' => 'https://spital.com/images/default-og.jpg',
             'title_separator' => '-',
-
         ]);
     }
 }

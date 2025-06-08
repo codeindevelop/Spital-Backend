@@ -2,20 +2,18 @@
 
 namespace Modules\Settings\App\Models\Seo;
 
-use Illuminate\Database\Eloquent\Concerns\HasUlids;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Modules\User\App\Models\User;
 
 /**
- * @method static create(array $array)
  * @method static firstOrFail()
+ * @property mixed $og_image
  * @property mixed $site_name
+ * @property mixed $site_slogan
+ * @property mixed $site_alternative_name
+ * @property mixed $title_separator
  */
 class SeoGeneralSetting extends Model
 {
-    use HasFactory, HasUlids;
-
     protected $table = 'seo_general_settings';
 
     protected $fillable = [
@@ -24,7 +22,15 @@ class SeoGeneralSetting extends Model
         'site_slogan',
         'og_image',
         'title_separator',
-
+        'updated_by',
     ];
 
+    protected $casts = [
+        'site_name' => 'string',
+        'site_alternative_name' => 'string',
+        'site_slogan' => 'string',
+        'og_image' => 'string',
+        'title_separator' => 'string',
+        'updated_by' => 'string',
+    ];
 }
