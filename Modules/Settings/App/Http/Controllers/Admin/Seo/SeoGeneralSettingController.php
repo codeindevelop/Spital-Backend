@@ -108,7 +108,7 @@ class SeoGeneralSettingController extends Controller
                 \Log::warning('Unexpected og_image value', ['og_image' => $request->input('og_image')]);
             }
         } else {
-            \Log::info('No og_image provided in request');
+            \Log::info('No og_image provided in request, preserving existing image');
         }
 
         \Log::info('Data prepared for update:', ['data' => $data]);
