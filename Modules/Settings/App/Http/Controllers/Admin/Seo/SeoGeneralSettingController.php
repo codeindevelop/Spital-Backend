@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Modules\Settings\App\Services\Seo\SeoGeneralSettingService;
+use Modules\Settings\App\Models\Seo\SeoGeneralSetting;
 use Symfony\Component\HttpFoundation\Response;
+use Spatie\Activitylog\Models\Activity;
 
 class SeoGeneralSettingController extends Controller
 {
@@ -20,36 +22,49 @@ class SeoGeneralSettingController extends Controller
 
     public function getSettings(): \Illuminate\Http\JsonResponse
     {
-        if (!Auth::user()->can('settings:seo:view')) {
-            \Log::warning('Permission denied for getSettings', ['user_id' => Auth::id()]);
+        $user = Auth::guard('api')->user();
+        if (!$user->can('settings:seo:view')) {
+            activity()
+                ->causedBy($user)
+                ->withProperties(['user_id' => $user ? $user->id : null])
+                ->log('تلاش ناموفق برای مشاهده تنظیمات SEO به دلیل عدم دسترسی');
             return response()->json(['error' => 'شما اجازه مشاهده تنظیمات را ندارید.'], 403);
         }
 
-        $settings = $this->service->getSettings();
-        \Log::info('Settings retrieved', ['settings' => $settings]);
+        $settings = $this->service->getSettings(); // انتظار مدل SeoGeneralSetting
+
+        activity()
+            ->causedBy($user)
+            ->withProperties(['settings' => $settings])
+            ->log('مشاهده تنظیمات SEO');
 
         return response()->json([
             'data' => [
-                'settings' => $settings,
+                'settings' => $settings, // تبدیل به آرایه برای پاسخ API
             ],
         ], Response::HTTP_OK);
     }
 
     public function updateSettings(Request $request): \Illuminate\Http\JsonResponse
     {
-        if (!Auth::user()->can('settings:seo:update')) {
-            \Log::warning('Permission denied for updateSettings', ['user_id' => Auth::id()]);
+        $user = Auth::guard('api')->user();
+        if (!$user->can('settings:seo:update')) {
+            activity()
+                ->causedBy($user)
+                ->withProperties(['user_id' => $user ? $user->id : null])
+                ->log('تلاش ناموفق برای به‌روزرسانی تنظیمات SEO به دلیل عدم دسترسی');
             return response()->json(['error' => 'شما اجازه ویرایش تنظیمات را ندارید.'], 403);
         }
 
-        \Log::info('Update SEO Settings Request:', [
-            'method' => $request->method(),
-            'headers' => $request->headers->all(),
-            'input' => $request->all(),
-            'files' => $request->files->all(),
-            'content_type' => $request->header('Content-Type'),
-            'user_id' => Auth::id(),
-        ]);
+        activity()
+            ->causedBy($user)
+            ->withProperties([
+                'method' => $request->method(),
+                'input' => $request->all(),
+                'files' => array_keys($request->files->all()),
+                'content_type' => $request->header('Content-Type'),
+            ])
+            ->log('درخواست به‌روزرسانی تنظیمات SEO');
 
         // اعتبارسنجی
         $validator = Validator::make($request->all(), [
@@ -80,7 +95,10 @@ class SeoGeneralSettingController extends Controller
         ]);
 
         if ($validator->fails()) {
-            \Log::error('Validation failed:', ['errors' => $validator->errors()->toArray()]);
+            activity()
+                ->causedBy($user)
+                ->withProperties(['errors' => $validator->errors()->toArray()])
+                ->log('خطای اعتبارسنجی در به‌روزرسانی تنظیمات SEO');
             return response()->json(['error' => $validator->errors()->first()], 422);
         }
 
@@ -94,35 +112,49 @@ class SeoGeneralSettingController extends Controller
 
         // مدیریت og_image
         if ($request->has('og_image')) {
-            \Log::info('og_image present in request', ['og_image' => $request->input('og_image')]);
             if ($request->hasFile('og_image') && $request->file('og_image')->isValid()) {
                 $data['og_image'] = $request->file('og_image');
-                \Log::info('Valid og_image file detected', [
-                    'filename' => $data['og_image']->getClientOriginalName(),
-                    'size' => $data['og_image']->getSize(),
-                ]);
+                activity()
+                    ->causedBy($user)
+                    ->withProperties([
+                        'filename' => $data['og_image']->getClientOriginalName(),
+                        'size' => $data['og_image']->getSize(),
+                    ])
+                    ->log('آپلود تصویر جدید برای og_image');
             } elseif (in_array($request->input('og_image'), ['', 'null', 'empty'])) {
                 $data['og_image'] = null;
-                \Log::info('Request to delete og_image detected', ['og_image' => $request->input('og_image')]);
+                activity()
+                    ->causedBy($user)
+                    ->withProperties(['og_image' => $request->input('og_image')])
+                    ->log('درخواست حذف تصویر og_image');
             } else {
-                \Log::warning('Unexpected og_image value', ['og_image' => $request->input('og_image')]);
+                activity()
+                    ->causedBy($user)
+                    ->withProperties(['og_image' => $request->input('og_image')])
+                    ->log('مقدار غیرمنتظره برای og_image');
             }
         } else {
-            \Log::info('No og_image provided in request, preserving existing image');
+            activity()
+                ->causedBy($user)
+                ->log('هیچ تصویری برای og_image ارائه نشده، حفظ تصویر فعلی');
         }
 
-        \Log::info('Data prepared for update:', ['data' => $data]);
-
         try {
-            $settings = $this->service->updateSettings($data, Auth::user()->id);
-            \Log::info('SEO settings updated successfully', ['settings' => $settings]);
+            $settings = $this->service->updateSettings($data, $user->id);
+            activity()
+                ->causedBy($user)
+                ->withProperties(['settings' => $settings])
+                ->log('تنظیمات SEO با موفقیت به‌روزرسانی شد');
             return response()->json([
                 'data' => [
                     'settings' => $settings,
                 ],
             ], Response::HTTP_OK);
         } catch (\Exception $e) {
-            \Log::error('Error updating SEO settings: '.$e->getMessage(), ['trace' => $e->getTraceAsString()]);
+            activity()
+                ->causedBy($user)
+                ->withProperties(['error' => $e->getMessage(), 'trace' => $e->getTraceAsString()])
+                ->log('خطا در به‌روزرسانی تنظیمات SEO');
             return response()->json(['error' => 'خطا در به‌روزرسانی تنظیمات: '.$e->getMessage()], 500);
         }
     }

@@ -3,6 +3,8 @@
 namespace Modules\Settings\App\Models\Seo;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * @method static firstOrFail()
@@ -14,6 +16,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class SeoGeneralSetting extends Model
 {
+    use LogsActivity;
+
     protected $table = 'seo_general_settings';
 
     protected $fillable = [
@@ -33,4 +37,12 @@ class SeoGeneralSetting extends Model
         'title_separator' => 'string',
         'updated_by' => 'string',
     ];
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logFillable() // لاگ تمام فیلدهای fillable
+            ->logOnlyDirty() // فقط تغییرات رو لاگ کن
+            ->dontSubmitEmptyLogs(); // لاگ خالی نفرست
+    }
 }
