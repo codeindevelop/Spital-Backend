@@ -94,13 +94,13 @@ class UserPersonalInfo extends Model
 
     protected $hidden = [
         'user_id', // مخفی کردن user_id برای جلوگیری از افشا در پاسخ‌های JSON
-        'identity_number', // اطلاعات حساس
-        'national_id', // اطلاعات حساس
-        'social_security_number', // اطلاعات حساس
-        'tax_id_number', // اطلاعات حساس
-        'phone_number', // اطلاعات حساس
-        'home_address', // اطلاعات حساس
-        'education_document_number', // اطلاعات حساس
+//        'identity_number', // اطلاعات حساس
+//        'national_id', // اطلاعات حساس
+//        'social_security_number', // اطلاعات حساس
+//        'tax_id_number', // اطلاعات حساس
+//        'phone_number', // اطلاعات حساس
+//        'home_address', // اطلاعات حساس
+//        'education_document_number', // اطلاعات حساس
     ];
 
     // روابط

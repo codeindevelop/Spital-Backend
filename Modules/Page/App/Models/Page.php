@@ -12,6 +12,7 @@ use Modules\User\App\Models\User;
 /**
  * @method static create(array $array)
  * @method static findOrFail(string $id)
+ * @method static where(string $string, mixed $parent_id)
  */
 class Page extends Model
 {
@@ -19,7 +20,7 @@ class Page extends Model
 
     protected $fillable = [
         'title', 'slug', 'description', 'content', 'order', 'template', 'status',
-        'visibility', 'custom_css', 'custom_js', 'published_at', 'is_active',
+        'visibility', 'custom_css', 'password', 'custom_js', 'published_at', 'is_active',
         'parent_id', 'created_by', 'updated_by',
     ];
 
