@@ -2,7 +2,7 @@
 
 namespace Modules\Settings\App\Http\Controllers\Admin\Seo;
 
-use App\Http\Controllers\Controller;
+use Modules\Files\App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

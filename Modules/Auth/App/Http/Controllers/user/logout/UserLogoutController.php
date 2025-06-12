@@ -3,7 +3,7 @@
 namespace Modules\Auth\App\Http\Controllers\user\logout;
 
 
-use App\Http\Controllers\Controller;
+use Modules\Files\App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 
 

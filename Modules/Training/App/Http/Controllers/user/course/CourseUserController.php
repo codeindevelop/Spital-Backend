@@ -2,7 +2,7 @@
 
 namespace Modules\Training\App\Http\Controllers\user\course;
 
-use App\Http\Controllers\Controller;
+use Modules\Files\App\Http\Controllers\Controller;
 use Modules\Training\App\Models\Course\Content\CourseVideo;
 use Modules\Training\App\Models\Course\CourceRequirement;
 use Modules\Training\App\Models\Course\Course;

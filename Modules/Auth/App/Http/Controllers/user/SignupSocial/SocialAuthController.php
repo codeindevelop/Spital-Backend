@@ -2,7 +2,7 @@
 
 namespace Modules\Auth\App\Http\Controllers\user\SignupSocial;
 
-use App\Http\Controllers\Controller;
+use Modules\Files\App\Http\Controllers\Controller;
 use Modules\User\App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

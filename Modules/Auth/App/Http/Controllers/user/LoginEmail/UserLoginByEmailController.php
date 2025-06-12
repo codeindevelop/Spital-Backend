@@ -3,7 +3,7 @@
 namespace Modules\Auth\App\Http\Controllers\user\LoginEmail;
 
 
-use App\Http\Controllers\Controller;
+use Modules\Files\App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 

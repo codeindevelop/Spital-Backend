@@ -2,7 +2,7 @@
 
 namespace Modules\Training\App\Http\Controllers\admin\student;
 
-use App\Http\Controllers\Controller;
+use Modules\Files\App\Http\Controllers\Controller;
 use Modules\Training\App\Models\Course\CourseCategory;
 use Modules\Training\App\Models\Student\StudentGroup;
 use Modules\Training\App\Models\Student\StudentLevel;

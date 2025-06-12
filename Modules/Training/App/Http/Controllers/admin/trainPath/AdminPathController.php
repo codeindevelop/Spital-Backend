@@ -2,7 +2,7 @@
 
 namespace Modules\Training\App\Http\Controllers\admin\trainPath;
 
-use App\Http\Controllers\Controller;
+use Modules\Files\App\Http\Controllers\Controller;
 use Modules\Training\App\Models\Instructor\Instructor;
 use Modules\Training\App\Models\Path\TrainingPath;
 use Illuminate\Http\Request;

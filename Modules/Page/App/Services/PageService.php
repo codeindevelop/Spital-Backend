@@ -101,6 +101,7 @@ class PageService
                     'id' => Uuid::uuid4()->toString(),
                     'page_id' => $page->id,
                     'created_by' => $userId,
+                    'generator' => 'Spital CMS , Created By Abrecode.com - Hadi Mousavi'
                 ]);
                 $this->pageRepository->createPageSeo($page->id, $seoData);
             }

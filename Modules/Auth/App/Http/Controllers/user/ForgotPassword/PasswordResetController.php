@@ -2,7 +2,7 @@
 
 namespace Modules\Auth\App\Http\Controllers\user\ForgotPassword;
 
-use App\Http\Controllers\Controller;
+use Modules\Files\App\Http\Controllers\Controller;
 use App\Jobs\Password\ProcessPasswordResetReq;
 use App\Jobs\Password\ProcessPasswordResetSuc;
 use Illuminate\Http\Request;

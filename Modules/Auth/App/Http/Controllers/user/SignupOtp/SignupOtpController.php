@@ -2,7 +2,7 @@
 
 namespace Modules\Auth\App\Http\Controllers\user\SignupOtp;
 
-use App\Http\Controllers\Controller;
+use Modules\Files\App\Http\Controllers\Controller;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;

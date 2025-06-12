@@ -2,7 +2,7 @@
 
 namespace Modules\Training\App\Http\Controllers\admin\course;
 
-use App\Http\Controllers\Controller;
+use Modules\Files\App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class CourseQuizAdminController extends Controller
