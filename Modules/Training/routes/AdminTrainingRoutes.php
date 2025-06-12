@@ -1,12 +1,12 @@
 <?php
 
 
-use App\Http\Controllers\v1\admin\crm\PreRegisterUserController;
+use Modules\Files\App\Http\Controllers\v1\admin\crm\PreRegisterUserController;
 use Modules\Training\App\Http\Controllers\admin\instructor\InstructorController;
 
 
-use App\Http\Controllers\v1\admin\skill\AdminSkillCategoryController;
-use App\Http\Controllers\v1\admin\skill\AdminSkillController;
+use Modules\Files\App\Http\Controllers\v1\admin\skill\AdminSkillCategoryController;
+use Modules\Files\App\Http\Controllers\v1\admin\skill\AdminSkillController;
 use Illuminate\Support\Facades\Route;
 
 

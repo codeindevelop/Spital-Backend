@@ -22,5 +22,6 @@
     "Docs": true,
     "Leads": true,
     "Localization": true,
-    "Page": true
+    "Page": true,
+    "Files": true
 }

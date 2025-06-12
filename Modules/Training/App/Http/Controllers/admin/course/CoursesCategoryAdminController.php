@@ -2,7 +2,7 @@
 
 namespace Modules\Training\App\Http\Controllers\admin\course;
 
-use App\Http\Controllers\Controller;
+use Modules\Files\App\Http\Controllers\Controller;
 use Modules\Training\App\Models\Course\CourseCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

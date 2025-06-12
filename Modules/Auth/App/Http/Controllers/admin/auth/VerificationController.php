@@ -2,7 +2,7 @@
 
 namespace Modules\Auth\App\Http\Controllers\admin\auth;
 
-use App\Http\Controllers\Controller;
+use Modules\Files\App\Http\Controllers\Controller;
 use App\Jobs\Auth\ProcessUserVerify;
 use App\Jobs\verification\ProcessUserActived;
 use Modules\User\App\Models\User;

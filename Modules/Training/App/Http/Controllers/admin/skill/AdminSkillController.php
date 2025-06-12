@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\v1\admin\skill;
+namespace Modules\Files\App\Http\Controllers\v1\admin\skill;
 
-use App\Http\Controllers\Controller;
+use Modules\Files\App\Http\Controllers\Controller;
 use Modules\Training\App\Models\Skill\Skill;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

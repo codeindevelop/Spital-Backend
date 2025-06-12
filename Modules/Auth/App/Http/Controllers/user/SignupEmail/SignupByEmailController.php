@@ -2,7 +2,7 @@
 
 namespace Modules\Auth\App\Http\Controllers\user\SignupEmail;
 
-use App\Http\Controllers\Controller;
+use Modules\Files\App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Validator;
 

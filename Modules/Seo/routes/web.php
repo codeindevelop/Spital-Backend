@@ -14,6 +14,4 @@ use Modules\Seo\App\Http\Controllers\SeoController;
 |
 */
 
-Route::group([], function () {
-    Route::resource('seo', SeoController::class)->names('seo');
-});
+

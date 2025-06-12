@@ -2,6 +2,7 @@
 
 namespace Modules\Auth\App\Http\Controllers\admin\auth;
 
+
 use App\Http\Controllers\Controller;
 use App\Jobs\User\ProcessCreateUserByOperator;
 use Modules\User\App\Models\Portal\PortalUser;

@@ -2,7 +2,7 @@
 
 namespace Modules\RolePermission\App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
+use Modules\Files\App\Http\Controllers\Controller;
 
 
 use Illuminate\Http\Request;

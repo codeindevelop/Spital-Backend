@@ -2,7 +2,7 @@
 
 namespace Modules\Leads\App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
+use Modules\Files\App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use Modules\Auth\App\Services\CreateUserByAdminService;
 use Modules\Leads\App\Services\ConvertLeadToUserService;

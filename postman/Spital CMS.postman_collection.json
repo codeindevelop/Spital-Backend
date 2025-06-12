@@ -3208,7 +3208,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"parent_id\": \"9f118c7d-87ae-4b1c-ac4d-5ca784f627f1\",\n    \"title\": \"tell\",\n    \"slug\": \"tell\",\n    \"description\": \"description\",\n    \"content\": \"description\",\n    \"order\": 1,\n    \"template\": \"template\",\n    \"status\": \"published\",\n    \"visibility\": \"public\",\n    \"custom_css\": \"custom_css\",\n    \"custom_js\": \"custom_css\",\n    \"seo\": {\n        \"meta_title\": \"Home | My Site\",\n        \"meta_keywords\": null,\n        \"meta_description\": \"Welcome to our site\",\n        \"canonical_url\": null,\n        \"favicon\": null,\n        \"robots_index\": \"index\",\n        \"robots_follow\": \"follow\",\n        \"theme_color\": null,\n        \"language\": \"en\",\n        \"region\": null,\n        \"timezone\": \"UTC\",\n        \"author\": null,\n        \"og_title\": \"Home Page\",\n        \"og_description\": null,\n        \"og_image\": \"https://example.com/images/home.jpg\",\n        \"og_type\": \"website\",\n        \"og_url\": null,\n        \"og_site_name\": null,\n        \"og_locale\": \"en_US\",\n        \"og_image_alt\": null,\n        \"og_image_width\": null,\n        \"og_image_height\": null,\n        \"og_image_type\": \"image/jpeg\",\n        \"twitter_title\": null,\n        \"twitter_description\": null,\n        \"twitter_site\": null,\n        \"twitter_creator\": null,\n        \"twitter_image\": null,\n        \"twitter_card_type\": \"summary_large_image\",\n        \"twitter_site_handle\": null,\n        \"twitter_creator_handle\": null,\n        \"twitter_image_alt\": null,\n        \"twitter_image_width\": null,\n        \"twitter_image_height\": null\n    },\n    \"schema\": {\n        \"title\": \"tell\",\n        \"slug\": \"tell\",\n        \"schema_json\": \"{\\\"@type\\\":\\\"WebPage\\\",\\\"name\\\":\\\"Home\\\"}\"\n    },\n    \"published_at\": \"\", //must be a valid date\n    \"is_active\": true\n}",
+									"raw": "{\n    \"parent_id\": \"9f118c7d-87ae-4b1c-ac4d-5ca784f627f1\",\n    \"title\": \"tells\",\n    \"slug\": \"tells\",\n    \"description\": \"description\",\n    \"content\": \"description\",\n    \"order\": 1,\n    \"template\": \"template\",\n    \"status\": \"published\",\n    \"visibility\": \"private\",\n    \"custom_css\": \"custom_css\",\n    \"custom_js\": \"custom_css\",\n    \"seo\": {\n        \"meta_title\": \"Home | My Site\",\n        \"meta_keywords\": null,\n        \"meta_description\": \"Welcome to our site\",\n        \"canonical_url\": null,\n        \"favicon\": null,\n        \"robots_index\": \"index\",\n        \"robots_follow\": \"follow\",\n        \"theme_color\": null,\n        \"language\": \"en\",\n        \"region\": null,\n        \"timezone\": \"UTC\",\n        \"author\": null,\n        \"og_title\": \"Home Page\",\n        \"og_description\": null,\n        \"og_image\": \"https://example.com/images/home.jpg\",\n        \"og_type\": \"website\",\n        \"og_url\": null,\n        \"og_site_name\": null,\n        \"og_locale\": \"en_US\",\n        \"og_image_alt\": null,\n        \"og_image_width\": null,\n        \"og_image_height\": null,\n        \"og_image_type\": \"image/jpeg\",\n        \"twitter_title\": null,\n        \"twitter_description\": null,\n        \"twitter_site\": null,\n        \"twitter_creator\": null,\n        \"twitter_image\": null,\n        \"twitter_card_type\": \"summary_large_image\",\n        \"twitter_site_handle\": null,\n        \"twitter_creator_handle\": null,\n        \"twitter_image_alt\": null,\n        \"twitter_image_width\": null,\n        \"twitter_image_height\": null\n    },\n    \"schema\": {\n        \"title\": \"tells\",\n        \"slug\": \"tells\",\n        \"schema_json\": \"{\\\"@type\\\":\\\"WebPage\\\",\\\"name\\\":\\\"Home\\\"}\"\n    },\n    \"published_at\": \"\", //must be a valid date\n    \"is_active\": true\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3238,6 +3238,173 @@
 					"item": []
 				}
 			]
+		},
+		{
+			"name": "Settings",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Seo",
+							"item": [
+								{
+									"name": "General Settings",
+									"item": [
+										{
+											"name": "get",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseURL}}/api/v1/admin/setting/seo/general",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"setting",
+														"seo",
+														"general"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "update",
+											"protocolProfileBehavior": {
+												"disabledSystemHeaders": {}
+											},
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "site_name",
+															"value": "vvvvv",
+															"contentType": "",
+															"type": "text"
+														},
+														{
+															"key": "og_image",
+															"type": "file",
+															"src": "/Users/yamata/Desktop/off/images.jpeg"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{baseURL}}/api/v1/admin/setting/seo/general",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"setting",
+														"seo",
+														"general"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "Representation Setting",
+									"item": [
+										{
+											"name": "get",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseURL}}/api/v1/admin/setting/seo/representation",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"setting",
+														"seo",
+														"representation"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "update",
+											"protocolProfileBehavior": {
+												"disabledSystemHeaders": {}
+											},
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "site_type",
+															"value": "personal",
+															"type": "text"
+														},
+														{
+															"key": "company_name",
+															"value": "hadi",
+															"type": "text"
+														},
+														{
+															"key": "company_logo",
+															"type": "file",
+															"src": [
+																"/Users/yamata/Desktop/off/af665dc0-e3d6-4a37-a5fd-6a09ada23cc5.jpg",
+																"/Users/yamata/Desktop/off/images.jpeg"
+															]
+														}
+													],
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseURL}}/api/v1/admin/setting/seo/representation",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"setting",
+														"seo",
+														"representation"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": []
+				}
+			]
 		}
 	],
 	"auth": {
@@ -3245,7 +3412,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "{{spital admin tokem}}",
+				"value": "{{spital admin token}}",
 				"type": "string"
 			}
 		]
@@ -3274,7 +3441,7 @@
 	],
 	"variable": [
 		{
-			"key": "spital admin tokem",
+			"key": "spital admin token",
 			"value": "",
 			"type": "default"
 		}

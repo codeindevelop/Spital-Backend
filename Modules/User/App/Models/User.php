@@ -7,46 +7,22 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Carbon;
 use Laravel\Passport\HasApiTokens;
+use Modules\Page\App\Models\Page;
 use Spatie\Permission\Traits\HasRoles;
 
-/**
- * @method static create(array $array)
- * @method static where(string $string, int $int)
- * @method static has(string $string)
- * @method static withTrashed()
- * @method static findOrFail(string $id)
- * @method static onlyTrashed()
- * @property mixed $activation_token
- * @property mixed $first_name
- * @property mixed $mobile_number
- * @property Carbon $suspended_at
- * @property mixed $verify
- * @property mixed $email
- */
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles, HasUuids;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'email',
         'password',
         'last_password_change',
         'active',
-        'mobile_number', // اضافه شده چون توی $logAttributes استفاده شده
+        'mobile_number',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'permissions',
@@ -58,11 +34,6 @@ class User extends Authenticatable
         'suspended_at',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'password' => 'hashed',
         'last_password' => 'hashed',
@@ -80,15 +51,23 @@ class User extends Authenticatable
 
     protected static string $logName = 'auth';
 
-    // Get user personal information
     public function personalInfo(): HasOne
     {
         return $this->hasOne(UserPersonalInfo::class, 'user_id', 'id');
     }
 
-    // Get user verify information
     public function verify(): HasOne
     {
         return $this->hasOne(UserVerify::class, 'user_id', 'id');
+    }
+
+    public function createdPages(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Page::class, 'created_by');
+    }
+
+    public function updatedPages(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Page::class, 'updated_by');
     }
 }

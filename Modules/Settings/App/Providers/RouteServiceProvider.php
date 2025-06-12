@@ -22,38 +22,33 @@ class RouteServiceProvider extends ServiceProvider
         parent::boot();
     }
 
+
     /**
      * Define the routes for the application.
      */
     public function map(): void
     {
-        $this->mapApiRoutes();
+        $this->mapUserApiRoutes();
+        $this->mapAdminApiRoutes();
 
-        $this->mapWebRoutes();
+
     }
 
-    /**
-     * Define the "web" routes for the application.
-     *
-     * These routes all receive session state, CSRF protection, etc.
-     */
-    protected function mapWebRoutes(): void
-    {
-        Route::middleware('web')
-            ->namespace($this->moduleNamespace)
-            ->group(module_path('Settings', '/routes/web.php'));
-    }
-
-    /**
-     * Define the "api" routes for the application.
-     *
-     * These routes are typically stateless.
-     */
-    protected function mapApiRoutes(): void
+    // User API Routes
+    protected function mapUserApiRoutes(): void
     {
         Route::prefix('api')
             ->middleware('api')
             ->namespace($this->moduleNamespace)
-            ->group(module_path('Settings', '/routes/api.php'));
+            ->group(module_path('Settings', '/routes/API_user.php'));
+    }
+
+    // Admin Api Routes
+    protected function mapAdminApiRoutes(): void
+    {
+        Route::prefix('api')
+            ->middleware('api')
+            ->namespace($this->moduleNamespace)
+            ->group(module_path('Settings', '/routes/API_admin.php'));
     }
 }
