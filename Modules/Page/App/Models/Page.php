@@ -2,11 +2,11 @@
 
 namespace Modules\Page\App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
-use Modules\Seo\App\Models\PageSchema;
-use Modules\Seo\App\Models\PageSeo;
+use Modules\Seo\App\Models\page\PageSchema;
+use Modules\Seo\App\Models\page\PageSeo;
 use Modules\User\App\Models\User;
 
 /**

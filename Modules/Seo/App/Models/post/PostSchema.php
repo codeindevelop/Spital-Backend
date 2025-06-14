@@ -1,26 +1,29 @@
 <?php
 
-namespace Modules\Seo\App\Models;
+namespace Modules\Seo\App\Models\post;
 
+use App\Helpers\SlugHelper;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Page\App\Models\Page;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Blog\App\Models\Post;
 use Modules\User\App\Models\User;
 use Ramsey\Uuid\Uuid;
 
 /**
  * @method static create(array|string[] $array_merge)
- * @method static where(string $string, string $pageId)
+ * @method static where(string $string, string $postId)
  */
-class PageSchema extends Model
+class PostSchema extends Model
 {
-    protected $table = 'page_schemas';
+    use HasFactory, SoftDeletes;
 
     protected $keyType = 'string';
     public $incrementing = false;
 
     protected $fillable = [
-        'id',
-        'page_id',
+        'post_id',
         'type',
         'title',
         'slug',
@@ -31,6 +34,7 @@ class PageSchema extends Model
         'status',
         'visibility',
         'language',
+        'author',
         'created_by',
     ];
 
@@ -39,23 +43,25 @@ class PageSchema extends Model
         'schema_json' => 'array',
     ];
 
-    protected static function boot()
+    protected static function boot(): void
     {
         parent::boot();
-
         static::creating(function ($model) {
             if (empty($model->id)) {
                 $model->id = Uuid::uuid4()->toString();
             }
+            if (empty($model->slug) && !empty($model->title)) {
+                $model->slug = SlugHelper::generatePersianSlug($model->title, self::class, 'slug');
+            }
         });
     }
 
-    public function page(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function post(): BelongsTo
     {
-        return $this->belongsTo(Page::class, 'page_id');
+        return $this->belongsTo(Post::class, 'post_id');
     }
 
-    public function createdBy(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
     }

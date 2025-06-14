@@ -1,80 +1,70 @@
 <?php
 
-namespace Modules\Seo\App\Models;
+namespace Modules\Seo\App\Models\post;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Page\App\Models\Page;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+use Modules\Blog\App\Models\Post;
 use Modules\User\App\Models\User;
 use Ramsey\Uuid\Uuid;
 
 /**
- * @method static where(string $string, string $pageId)
  * @method static create(array|string[] $array_merge)
+ * @method static where(string $string, string $postId)
  */
-class PageSeo extends Model
+class PostSeo extends Model
 {
-    protected $table = 'page_seo';
+    use HasFactory, SoftDeletes;
 
     protected $keyType = 'string';
     public $incrementing = false;
 
     protected $fillable = [
-        'id',
-        'page_id',
+        'post_id',
         'meta_title',
         'meta_keywords',
         'meta_description',
         'canonical_url',
-        'image',
         'robots_index',
         'robots_follow',
-        'theme_color',
-        'language',
-        'region',
-        'timezone',
-        'author',
         'og_title',
         'og_description',
-        'og_image',
         'og_type',
         'og_url',
         'og_site_name',
-        'og_locale',
+        'og_image',
         'og_image_alt',
         'og_image_width',
         'og_image_height',
-        'og_image_type',
+        'og_locale',
         'twitter_card',
         'twitter_description',
         'twitter_site',
         'twitter_creator',
         'twitter_image',
-        'twitter_card_type',
-        'twitter_site_handle',
-        'twitter_creator_handle',
-        'twitter_image_alt',
-        'twitter_image_width',
-        'twitter_image_height',
+        'generator',
         'created_by',
     ];
 
-    protected static function boot()
+    protected static function boot(): void
     {
         parent::boot();
-
         static::creating(function ($model) {
-            if (empty($model->id)) {
+            if (!$model->id) {
                 $model->id = Uuid::uuid4()->toString();
             }
         });
     }
 
-    public function page(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function post(): BelongsTo
     {
-        return $this->belongsTo(Page::class, 'page_id');
+        return $this->belongsTo(Post::class, 'post_id');
     }
 
-    public function createdBy(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
     }

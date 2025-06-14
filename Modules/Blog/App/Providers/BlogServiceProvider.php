@@ -21,7 +21,12 @@ class BlogServiceProvider extends ServiceProvider
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
-        $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/migrations'));
+
+        // Modify default Migrations Path
+        $mainPath = module_path($this->moduleName, 'Database/migrations');
+        $directories = glob($mainPath.'/*', GLOB_ONLYDIR);
+        $paths = array_merge([$mainPath], $directories);
+        $this->loadMigrationsFrom($paths);
     }
 
     /**
