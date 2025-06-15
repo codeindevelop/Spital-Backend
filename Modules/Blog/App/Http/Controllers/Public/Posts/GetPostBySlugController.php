@@ -7,19 +7,24 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Modules\Blog\App\Services\Posts\GetPostBySlugService;
+use Modules\Blog\App\Services\Posts\RecordViewService;
 use Symfony\Component\HttpFoundation\Response;
 
-class GetPostByIdController extends Controller
+class GetPostBySlugController extends Controller
 {
     protected GetPostBySlugService $postService;
+    protected RecordViewService $recordViewService;
 
-    public function __construct(GetPostBySlugService $postService)
-    {
+    public function __construct(
+        GetPostBySlugService $postService,
+        RecordViewService $recordViewService
+    ) {
         $this->postService = $postService;
+        $this->recordViewService = $recordViewService;
     }
 
     /**
-     * Retrieve a post by its slug (mislabeled as ID in the original code).
+     * Retrieve a post by its slug and record a view.
      *
      * @param  string  $slug
      * @return JsonResponse
@@ -40,6 +45,8 @@ class GetPostByIdController extends Controller
             return response()->json(['error' => 'این پست خصوصی است.'], 403);
         }
 
+        $this->recordViewService->execute($post->id, Auth::id(), request()->ip());
+
         return response()->json([
             'data' => [
                 'post' => [
@@ -53,6 +60,8 @@ class GetPostByIdController extends Controller
                     'published_at' => $post->published_at,
                     'seo' => $post->seo,
                     'schema' => $post->schema,
+                    'comments_count' => $post->comments->count(),
+                    'comments' => $post->comments,
                 ],
             ],
         ], Response::HTTP_OK);

@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Modules\Blog\App\Http\Resources\PostResource;
 use Modules\Blog\App\Services\Posts\GetAllPostsService;
 use Modules\Blog\App\Services\Posts\GetTrendingPostsService;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,14 +13,22 @@ use Symfony\Component\HttpFoundation\Response;
 class GetAllPostsController extends Controller
 {
     protected GetAllPostsService $postService;
-    protected GetTrendingPostsService $trendingService;
+    protected GetTrendingPostsService $trendingPostsService;
 
-    public function __construct(GetAllPostsService $postService, GetTrendingPostsService $trendingService)
-    {
+    public function __construct(
+        GetAllPostsService $postService,
+        GetTrendingPostsService $trendingPostsService
+    ) {
         $this->postService = $postService;
-        $this->trendingService = $trendingService;
+        $this->trendingPostsService = $trendingPostsService;
     }
 
+    /**
+     * Retrieve all public published posts with pagination and optional filters.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function __invoke(Request $request): JsonResponse
     {
         $validator = Validator::make($request->all(), [
@@ -42,12 +49,20 @@ class GetAllPostsController extends Controller
             $request->input('category_id')
         );
 
-        $trendingPosts = $this->trendingService->execute(5);
+        $trendingPosts = $this->trendingPostsService->execute(5);
 
         return response()->json([
             'data' => [
-                'posts' => PostResource::collection($posts),
-                'trending_posts' => PostResource::collection($trendingPosts->pluck('post')),
+                'posts' => $posts,
+                'trending_posts' => $trendingPosts->map(function ($trendingPost) {
+                    return [
+                        'id' => $trendingPost->post->id,
+                        'title' => $trendingPost->post->title,
+                        'slug' => $trendingPost->post->slug,
+                        'summary' => $trendingPost->post->summary,
+                        'views_count' => $trendingPost->views_count,
+                    ];
+                }),
                 'pagination' => [
                     'total' => $posts->total(),
                     'per_page' => $posts->perPage(),

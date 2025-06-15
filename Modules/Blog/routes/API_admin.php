@@ -1,12 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Blog\App\Http\Controllers\Admin\AdminPostCommentController;
 use Modules\Blog\App\Http\Controllers\Admin\Categories\CreateCategoryController;
 use Modules\Blog\App\Http\Controllers\Admin\Categories\DeleteCategoryController;
 use Modules\Blog\App\Http\Controllers\Admin\Categories\GetAllCategoriesController;
 use Modules\Blog\App\Http\Controllers\Admin\Categories\GetCategoryByIdController;
 use Modules\Blog\App\Http\Controllers\Admin\Categories\UpdateCategoryController;
+use Modules\Blog\App\Http\Controllers\Admin\Comments\CreateCommentController;
+use Modules\Blog\App\Http\Controllers\Admin\Comments\DeleteCommentController;
+use Modules\Blog\App\Http\Controllers\Admin\Comments\GetCommentsByPostIdController;
+use Modules\Blog\App\Http\Controllers\Admin\Comments\UpdateCommentController;
 use Modules\Blog\App\Http\Controllers\Admin\Posts\CreatePostController;
 use Modules\Blog\App\Http\Controllers\Admin\Posts\DeletePostController;
 use Modules\Blog\App\Http\Controllers\Admin\Posts\GenerateDemoPostsController;
@@ -35,9 +38,9 @@ Route::prefix('v1/admin/blog')->group(function () {
         Route::delete('/categories/{id}', DeleteCategoryController::class)->name('admin.categories.delete');
 
         // کامنت‌ها
-        Route::get('comments/post/{postId}', [AdminPostCommentController::class, 'getCommentsByPostId']);
-        Route::post('comments/create', [AdminPostCommentController::class, 'createComment']);
-        Route::put('comments/{id}', [AdminPostCommentController::class, 'updateComment']);
-        Route::delete('comments/{id}', [AdminPostCommentController::class, 'deleteComment']);
+        Route::get('/comments/post/{postId}', GetCommentsByPostIdController::class)->name('admin.comments.by_post');
+        Route::post('/comments/create', CreateCommentController::class)->name('admin.comments.create');
+        Route::put('/comments/{id}', UpdateCommentController::class)->name('admin.comments.update');
+        Route::delete('/comments/{id}', DeleteCommentController::class)->name('admin.comments.delete');
     });
 });

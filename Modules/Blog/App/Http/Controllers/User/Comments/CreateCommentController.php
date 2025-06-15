@@ -7,22 +7,29 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Modules\Blog\App\Http\Resources\CommentResource;
 use Modules\Blog\App\Services\Comments\CreateCommentService;
 use Modules\Blog\App\Services\Posts\GetPostByIdService;
 use Symfony\Component\HttpFoundation\Response;
 
 class CreateCommentController extends Controller
 {
-    protected CreateCommentService $commentService;
     protected GetPostByIdService $postService;
+    protected CreateCommentService $commentService;
 
-    public function __construct(CreateCommentService $commentService, GetPostByIdService $postService)
-    {
-        $this->commentService = $commentService;
+    public function __construct(
+        GetPostByIdService $postService,
+        CreateCommentService $commentService
+    ) {
         $this->postService = $postService;
+        $this->commentService = $commentService;
     }
 
+    /**
+     * Create a new comment for a post.
+     *
+     * @param  Request  $request
+     * @return JsonResponse
+     */
     public function __invoke(Request $request): JsonResponse
     {
         $user = Auth::user();
@@ -47,13 +54,16 @@ class CreateCommentController extends Controller
             return response()->json(['error' => 'امکان ثبت کامنت برای این پست غیرفعال است.'], 403);
         }
 
-        $comment = $this->commentService->execute($request->all(), $user);
-
-        return response()->json([
-            'data' => [
-                'comment' => new CommentResource($comment),
-                'message' => 'کامنت با موفقیت ثبت شد و در انتظار تأیید است.',
-            ],
-        ], Response::HTTP_CREATED);
+        try {
+            $comment = $this->commentService->execute($request->all(), $user);
+            return response()->json([
+                'data' => [
+                    'comment' => $comment,
+                    'message' => 'کامنت با موفقیت ثبت شد و در انتظار تأیید است.',
+                ],
+            ], Response::HTTP_CREATED);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'خطایی در ثبت کامنت رخ داد.'], 500);
+        }
     }
 }
