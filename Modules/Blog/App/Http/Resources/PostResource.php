@@ -5,6 +5,26 @@ namespace Modules\Blog\App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\Settings\App\Services\Blog\BlogSettingService;
 
+/**
+ * @property mixed $schema
+ * @property mixed $seo
+ * @property mixed $published_at
+ * @property mixed $visibility
+ * @property mixed $status
+ * @property mixed $author
+ * @property mixed $cover_image_height
+ * @property mixed $cover_image_width
+ * @property mixed $cover_image_alt
+ * @property mixed $cover_image_name
+ * @property mixed $cover_image_id
+ * @property mixed $comments
+ * @property mixed $likes_count
+ * @property mixed $summary
+ * @property mixed $category
+ * @property mixed $slug
+ * @property mixed $title
+ * @property mixed $id
+ */
 class PostResource extends JsonResource
 {
     public function toArray($request): array

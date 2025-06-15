@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Helpers\blog;
+namespace Modules\Blog\App\Helpers;
 
 use Illuminate\Support\Str;
-use Modules\Settings\App\Models\Blog\Post;
+use Modules\Blog\App\Models\Post;
+
 
 class SlugHelper
 {

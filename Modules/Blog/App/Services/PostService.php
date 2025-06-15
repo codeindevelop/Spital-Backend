@@ -2,14 +2,14 @@
 
 namespace Modules\Blog\App\Services;
 
-use App\Helpers\blog\PostShortLinkHelper;
-use App\Helpers\blog\SlugHelper;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Modules\Blog\App\Helpers\PostShortLinkHelper;
+use Modules\Blog\App\Helpers\SlugHelper;
 use Modules\Blog\App\Models\Post;
 use Modules\Blog\App\Models\PostCategory;
 use Modules\Blog\App\Repositories\PostRepository;

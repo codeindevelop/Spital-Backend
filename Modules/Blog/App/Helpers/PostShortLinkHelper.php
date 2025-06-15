@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helpers\blog;
+namespace Modules\Blog\App\Helpers;
 
 use Illuminate\Support\Str;
 use Modules\Blog\App\Models\Post;

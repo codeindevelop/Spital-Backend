@@ -3,10 +3,10 @@
 namespace Modules\Seo\Database\Factories;
 
 
-use App\Helpers\blog\SlugHelper;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Modules\Settings\App\Models\Blog\PostCategory;
+use Modules\Blog\App\Helpers\SlugHelper;
 use Modules\Seo\App\Models\post\CategorySchema;
+use Modules\Settings\App\Models\Blog\PostCategory;
 use Modules\User\App\Models\User;
 use Ramsey\Uuid\Uuid;
 use Ybazli\Faker\Faker;

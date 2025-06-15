@@ -2,8 +2,8 @@
 
 namespace Modules\Blog\Database\Factories;
 
-use App\Helpers\blog\SlugHelper;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Blog\App\Helpers\SlugHelper;
 use Modules\Settings\App\Models\Blog\PostCategory;
 use Modules\User\App\Models\User;
 use Ramsey\Uuid\Uuid;

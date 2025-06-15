@@ -2,11 +2,11 @@
 
 namespace Modules\Seo\App\Models\post;
 
-use App\Helpers\blog\SlugHelper;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Blog\App\Helpers\SlugHelper;
 use Modules\Settings\App\Models\Blog\PostCategory;
 use Modules\User\App\Models\User;
 use Ramsey\Uuid\Uuid;

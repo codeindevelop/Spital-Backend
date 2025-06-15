@@ -2,7 +2,6 @@
 
 namespace Modules\Blog\App\Services;
 
-use App\Helpers\blog\SlugHelper;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -10,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
-
+use Modules\Blog\App\Helpers\SlugHelper;
 use Modules\Blog\App\Models\PostCategory;
 use Modules\Blog\App\Repositories\PostCategoryRepository;
 use Modules\Seo\App\Models\post\CategorySchema;

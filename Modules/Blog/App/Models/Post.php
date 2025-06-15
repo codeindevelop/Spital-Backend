@@ -3,13 +3,13 @@
 namespace Modules\Blog\App\Models;
 
 
-use App\Helpers\blog\SlugHelper;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Blog\App\Helpers\SlugHelper;
 use Modules\Seo\App\Models\post\PostSchema;
 use Modules\Seo\App\Models\post\PostSeo;
 use Modules\User\App\Models\User;
