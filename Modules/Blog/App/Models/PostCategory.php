@@ -2,7 +2,7 @@
 
 namespace Modules\Blog\App\Models;
 
-use App\Helpers\SlugHelper;
+use App\Helpers\blog\SlugHelper;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

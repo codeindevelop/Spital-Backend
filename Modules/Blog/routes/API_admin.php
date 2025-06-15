@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Blog\App\Http\Controllers\Admin\AdminPostController;
 use Modules\Blog\App\Http\Controllers\Admin\AdminPostCategoryController;
 use Modules\Blog\App\Http\Controllers\Admin\AdminPostCommentController;
+use Modules\Blog\App\Http\Controllers\Admin\AdminPostController;
+
 
 Route::prefix('v1/admin/blog')->group(function () {
     Route::middleware('auth:api')->group(function () {

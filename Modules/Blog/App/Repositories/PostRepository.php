@@ -2,29 +2,49 @@
 
 namespace Modules\Blog\App\Repositories;
 
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Blog\App\Models\Post;
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Blog\App\Models\Post;
+use Modules\Blog\App\Models\PostBookmark;
+use Modules\Blog\App\Models\PostLike;
+use Modules\Blog\App\Models\PostView;
+use Modules\Blog\App\Models\TrendingPost;
 use Modules\Seo\App\Models\post\PostSchema;
 use Modules\Seo\App\Models\post\PostSeo;
+use Ramsey\Uuid\Uuid;
 
+/**
+ * @method getChildCategoryIds(string $categoryId)
+ */
 class PostRepository
 {
     public function getAllPosts(
         int $perPage,
-        ?string $status = null,
-        ?string $visibility = null,
-        ?string $search = null,
-        ?string $categoryId = null
-    ): \Illuminate\Contracts\Pagination\LengthAwarePaginator {
-        $query = Post::query()
-            ->with(['author', 'category', 'seo', 'schema', 'createdBy', 'updatedBy'])
-            ->when($status, fn(Builder $q) => $q->where('status', $status))
-            ->when($visibility, fn(Builder $q) => $q->where('visibility', $visibility))
-            ->when($search, fn(Builder $q) => $q->where('title', 'like', "%{$search}%")
-                ->orWhere('slug', 'like', "%{$search}%"))
-            ->when($categoryId, fn(Builder $q) => $q->where('category_id', $categoryId));
+        ?string $status,
+        ?string $visibility,
+        ?string $search,
+        ?string $categoryId
+    ): LengthAwarePaginator {
+        $query = Post::query()->with(['category', 'comments']);
+
+        if ($status) {
+            $query->where('status', $status);
+        }
+
+        if ($visibility) {
+            $query->where('visibility', $visibility);
+        }
+
+        if ($search) {
+            $query->where('title', 'like', "%{$search}%");
+        }
+
+        if ($categoryId) {
+            $categoryIds = $this->getChildCategoryIds($categoryId);
+            $query->whereIn('category_id', $categoryIds);
+        }
 
         return $query->paginate($perPage);
     }
@@ -41,6 +61,11 @@ class PostRepository
             ->where('slug', $slug)
             ->where('is_active', true)
             ->firstOrFail();
+    }
+
+    public function getPostByShortLink(string $shortLink): ?Post
+    {
+        return Post::where('short_link', $shortLink)->first();
     }
 
     public function createPost(array $data): Post
@@ -91,5 +116,72 @@ class PostRepository
     {
         $post = Post::findOrFail($id);
         $post->delete();
+    }
+
+    public function findLike(string $postId, string $userId): ?PostLike
+    {
+        return PostLike::where('post_id', $postId)->where('user_id', $userId)->first();
+    }
+
+    public function createLike(array $data): PostLike
+    {
+        return PostLike::create($data);
+    }
+
+    public function deleteLike(string $likeId): void
+    {
+        PostLike::where('id', $likeId)->delete();
+    }
+
+    public function incrementLikesCount(string $postId): void
+    {
+        Post::where('id', $postId)->increment('likes_count');
+    }
+
+    public function decrementLikesCount(string $postId): void
+    {
+        Post::where('id', $postId)->decrement('likes_count');
+    }
+
+    public function createView(array $data): PostView
+    {
+        return PostView::create($data);
+    }
+
+    public function getViewsCount(string $postId): int
+    {
+        return PostView::where('post_id', $postId)->count();
+    }
+
+    public function addToTrending(string $postId, int $viewsCount): void
+    {
+        TrendingPost::updateOrCreate(
+            ['post_id' => $postId],
+            [
+                'id' => Uuid::uuid4()->toString(),
+                'views_count' => $viewsCount,
+                'trending_at' => now(),
+            ]
+        );
+    }
+
+    public function getTrendingPosts(int $perPage): \Illuminate\Pagination\LengthAwarePaginator
+    {
+        return TrendingPost::with('post')->orderBy('views_count', 'desc')->paginate($perPage);
+    }
+
+    public function findBookmark(string $postId, string $userId): ?PostBookmark
+    {
+        return PostBookmark::where('post_id', $postId)->where('user_id', $userId)->first();
+    }
+
+    public function createBookmark(array $data): PostBookmark
+    {
+        return PostBookmark::create($data);
+    }
+
+    public function deleteBookmark(string $bookmarkId): void
+    {
+        PostBookmark::where('id', $bookmarkId)->delete();
     }
 }

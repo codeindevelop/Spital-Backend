@@ -3,10 +3,11 @@
 namespace Modules\Blog\App\Models;
 
 
-use App\Helpers\SlugHelper;
+use App\Helpers\blog\SlugHelper;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Seo\App\Models\post\PostSchema;
@@ -17,6 +18,7 @@ use Ramsey\Uuid\Uuid;
 /**
  * @method static create(array $data)
  * @method static findOrFail(string $id)
+ * @method static where(string $string, string $postId)
  * @property mixed $id
  */
 class Post extends Model
@@ -27,20 +29,11 @@ class Post extends Model
     public $incrementing = false;
 
     protected $fillable = [
-        'author_id',
-        'category_id',
-        'title',
-        'slug',
-        'content',
-        'featured_image',
-        'comment_status',
-        'status',
-        'visibility',
-        'password',
-        'published_at',
-        'is_active',
-        'created_by',
-        'updated_by',
+        'id', 'author_id', 'category_id', 'title', 'slug', 'content', 'summary', 'featured_image',
+        'cover_image_id', 'cover_image_name', 'cover_image_alt', 'cover_image_preview', 'cover_image_width',
+        'cover_image_height', 'comment_status', 'likes_count', 'password', 'status', 'visibility',
+        'published_at', 'is_active', 'is_featured', 'is_trend', 'is_advertisement', 'reading_time',
+        'short_link', 'post_type', 'media_link', 'created_by', 'updated_by',
     ];
 
     protected $casts = [
@@ -67,12 +60,17 @@ class Post extends Model
         return $this->belongsTo(User::class, 'author_id');
     }
 
+    public function likes(): HasMany
+    {
+        return $this->hasMany(PostLike::class);
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(PostCategory::class, 'category_id');
     }
 
-    public function comments(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function comments(): HasMany
     {
         return $this->hasMany(PostComment::class, 'post_id')->whereNull('parent_id')->orderBy('created_at', 'asc');
     }

@@ -3,12 +3,12 @@
 namespace Modules\Seo\Database\Factories;
 
 
-use Modules\Blog\App\Models\Post;
+use App\Helpers\blog\SlugHelper;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Settings\App\Models\Blog\Post;
 use Modules\Seo\App\Models\post\PostSchema;
 use Modules\User\App\Models\User;
 use Ramsey\Uuid\Uuid;
-use App\Helpers\SlugHelper;
 use Ybazli\Faker\Faker;
 
 class PostSchemaFactory extends Factory

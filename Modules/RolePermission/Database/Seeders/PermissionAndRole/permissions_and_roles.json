@@ -138,6 +138,14 @@
         },
         {
             "guard_name": "api",
+            "name": "settings:blog:view"
+        },
+        {
+            "guard_name": "api",
+            "name": "settings:blog:update"
+        },
+        {
+            "guard_name": "api",
             "name": "user_panel:access"
         }
     ],
@@ -160,6 +168,8 @@
                 "page:delete",
                 "settings:seo:view",
                 "settings:seo:update",
+                "settings:blog:view",
+                "settings:blog:update",
                 "post:category:view",
                 "post:category:create",
                 "post:category:update",
@@ -192,6 +202,8 @@
                 "page:delete",
                 "settings:seo:view",
                 "settings:seo:update",
+                "settings:blog:view",
+                "settings:blog:update",
                 "post:category:view",
                 "post:category:create",
                 "post:category:update",

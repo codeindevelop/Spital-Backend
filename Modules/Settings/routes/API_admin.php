@@ -2,6 +2,7 @@
 
 
 use Illuminate\Support\Facades\Route;
+use Modules\Settings\App\Http\Controllers\Admin\Blog\AdminBlogSettingController;
 use Modules\Settings\App\Http\Controllers\Admin\Seo\SeoGeneralSettingController;
 use Modules\Settings\App\Http\Controllers\Admin\Seo\SeoRepresentationSettingController;
 
@@ -23,10 +24,16 @@ Route::prefix('v1/admin')->group(function () {
                 Route::get('representation', [SeoRepresentationSettingController::class, 'getSettings']);
                 Route::post('representation', [SeoRepresentationSettingController::class, 'updateSettings']);
 
+            });
 
-
+            // Blog Settings
+            Route::prefix('blog')->group(function () {
+                Route::get('general', [AdminBlogSettingController::class, 'getSettings']);
+                Route::put('general', [AdminBlogSettingController::class, 'updateSettings']);
 
             });
+
+
         });
     });
 });

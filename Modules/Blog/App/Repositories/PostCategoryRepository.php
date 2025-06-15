@@ -5,8 +5,9 @@ namespace Modules\Blog\App\Repositories;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Blog\App\Models\PostCategory;
+
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Blog\App\Models\PostCategory;
 use Modules\Seo\App\Models\post\CategorySchema;
 use Modules\Seo\App\Models\post\CategorySeo;
 

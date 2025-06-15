@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+
+use Modules\Blog\App\Http\Resources\PostResource;
 use Modules\Blog\App\Services\PostService;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Log;
@@ -49,23 +51,7 @@ class AdminPostController extends Controller
 
         return response()->json([
             'data' => [
-                'posts' => $posts->map(function ($post) {
-                    return [
-                        'id' => $post->id,
-                        'title' => $post->title,
-                        'slug' => $post->slug,
-                        'category' => $post->category ? [
-                            'id' => $post->category->id,
-                            'name' => $post->category->name,
-                            'slug' => $post->category->slug,
-                        ] : ['name' => 'دسته‌بندی نشده'],
-                        'status' => $post->status,
-                        'visibility' => $post->visibility,
-                        'published_at' => $post->published_at,
-                        'seo' => $post->seo,
-                        'schema' => $post->schema,
-                    ];
-                }),
+                'posts' => PostResource::collection($posts),
                 'pagination' => [
                     'total' => $posts->total(),
                     'per_page' => $posts->perPage(),
@@ -219,7 +205,7 @@ class AdminPostController extends Controller
                 ],
             ], Response::HTTP_CREATED);
         } catch (\Exception $e) {
-            Log::error('Failed to create post: ' . $e->getMessage(), [
+            Log::error('Failed to create post: '.$e->getMessage(), [
                 'request' => $request->all(),
                 'trace' => $e->getTraceAsString(),
             ]);
@@ -235,8 +221,8 @@ class AdminPostController extends Controller
 
         $validator = Validator::make(array_merge($request->all(), ['id' => $id]), [
             'id' => ['required', 'uuid', 'exists:posts,id'],
-            'title' => ['string', 'max:255', 'unique:posts,title,' . $id],
-            'slug' => ['nullable', 'string', 'max:255', 'unique:posts,slug,' . $id],
+            'title' => ['string', 'max:255', 'unique:posts,title,'.$id],
+            'slug' => ['nullable', 'string', 'max:255', 'unique:posts,slug,'.$id],
             'content' => ['nullable', 'string'],
             'featured_image' => ['nullable', 'string', 'max:255'],
             'comment_status' => ['nullable', 'boolean'],
@@ -291,7 +277,7 @@ class AdminPostController extends Controller
                 ],
             ], Response::HTTP_OK);
         } catch (\Exception $e) {
-            Log::error('Failed to update post: ' . $e->getMessage(), [
+            Log::error('Failed to update post: '.$e->getMessage(), [
                 'id' => $id,
                 'request' => $request->all(),
                 'trace' => $e->getTraceAsString(),
@@ -322,7 +308,7 @@ class AdminPostController extends Controller
                 ],
             ], Response::HTTP_OK);
         } catch (\Exception $e) {
-            Log::error('Failed to delete post: ' . $e->getMessage(), [
+            Log::error('Failed to delete post: '.$e->getMessage(), [
                 'id' => $id,
                 'trace' => $e->getTraceAsString(),
             ]);
@@ -357,7 +343,7 @@ class AdminPostController extends Controller
                 ],
             ], Response::HTTP_OK);
         } catch (\Exception $e) {
-            Log::error('Failed to generate demo posts: ' . $e->getMessage(), [
+            Log::error('Failed to generate demo posts: '.$e->getMessage(), [
                 'count' => $request->input('count'),
                 'trace' => $e->getTraceAsString(),
             ]);

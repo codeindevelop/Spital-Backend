@@ -2,18 +2,19 @@
 
 namespace Modules\Blog\App\Services;
 
-use App\Helpers\SlugHelper;
+use App\Helpers\blog\SlugHelper;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
+
 use Modules\Blog\App\Models\PostCategory;
 use Modules\Blog\App\Repositories\PostCategoryRepository;
-use Illuminate\Support\Str;
 use Modules\Seo\App\Models\post\CategorySchema;
 use Ramsey\Uuid\Uuid;
-use Illuminate\Validation\ValidationException;
-use Illuminate\Support\Facades\Log;
 
 class PostCategoryService
 {

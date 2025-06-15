@@ -3,6 +3,7 @@
 namespace Modules\Blog\App\Services;
 
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+
 use Modules\Blog\App\Models\PostComment;
 use Modules\Blog\App\Repositories\PostCommentRepository;
 use Ramsey\Uuid\Uuid;
@@ -24,7 +25,7 @@ class PostCommentService
         return $this->commentRepository->getCommentsByPostId($postId, $perPage);
     }
 
-    public function createComment(array $data, $user): PostComment
+    public function createComment(array $data, $user): \Modules\Settings\App\Models\Blog\PostComment
     {
         try {
             $commentData = [

@@ -18,13 +18,31 @@ return new class extends Migration {
 
             $table->string('title', 255);
             $table->string('slug', 255)->unique();
+            $table->string('short_link')->nullable()->unique();
+            $table->enum('post_type', ['article', 'video', 'audio'])->default('article');
+            $table->string('media_link')->nullable();
+            $table->text('summary')->nullable();
             $table->longText('content')->nullable();
             $table->string('featured_image')->nullable();
+
+            $table->uuid('cover_image_id')->nullable();
+            $table->string('cover_image_name')->nullable();
+            $table->string('cover_image_alt')->nullable();
+            $table->string('cover_image_preview')->nullable();
+            $table->unsignedInteger('cover_image_width')->nullable();
+            $table->unsignedInteger('cover_image_height')->nullable();
+
             $table->boolean('comment_status')->default(true);
+            $table->unsignedBigInteger('likes_count')->default(0);
             $table->string('status')->default('draft'); // draft, published, archived
             $table->string('visibility')->default('public'); // public, private, unlisted
             $table->string('password')->nullable();
             $table->dateTime('published_at')->nullable();
+
+            $table->boolean('is_featured')->default(false);
+            $table->boolean('is_trend')->default(false);
+            $table->boolean('is_advertisement')->default(false);
+            $table->unsignedInteger('reading_time')->nullable(); // به دقیقه
 
             $table->uuid('created_by')->nullable();
             $table->uuid('updated_by')->nullable();

@@ -2,34 +2,43 @@
 
 namespace Modules\Blog\App\Services;
 
-use App\Helpers\SlugHelper;
+use App\Helpers\blog\PostShortLinkHelper;
+use App\Helpers\blog\SlugHelper;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Blog\App\Models\Post;
-use Modules\Blog\App\Repositories\PostRepository;
-use Illuminate\Support\Str;
-use Modules\Seo\App\Models\post\PostSchema;
-use Ramsey\Uuid\Uuid;
-use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
+use Modules\Blog\App\Models\Post;
+use Modules\Blog\App\Models\PostCategory;
+use Modules\Blog\App\Repositories\PostRepository;
+use Modules\Seo\App\Models\post\PostSchema;
+use Modules\Settings\App\Services\Blog\BlogSettingService;
+use Ramsey\Uuid\Uuid;
 
 class PostService
 {
     protected PostRepository $postRepository;
+    protected BlogSettingService $blogSettingService;
 
-    public function __construct(PostRepository $postRepository)
+    public function __construct(PostRepository $postRepository, BlogSettingService $blogSettingService)
     {
         $this->postRepository = $postRepository;
+        $this->blogSettingService = $blogSettingService;
     }
 
     public function getAllPosts(
-        int $perPage = 15,
-        ?string $status = null,
-        ?string $visibility = null,
-        ?string $search = null,
-        ?string $categoryId = null
-    ): \Illuminate\Contracts\Pagination\LengthAwarePaginator {
+        int $perPage = null,
+        string $status = null,
+        string $visibility = null,
+        string $search = null,
+        string $categoryId = null
+    ): \Illuminate\Contracts\Pagination\LengthAwarePaginator
+    {
+        $settings = $this->blogSettingService->getSettings();
+        $perPage = $perPage ?? ($visibility === 'public' ? $settings->public_posts_per_page : $settings->admin_posts_per_page);
+
         return $this->postRepository->getAllPosts($perPage, $status, $visibility, $search, $categoryId);
     }
 
@@ -43,11 +52,17 @@ class PostService
         return $this->postRepository->getPostBySlug($slug);
     }
 
+    public function getPostByShortLink(string $shortLink)
+    {
+        return $this->postRepository->getPostByShortLink($shortLink);
+    }
+
     public function createPost(array $data, string $userId): Post
     {
         try {
             if (!empty($data['category_id'])) {
-                $categoryExists = \Modules\Blog\App\Models\PostCategory::where('id', $data['category_id'])->exists();
+                $categoryExists = PostCategory::where('id',
+                    $data['category_id'])->exists();
                 if (!$categoryExists) {
                     throw ValidationException::withMessages([
                         'category_id' => 'دسته‌بندی معتبر نیست.',
@@ -55,19 +70,38 @@ class PostService
                 }
             }
 
+            $settings = $this->blogSettingService->getSettings();
+
             $postData = [
                 'id' => Uuid::uuid4()->toString(),
                 'author_id' => $userId,
                 'category_id' => $data['category_id'] ?? null,
                 'title' => $data['title'],
                 'slug' => $data['slug'] ?? SlugHelper::generatePersianSlug($data['title'], Post::class, 'slug'),
+                'short_link' => PostShortLinkHelper::generateShortLink($data['id'] ?? Uuid::uuid4()->toString()),
                 // استفاده از هلپر
+                'summary' => $data['summary'] ?? null,
                 'content' => $data['content'] ?? null,
+                'post_type' => $data['post_type'] ?? 'article',
+                'media_link' => $data['media_link'] ?? null,
                 'featured_image' => $data['featured_image'] ?? null,
+
+
+                'cover_image_id' => $data['cover_image']['id'] ?? null,
+                'cover_image_name' => $data['cover_image']['name'] ?? null,
+                'cover_image_alt' => $data['cover_image']['alt'] ?? null,
+                'cover_image_preview' => $data['cover_image']['preview'] ?? $settings->default_cover_image,
+                'cover_image_width' => $data['cover_image']['width'] ?? null,
+                'cover_image_height' => $data['cover_image']['height'] ?? null,
+
                 'comment_status' => $data['comment_status'] ?? true,
                 'status' => $data['status'] ?? 'draft',
                 'visibility' => $data['visibility'] ?? 'public',
                 'password' => !empty($data['password']) ? bcrypt($data['password']) : null,
+                'is_featured' => $data['is_featured'] ?? false,
+                'is_trend' => $data['is_trend'] ?? false,
+                'is_advertisement' => $data['is_advertisement'] ?? false,
+                'reading_time' => $data['reading_time'] ?? null,
                 'published_at' => $data['published_at'] ?? now(),
                 'is_active' => $data['is_active'] ?? true,
                 'created_by' => $userId,
@@ -206,5 +240,141 @@ class PostService
         }
 
         return array_filter($schema, fn($value) => !is_null($value));
+    }
+
+
+    public function likePost(string $postId, string $userId): void
+    {
+        try {
+            $post = $this->postRepository->findPost($postId);
+            if (!$post) {
+                throw new \Exception('پست یافت نشد.');
+            }
+
+            $existingLike = $this->postRepository->findLike($postId, $userId);
+            if ($existingLike) {
+                throw new \Exception('شما قبلاً این پست را لایک کرده‌اید.');
+            }
+
+            $likeData = [
+                'id' => Uuid::uuid4()->toString(),
+                'post_id' => $postId,
+                'user_id' => $userId,
+                'liked_at' => now(),
+            ];
+
+            $this->postRepository->createLike($likeData);
+            $this->postRepository->incrementLikesCount($postId);
+        } catch (\Exception $e) {
+            Log::error('Error liking post: '.$e->getMessage(), [
+                'postId' => $postId,
+                'userId' => $userId,
+                'trace' => $e->getTraceAsString(),
+            ]);
+            throw $e;
+        }
+    }
+
+    public function unlikePost(string $postId, string $userId): void
+    {
+        try {
+            $post = $this->postRepository->findPost($postId);
+            if (!$post) {
+                throw new \Exception('پست یافت نشد.');
+            }
+
+            $like = $this->postRepository->findLike($postId, $userId);
+            if (!$like) {
+                throw new \Exception('شما این پست را لایک نکرده‌اید.');
+            }
+
+            $this->postRepository->deleteLike($like->id);
+            $this->postRepository->decrementLikesCount($postId);
+        } catch (\Exception $e) {
+            Log::error('Error unliking post: '.$e->getMessage(), [
+                'postId' => $postId,
+                'userId' => $userId,
+                'trace' => $e->getTraceAsString(),
+            ]);
+            throw $e;
+        }
+    }
+
+    public function recordView(string $postId, ?string $userId, string $ipAddress): void
+    {
+        try {
+            $viewData = [
+                'id' => Uuid::uuid4()->toString(),
+                'post_id' => $postId,
+                'user_id' => $userId,
+                'ip_address' => $ipAddress,
+                'viewed_at' => now(),
+            ];
+
+            $this->postRepository->createView($viewData);
+
+            // بررسی برای افزودن به پربازدیدها
+            $viewsCount = $this->postRepository->getViewsCount($postId);
+            if ($viewsCount > 5) { // آستانه ۵ بازدید
+                $this->postRepository->addToTrending($postId, $viewsCount);
+            }
+        } catch (\Exception $e) {
+            Log::error('Error recording view: '.$e->getMessage(), [
+                'postId' => $postId,
+                'userId' => $userId,
+                'ipAddress' => $ipAddress,
+                'trace' => $e->getTraceAsString(),
+            ]);
+        }
+    }
+
+    public function bookmarkPost(string $postId, string $userId): void
+    {
+        try {
+            $post = $this->postRepository->findPost($postId);
+            if (!$post) {
+                throw new \Exception('پست یافت نشد.');
+            }
+
+            $existingBookmark = $this->postRepository->findBookmark($postId, $userId);
+            if ($existingBookmark) {
+                throw new \Exception('شما قبلاً این پست را بوکمارک کرده‌اید.');
+            }
+
+            $bookmarkData = [
+                'id' => Uuid::uuid4()->toString(),
+                'post_id' => $postId,
+                'user_id' => $userId,
+                'bookmarked_at' => now(),
+            ];
+
+            $this->postRepository->createBookmark($bookmarkData);
+        } catch (\Exception $e) {
+            Log::error('Error bookmarking post: '.$e->getMessage(), [
+                'postId' => $postId,
+                'userId' => $userId,
+                'trace' => $e->getTraceAsString(),
+            ]);
+            throw $e;
+        }
+    }
+
+    public function unbookmarkPost(string $postId, string $userId): void
+    {
+        try {
+            $bookmark = $this->postRepository->findBookmark($postId, $userId);
+            if (!$bookmark) {
+                throw new \Exception('شما این پست را بوکمارک نکرده‌اید.');
+            }
+
+            $this->postRepository->deleteBookmark($bookmark->id);
+        } catch (\Exception $e) {
+            Log::error('Error unbookmarking post: '.$e->getMessage(), [
+                'postId' => $postId,
+                'userId' => $userId,
+                'trace' => $e->getTraceAsString(),
+            ]);
+            throw $e;
+        }
     }
 }

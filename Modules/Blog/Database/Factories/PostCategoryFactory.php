@@ -2,12 +2,11 @@
 
 namespace Modules\Blog\Database\Factories;
 
-use App\Helpers\SlugHelper;
-use Modules\Blog\App\Models\PostCategory;
+use App\Helpers\blog\SlugHelper;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Settings\App\Models\Blog\PostCategory;
 use Modules\User\App\Models\User;
 use Ramsey\Uuid\Uuid;
-use Illuminate\Support\Str;
 use Ybazli\Faker\Faker;
 
 class PostCategoryFactory extends Factory
