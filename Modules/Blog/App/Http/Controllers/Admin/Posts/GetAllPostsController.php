@@ -20,6 +20,12 @@ class GetAllPostsController extends Controller
         $this->postService = $postService;
     }
 
+    /**
+     * Retrieve all posts with pagination and optional filters.
+     *
+     * @param  Request  $request
+     * @return JsonResponse
+     */
     public function __invoke(Request $request): JsonResponse
     {
         if (!Auth::user()->can('post:view')) {

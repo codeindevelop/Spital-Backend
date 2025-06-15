@@ -20,6 +20,17 @@ use Ramsey\Uuid\Uuid;
  * @method static findOrFail(string $id)
  * @method static where(string $string, string $postId)
  * @property mixed $id
+ * @property mixed $featured_image
+ * @property mixed $schema
+ * @property mixed $seo
+ * @property mixed $published_at
+ * @property mixed $visibility
+ * @property mixed $status
+ * @property mixed $comment_status
+ * @property mixed $content
+ * @property mixed $category
+ * @property mixed $slug
+ * @property mixed $title
  */
 class Post extends Model
 {

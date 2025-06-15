@@ -6,39 +6,39 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Modules\Blog\App\Services\Posts\GetPostByIdService;
+use Modules\Blog\App\Services\Posts\GetPostBySlugService;
 use Symfony\Component\HttpFoundation\Response;
 
-class GetPostByIdController extends Controller
+class GetPostBySlugController extends Controller
 {
-    protected GetPostByIdService $postService;
+    protected GetPostBySlugService $postService;
 
-    public function __construct(GetPostByIdService $postService)
+    public function __construct(GetPostBySlugService $postService)
     {
         $this->postService = $postService;
     }
 
     /**
-     * Retrieve a post by its ID.
+     * Retrieve a post by its slug.
      *
-     * @param  string  $id
+     * @param  string  $slug
      * @return JsonResponse
      */
-    public function __invoke(string $id): JsonResponse
+    public function __invoke(string $slug): JsonResponse
     {
-        if (!Auth::user()->can('post:view')) {
-            return response()->json(['error' => 'شما اجازه مشاهده پست‌ها را ندارید.'], 403);
-        }
-
-        $validator = Validator::make(['id' => $id], [
-            'id' => ['required', 'uuid', 'exists:posts,id'],
+        $validator = Validator::make(['slug' => $slug], [
+            'slug' => ['required', 'string', 'exists:posts,slug'],
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()->first()], 422);
+            return response()->json(['error' => $validator->errors()->first()], 404);
         }
 
-        $post = $this->postService->execute($id);
+        $post = $this->postService->execute($slug);
+
+        if ($post->visibility === 'private' && !Auth::check()) {
+            return response()->json(['error' => 'این پست خصوصی است.'], 403);
+        }
 
         return response()->json([
             'data' => [
