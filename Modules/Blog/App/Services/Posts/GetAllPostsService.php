@@ -17,6 +17,16 @@ class GetAllPostsService
         $this->blogSettingService = $blogSettingService;
     }
 
+    /**
+     * Retrieve all posts with pagination and optional filters.
+     *
+     * @param  int|null  $perPage
+     * @param  string|null  $status
+     * @param  string|null  $visibility
+     * @param  string|null  $search
+     * @param  string|null  $categoryId
+     * @return LengthAwarePaginator
+     */
     public function execute(
         ?int $perPage = null,
         ?string $status = null,

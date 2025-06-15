@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\User\App\Models\User;
 use Ramsey\Uuid\Uuid;
 
+/**
+ * @method static create(array $data)
+ */
 class PostQuestion extends Model
 {
     use HasFactory, SoftDeletes;
