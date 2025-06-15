@@ -2,7 +2,8 @@
 
 namespace Modules\Blog\App\Repositories;
 
-use Modules\Settings\App\Models\Blog\PostComment;
+
+use Modules\Blog\App\Models\PostComment;
 
 class PostCommentRepository
 {

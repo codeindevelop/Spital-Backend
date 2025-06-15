@@ -2,7 +2,8 @@
 
 namespace Modules\Blog\App\Repositories;
 
-use Modules\Settings\App\Models\Blog\PostQuestion;
+
+use Modules\Blog\App\Models\PostQuestion;
 
 class PostQuestionRepository
 {

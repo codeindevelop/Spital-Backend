@@ -2,7 +2,8 @@
 
 namespace Modules\Blog\App\Services;
 
-use Modules\Settings\App\Models\Blog\PostQuestion;
+
+use Modules\Blog\App\Models\PostQuestion;
 use Modules\Blog\App\Repositories\PostQuestionRepository;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Facades\Log;

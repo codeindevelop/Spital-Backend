@@ -8,10 +8,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
-use Modules\Settings\App\Services\Blog\PostQuestionService;
-use Modules\Settings\App\Services\Blog\PostService;
-use Modules\Settings\App\Services\Blog\PostCategoryService;
-use Modules\Settings\App\Services\Blog\PostCommentService;
+
+use Modules\Blog\App\Services\PostCategoryService;
+use Modules\Blog\App\Services\PostCommentService;
+use Modules\Blog\App\Services\PostQuestionService;
+use Modules\Blog\App\Services\PostService;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserPostController extends Controller
