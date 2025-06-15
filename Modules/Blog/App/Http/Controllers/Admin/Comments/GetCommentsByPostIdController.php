@@ -27,7 +27,7 @@ class GetCommentsByPostIdController extends Controller
      */
     public function __invoke(string $postId): JsonResponse
     {
-        if (!Auth::user()->can('comment:view')) {
+        if (!Auth::user()->can('post:comment:view')) {
             return response()->json(['error' => 'شما اجازه مشاهده کامنت‌ها را ندارید.'], 403);
         }
 

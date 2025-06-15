@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
+use Modules\Blog\App\Services\Question\CreateQuestionService;
 use Symfony\Component\HttpFoundation\Response;
 
 class CreateQuestionController extends Controller
@@ -40,7 +41,7 @@ class CreateQuestionController extends Controller
             'author_name' => ['nullable', 'string', 'max:255'],
             'author_email' => ['nullable', 'email', 'max:255'],
             'author_url' => ['nullable', 'url', 'max:255'],
-            'status' => ['nullable', 'in:pending,approved,spam'],
+//            'status' => ['nullable', 'in:pending,approved,spam'],
         ]);
 
         if ($validator->fails()) {

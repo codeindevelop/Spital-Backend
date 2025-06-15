@@ -29,7 +29,7 @@ class UpdateCommentController extends Controller
      */
     public function __invoke(Request $request, $id): JsonResponse
     {
-        if (!Auth::user()->can('comment:edit')) {
+        if (!Auth::user()->can('post:comment:edit')) {
             return response()->json(['error' => 'شما اجازه ویرایش کامنت را ندارید.'], 403);
         }
 

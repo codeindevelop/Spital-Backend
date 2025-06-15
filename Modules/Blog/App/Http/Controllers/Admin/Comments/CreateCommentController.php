@@ -28,7 +28,7 @@ class CreateCommentController extends Controller
      */
     public function __invoke(Request $request): JsonResponse
     {
-        if (!Auth::user()->can('comment:create')) {
+        if (!Auth::user()->can('post:comment:create')) {
             return response()->json(['error' => 'شما اجازه ایجاد کامنت را ندارید.'], 403);
         }
 

@@ -27,7 +27,7 @@ class DeleteCommentController extends Controller
      */
     public function __invoke($id): JsonResponse
     {
-        if (!Auth::user()->can('comment:delete')) {
+        if (!Auth::user()->can('post:comment:delete')) {
             return response()->json(['error' => 'شما اجازه حذف کامنت را ندارید.'], 403);
         }
 
