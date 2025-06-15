@@ -16,7 +16,15 @@ class CreateCommentService
         $this->commentRepository = $commentRepository;
     }
 
-    public function execute(array $data, $user): PostComment
+    /**
+     * Create a new comment for a post.
+     *
+     * @param  array  $data
+     * @param  object  $user
+     * @return PostComment
+     * @throws \Exception
+     */
+    public function execute(array $data, object $user): PostComment
     {
         try {
             $commentData = [
@@ -37,7 +45,7 @@ class CreateCommentService
         } catch (\Exception $e) {
             Log::error('Error creating comment: '.$e->getMessage(), [
                 'data' => $data,
-                'userId' => $user->id,
+                'userId' => $user->id, // اصلاح: استفاده از $user->id به جای $userId
                 'trace' => $e->getTraceAsString(),
             ]);
             throw $e;
