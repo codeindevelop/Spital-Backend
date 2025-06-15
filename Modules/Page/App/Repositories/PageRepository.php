@@ -2,10 +2,10 @@
 
 namespace Modules\Page\App\Repositories;
 
-use Modules\Page\App\Models\Page;
-use Modules\Seo\App\Models\PageSeo;
-use Modules\Seo\App\Models\PageSchema;
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Page\App\Models\Page;
+use Modules\Seo\App\Models\page\PageSchema;
+use Modules\Seo\App\Models\page\PageSeo;
 
 class PageRepository
 {

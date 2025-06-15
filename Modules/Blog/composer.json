@@ -1,5 +1,5 @@
 {
-    "name": "nwidart/blog",
+    "name": "spital/blog",
     "description": "",
     "authors": [
         {
@@ -18,14 +18,18 @@
     "autoload": {
         "psr-4": {
             "Modules\\Blog\\": "",
-            "Modules\\Blog\\App\\": "app/",
-            "Modules\\Blog\\Database\\Factories\\": "database/factories/",
-            "Modules\\Blog\\Database\\Seeders\\": "database/seeders/"
-        }
+            "Modules\\Blog\\App\\": "App/",
+            "Modules\\Blog\\Database\\Factories\\": "Database/Factories/",
+            "Modules\\Blog\\Database\\Seeders\\": "Database/Seeders/"
+        },
+        "files": [
+            "App/Helpers/SlugHelper.php",
+            "App/Helpers/PostShortLinkHelper.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
-            "Modules\\Blog\\Tests\\": "tests/"
+            "Modules\\Blog\\Tests\\": "Tests/"
         }
     }
 }

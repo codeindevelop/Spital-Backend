@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Modules\Auth\Database\Seeders\AuthDatabaseSeeder;
+use Modules\Blog\Database\Seeders\BlogDatabaseSeeder;
 use Modules\Leads\Database\Seeders\LeadsDatabaseSeeder;
 use Modules\Localization\Database\Seeders\LocalizationDatabaseSeeder;
 use Modules\RolePermission\Database\Seeders\RolePermissionDatabaseSeeder;
@@ -35,5 +36,8 @@ class DatabaseSeeder extends Seeder
 
         // Lead requirement Seeder
         $this->call(LeadsDatabaseSeeder::class);
+
+
+//        $this->call(BlogDatabaseSeeder::class);
     }
 }
