@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Settings\App\Models\Eshop\Seo;
+namespace Modules\Settings\App\Models\Seo;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

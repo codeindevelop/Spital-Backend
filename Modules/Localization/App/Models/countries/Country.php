@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Country (Shahr)
+ * @method static where(string $string, string $string1)
  */
 class Country extends Model
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Settings\Database\Seeders\EshopSettings\Seo\TelegramBotSettings;
+namespace Modules\Settings\Database\Seeders\Seo\TelegramBotSettings;
 
 
 use Illuminate\Database\Seeder;

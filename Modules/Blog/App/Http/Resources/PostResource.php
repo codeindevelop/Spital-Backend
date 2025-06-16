@@ -3,7 +3,7 @@
 namespace Modules\Blog\App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use Modules\Settings\App\Services\Blog\BlogSettingService;
+use Modules\Settings\App\Services\System\Blog\BlogSettingService;
 
 /**
  * @property mixed $schema

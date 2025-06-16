@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * @method static create(string[] $language)
+ * @method static where(string $string, string $string1)
  */
 class Language extends Model
 {

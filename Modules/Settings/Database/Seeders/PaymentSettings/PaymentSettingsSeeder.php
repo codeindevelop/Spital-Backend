@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Settings\Database\Seeders\EshopSettings\Seo\PaymentSettings;
+namespace Modules\Settings\Database\Seeders\Seo\PaymentSettings;
 
 
 use Illuminate\Database\Seeder;

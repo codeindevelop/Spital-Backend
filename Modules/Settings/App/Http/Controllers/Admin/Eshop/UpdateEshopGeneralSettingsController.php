@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
-use Modules\Settings\App\Services\Eshop\EshopGeneralSettingService;
+use Modules\Settings\App\Services\System\Eshop\EshopGeneralSettingService;
 use Symfony\Component\HttpFoundation\Response;
 
 class UpdateEshopGeneralSettingsController extends Controller

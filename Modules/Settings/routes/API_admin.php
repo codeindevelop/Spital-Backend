@@ -2,11 +2,13 @@
 
 
 use Illuminate\Support\Facades\Route;
-use Modules\Settings\App\Http\Controllers\Admin\Blog\AdminBlogSettingController;
+use Modules\Settings\App\Http\Controllers\Admin\System\General\Admin\Blog\AdminBlogSettingController;
 use Modules\Settings\App\Http\Controllers\Admin\Eshop\GetEshopGeneralSettingsController;
-use Modules\Settings\App\Http\Controllers\Admin\Seo\SeoGeneralSettingController;
-use Modules\Settings\App\Http\Controllers\Admin\Seo\SeoRepresentationSettingController;
 use Modules\Settings\App\Http\Controllers\Admin\Eshop\UpdateEshopGeneralSettingsController;
+use Modules\Settings\App\Http\Controllers\Admin\System\General\Admin\Seo\SeoGeneralSettingController;
+use Modules\Settings\App\Http\Controllers\Admin\System\General\Admin\Seo\SeoRepresentationSettingController;
+
+use Modules\Settings\App\Http\Controllers\Admin\System\General\GeneralSettingController;
 
 
 Route::prefix('v1/admin')->group(function () {
@@ -25,6 +27,18 @@ Route::prefix('v1/admin')->group(function () {
                 // Seo Representation Settings
                 Route::get('representation', [SeoRepresentationSettingController::class, 'getSettings']);
                 Route::post('representation', [SeoRepresentationSettingController::class, 'updateSettings']);
+
+            });
+
+            // System Settings
+            Route::prefix('system')->group(function () {
+
+                // Eshop General Settings
+                Route::get('general',
+                    [GeneralSettingController::class, 'show'])->name('admin.system.general_settings.show');
+                Route::patch('general',
+                    [GeneralSettingController::class, 'update'])->name('admin.system.general_settings.update');
+
 
             });
 

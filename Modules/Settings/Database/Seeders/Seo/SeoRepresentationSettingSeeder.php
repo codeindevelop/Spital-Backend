@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Settings\Database\Seeders\EshopSettings\Seo;
+namespace Modules\Settings\Database\Seeders\Seo;
 
 use Illuminate\Database\Seeder;
 use Ramsey\Uuid\Uuid;
-use Modules\Settings\App\Models\Eshop\Seo\SeoRepresentationSetting;
+use Modules\Settings\App\Models\Seo\SeoRepresentationSetting;
 use Spatie\Activitylog\Models\Activity;
 
 class SeoRepresentationSettingSeeder extends Seeder

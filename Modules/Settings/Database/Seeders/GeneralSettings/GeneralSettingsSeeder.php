@@ -1,11 +1,16 @@
 <?php
 
-namespace Modules\Settings\Database\Seeders\EshopSettings\Seo\GeneralSettings;
+namespace Modules\Settings\Database\Seeders\GeneralSettings;
 
-
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
-use Modules\Settings\App\Models\Eshop\GeneralSetting;
 
+use Modules\Localization\App\Models\countries\Country;
+use Modules\Localization\App\Models\Language;
+use Modules\Localization\App\Models\TimeZone;
+
+use Illuminate\Support\Str;
+use Modules\Settings\App\Models\System\GeneralSetting;
 
 class GeneralSettingsSeeder extends Seeder
 {
@@ -14,19 +19,22 @@ class GeneralSettingsSeeder extends Seeder
      */
     public function run(): void
     {
-
-        //create General Setting
+        // دریافت اولین رکورد از جداول مرتبط
+        $timezone = TimeZone::where('value', 'Asia/Tehran')->firstOrFail();
+        $language = Language::where('code', 'fa')->firstOrFail();
+        $country = Country::where('iso', 'IR')->firstOrFail();
 
         GeneralSetting::create([
-            "portal_name" => 'ابریکد',
-            "portal_desc" => 'مارکت تخصصی برنامه نویسی',
-            "time_zone" => 295,
-            "maintenance_mode" => false,
-            "signup_type" => "email",
-            "user_panel_url" => env("USERS_PANEL_URL"),
-
+            'id' => Str::uuid(),
+            'timezone_id' => $timezone->id,
+            'language_id' => $language->id,
+            'country_id' => $country->id,
+            'site_name' => 'وب سایت من',
+            'site_desc' => 'وب سایت مدیریت شده توسط اسپیتال',
+            'maintenance_mode' => false,
+            'user_panel_url' => 'https://panel.example.com',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
-
-
     }
 }

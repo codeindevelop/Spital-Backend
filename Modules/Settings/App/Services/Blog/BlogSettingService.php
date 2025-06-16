@@ -1,11 +1,11 @@
 <?php
 
-namespace Modules\Settings\App\Services\Blog;
+namespace Modules\Settings\App\Services\System\Blog;
 
 
 use Exception;
 use Illuminate\Support\Facades\Log;
-use Modules\Settings\App\Models\Eshop\Blog\BlogSetting;
+use Modules\Settings\App\Models\System\Blog\BlogSetting;
 use Ramsey\Uuid\Uuid;
 
 

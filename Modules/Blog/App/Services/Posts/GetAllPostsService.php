@@ -4,7 +4,7 @@ namespace Modules\Blog\App\Services\Posts;
 
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Modules\Blog\App\Repositories\Posts\GetAllPostsRepository;
-use Modules\Settings\App\Services\Blog\BlogSettingService;
+use Modules\Settings\App\Services\System\Blog\BlogSettingService;
 
 class GetAllPostsService
 {

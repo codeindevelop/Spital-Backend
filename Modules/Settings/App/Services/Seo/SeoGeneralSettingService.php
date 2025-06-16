@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Settings\App\Services\Seo;
+namespace Modules\Settings\App\Services\System\Seo;
 
 
 use Illuminate\Support\Facades\Storage;
-use Modules\Settings\App\Repositories\Eshop\Seo\SeoGeneralSettingRepository;
+use Modules\Settings\App\Repositories\System\Eshop\Seo\SeoGeneralSettingRepository;
 
 class SeoGeneralSettingService
 {

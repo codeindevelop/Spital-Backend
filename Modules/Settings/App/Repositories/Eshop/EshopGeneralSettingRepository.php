@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Settings\App\Repositories\Eshop;
+namespace Modules\Settings\App\Repositories\System\Eshop;
 
 
 use Modules\Settings\App\Models\Eshop\EshopGeneralSetting;

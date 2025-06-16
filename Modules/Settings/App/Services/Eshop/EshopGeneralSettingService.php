@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Settings\App\Services\Eshop;
+namespace Modules\Settings\App\Services\System\Eshop;
 
 
 use Modules\Settings\App\Models\Eshop\EshopGeneralSetting;
-use Modules\Settings\App\Repositories\Eshop\EshopGeneralSettingRepository;
+use Modules\Settings\App\Repositories\System\Eshop\EshopGeneralSettingRepository;
 
 class EshopGeneralSettingService
 {

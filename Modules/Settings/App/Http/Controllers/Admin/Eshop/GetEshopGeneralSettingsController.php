@@ -5,7 +5,7 @@ namespace Modules\Settings\App\Http\Controllers\Admin\Eshop;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 
-use Modules\Settings\App\Services\Eshop\EshopGeneralSettingService;
+use Modules\Settings\App\Services\System\Eshop\EshopGeneralSettingService;
 use Symfony\Component\HttpFoundation\Response;
 
 class GetEshopGeneralSettingsController extends Controller

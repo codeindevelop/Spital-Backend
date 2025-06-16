@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Settings\App\Http\Controllers\Admin\Seo;
+namespace Modules\Settings\App\Http\Controllers\Admin\System\General\Admin\Seo;
 
 
 use App\Http\Controllers\Controller;
@@ -8,7 +8,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Modules\Settings\App\Services\Seo\SeoRepresentationSettingService;
+use Modules\Settings\App\Services\System\Seo\SeoRepresentationSettingService;
 use Symfony\Component\HttpFoundation\Response;
 
 class SeoRepresentationSettingController extends Controller

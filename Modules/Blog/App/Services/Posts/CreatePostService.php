@@ -12,7 +12,7 @@ use Modules\Blog\App\Repositories\Posts\CreatePostRepository;
 use Modules\Blog\App\Repositories\Posts\CreatePostSeoRepository;
 use Modules\Blog\App\Repositories\Posts\CreatePostSchemaRepository;
 use Modules\Seo\App\Models\post\PostSchema;
-use Modules\Settings\App\Services\Blog\BlogSettingService;
+use Modules\Settings\App\Services\System\Blog\BlogSettingService;
 use Ramsey\Uuid\Uuid;
 
 class CreatePostService

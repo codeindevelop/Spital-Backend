@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\Settings\Database\Seeders\EshopSettings\Seo;
+namespace Modules\Settings\Database\Seeders\Seo;
 
 use Illuminate\Database\Seeder;
-use Modules\Settings\App\Models\Eshop\Seo\SeoGeneralSetting;
+use Modules\Settings\App\Models\Seo\SeoGeneralSetting;
 use Illuminate\Support\Str;
 
 class SeoGeneralSettingsSeeder extends Seeder

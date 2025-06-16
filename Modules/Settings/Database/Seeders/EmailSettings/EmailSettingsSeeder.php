@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Settings\Database\Seeders\EshopSettings\Seo\EmailSettings;
+namespace Modules\Settings\Database\Seeders\Seo\EmailSettings;
 
 
 use Illuminate\Database\Seeder;

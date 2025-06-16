@@ -3,6 +3,7 @@
 namespace Modules\Settings\Database\Seeders\EshopSettings\General;
 
 use Illuminate\Database\Seeder;
+
 use Modules\Settings\App\Models\Eshop\EshopGeneralSetting;
 use Ramsey\Uuid\Uuid;
 

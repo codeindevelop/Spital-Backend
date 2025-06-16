@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Settings\App\Http\Controllers\Admin\Blog;
+namespace Modules\Settings\App\Http\Controllers\Admin\System\General\Admin\Blog;
 
 use App\Http\Controllers\Controller;
 use Exception;
@@ -8,7 +8,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Modules\Settings\App\Services\Blog\BlogSettingService;
+use Modules\Settings\App\Services\System\Blog\BlogSettingService;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Log;
 
