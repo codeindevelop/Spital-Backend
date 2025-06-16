@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Settings\Database\Seeders\Seo\TelegramBotSettings;
+namespace Modules\Settings\Database\Seeders\EshopSettings\Seo\TelegramBotSettings;
 
 
 use Illuminate\Database\Seeder;
-use Modules\Settings\App\Models\TelegramBotsetting;
+use Modules\Settings\App\Models\Eshop\TelegramBotsetting;
 
 
 class TelegramBotSettingsSeeder extends Seeder

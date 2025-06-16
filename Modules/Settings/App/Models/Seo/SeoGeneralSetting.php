@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Settings\App\Models\Seo;
+namespace Modules\Settings\App\Models\Eshop\Seo;
 
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\LogOptions;

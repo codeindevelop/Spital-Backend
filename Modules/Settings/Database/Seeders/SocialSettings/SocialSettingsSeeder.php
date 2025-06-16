@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Settings\Database\Seeders\Seo\SocialSettings;
+namespace Modules\Settings\Database\Seeders\EshopSettings\Seo\SocialSettings;
 
 
 use Illuminate\Database\Seeder;
-use Modules\Settings\App\Models\SocialSetting;
+use Modules\Settings\App\Models\Eshop\SocialSetting;
 
 
 class SocialSettingsSeeder extends Seeder

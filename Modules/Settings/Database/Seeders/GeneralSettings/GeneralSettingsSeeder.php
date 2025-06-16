@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Settings\Database\Seeders\Seo\GeneralSettings;
+namespace Modules\Settings\Database\Seeders\EshopSettings\Seo\GeneralSettings;
 
 
 use Illuminate\Database\Seeder;
-use Modules\Settings\App\Models\GeneralSetting;
+use Modules\Settings\App\Models\Eshop\GeneralSetting;
 
 
 class GeneralSettingsSeeder extends Seeder

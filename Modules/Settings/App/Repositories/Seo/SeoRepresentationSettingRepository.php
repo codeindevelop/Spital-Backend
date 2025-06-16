@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\Settings\App\Repositories\Seo;
+namespace Modules\Settings\App\Repositories\Eshop\Seo;
 
 use Illuminate\Support\Facades\Auth;
-use Modules\Settings\App\Models\Seo\SeoRepresentationSetting;
+use Modules\Settings\App\Models\Eshop\Seo\SeoRepresentationSetting;
 use Modules\User\App\Models\User;
 
 class SeoRepresentationSettingRepository

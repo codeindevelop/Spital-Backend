@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Settings\Database\Seeders\Seo\AuthSettings;
+namespace Modules\Settings\Database\Seeders\EshopSettings\Seo\AuthSettings;
 
 
 use Illuminate\Database\Seeder;
-use Modules\Settings\App\Models\AuthSetting;
+use Modules\Settings\App\Models\Eshop\AuthSetting;
 
 
 class AuthSettingsSeeder extends Seeder

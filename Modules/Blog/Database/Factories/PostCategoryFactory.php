@@ -4,7 +4,7 @@ namespace Modules\Blog\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Blog\App\Helpers\SlugHelper;
-use Modules\Settings\App\Models\Blog\PostCategory;
+use Modules\Settings\App\Models\Eshop\Blog\PostCategory;
 use Modules\User\App\Models\User;
 use Ramsey\Uuid\Uuid;
 use Ybazli\Faker\Faker;

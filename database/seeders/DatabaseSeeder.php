@@ -9,7 +9,7 @@ use Modules\Blog\Database\Seeders\BlogDatabaseSeeder;
 use Modules\Leads\Database\Seeders\LeadsDatabaseSeeder;
 use Modules\Localization\Database\Seeders\LocalizationDatabaseSeeder;
 use Modules\RolePermission\Database\Seeders\RolePermissionDatabaseSeeder;
-use Modules\Settings\Database\Seeders\SettingsDatabaseSeeder;
+use Modules\Settings\Database\Seeders\EshopSettings\SettingsDatabaseSeeder;
 
 
 class DatabaseSeeder extends Seeder

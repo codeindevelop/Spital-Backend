@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Modules\Settings\App\Services\Seo\SeoGeneralSettingService;
-use Modules\Settings\App\Models\Seo\SeoGeneralSetting;
+use Modules\Settings\App\Models\Eshop\Seo\SeoGeneralSetting;
 use Symfony\Component\HttpFoundation\Response;
 use Spatie\Activitylog\Models\Activity;
 

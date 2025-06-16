@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Settings\Database\Seeders\Seo\PaymentGatewaySettings;
+namespace Modules\Settings\Database\Seeders\EshopSettings\Seo\PaymentGatewaySettings;
 
 
 use Illuminate\Database\Seeder;
-use Modules\Settings\App\Models\PaymentGateway;
+use Modules\Settings\App\Models\Eshop\PaymentGateway;
 
 
 class PaymentGatewaysSettingsSeeder extends Seeder

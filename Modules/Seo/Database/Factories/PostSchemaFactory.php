@@ -6,7 +6,7 @@ namespace Modules\Seo\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Blog\App\Helpers\SlugHelper;
 use Modules\Seo\App\Models\post\PostSchema;
-use Modules\Settings\App\Models\Blog\Post;
+use Modules\Settings\App\Models\Eshop\Blog\Post;
 use Modules\User\App\Models\User;
 use Ramsey\Uuid\Uuid;
 use Ybazli\Faker\Faker;

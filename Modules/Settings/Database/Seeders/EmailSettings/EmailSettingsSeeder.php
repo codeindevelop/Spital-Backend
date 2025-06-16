@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Settings\Database\Seeders\Seo\EmailSettings;
+namespace Modules\Settings\Database\Seeders\EshopSettings\Seo\EmailSettings;
 
 
 use Illuminate\Database\Seeder;
-use Modules\Settings\App\Models\EmailSetting;
+use Modules\Settings\App\Models\Eshop\EmailSetting;
 
 
 class EmailSettingsSeeder extends Seeder

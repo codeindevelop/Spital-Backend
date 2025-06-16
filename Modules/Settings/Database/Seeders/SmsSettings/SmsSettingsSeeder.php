@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Settings\Database\Seeders\Seo\SmsSettings;
+namespace Modules\Settings\Database\Seeders\EshopSettings\Seo\SmsSettings;
 
 
 use Illuminate\Database\Seeder;
-use Modules\Settings\App\Models\SmsSetting;
+use Modules\Settings\App\Models\Eshop\SmsSetting;
 
 
 class SmsSettingsSeeder extends Seeder

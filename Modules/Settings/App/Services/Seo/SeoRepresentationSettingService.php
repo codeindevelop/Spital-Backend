@@ -4,8 +4,8 @@ namespace Modules\Settings\App\Services\Seo;
 
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-use Modules\Settings\App\Models\Seo\SeoRepresentationSetting;
-use Modules\Settings\App\Repositories\Seo\SeoRepresentationSettingRepository;
+use Modules\Settings\App\Models\Eshop\Seo\SeoRepresentationSetting;
+use Modules\Settings\App\Repositories\Eshop\Seo\SeoRepresentationSettingRepository;
 
 class SeoRepresentationSettingService
 {
