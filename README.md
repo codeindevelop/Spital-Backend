@@ -1,66 +1,133 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Spital CMS
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub Issues](https://img.shields.io/github/issues/codeindevelop/spital-cms)](https://github.com/codeindevelop/spital-cms/issues)
+[![GitHub Stars](https://img.shields.io/github/stars/codeindevelop/spital-cms)](https://github.com/codeindevelop/spital-cms/stargazers)
 
-## About Laravel
+**Spital CMS** is a comprehensive, open-source content management system designed for centralized management of websites and business operations. Developed by **Abreall** ([abreall.com](https://abreall.com)), the project is led by **Hadi Mousavi** ([haddi.ir](https://haddi.ir) | [GitHub](https://github.com/codeindevelop)). Spital CMS provides a unified platform to manage articles, e-commerce, education, CRM, ERP, accounting, payroll, and social media analytics.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+> **Note**: Spital CMS is actively under development and has not yet reached its final stable version. We warmly welcome contributions from developers worldwide to help shape this project!
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## About Spital CMS
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Spital CMS is a powerful and flexible content management system built with **Laravel**, optimized for delivering robust and scalable RESTful APIs. It enables businesses and developers to manage all aspects of their digital presence and operations through a single, centralized platform. Designed as a backend solution, Spital CMS seamlessly integrates with various frontends (e.g., React, Vue.js, or mobile apps) via its API-driven architecture.
 
-## Learning Laravel
+### Key Features
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Article Management**: Create, edit, and publish articles with advanced categorization, comments, and SEO optimization.
+- **Online Store**: Manage products, store settings (e.g., shipping, taxes, coupons), and shopping carts.
+- **Education System**: Sell educational packages with course management and multimedia content support.
+- **CRM (Customer Relationship Management)**: Tools for customer management, lead tracking, and marketing automation.
+- **ERP (Enterprise Resource Planning)**: Streamline resource management, supply chain, and internal processes.
+- **Online Accounting**: Handle transactions, invoices, and financial reporting.
+- **Payroll Management**: Automate employee salary calculations and payment processing.
+- **Social Media Analytics**: Analyze social media performance to optimize marketing strategies.
+- **Open Source**: Fully accessible source code for customization and collaboration.
+- **API-Driven**: Comprehensive APIs for interacting with all system components.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Project Status
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Spital CMS is under active development and is not yet complete. We are continuously adding new features, improving performance, and fixing bugs. Contributions are highly encouraged to help us achieve a stable and feature-rich release.
 
-## Laravel Sponsors
+## Getting Started
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Prerequisites
 
-### Premium Partners
+- PHP >= 8.1
+- Composer
+- Laravel >= 10.x
+- MySQL/PostgreSQL
+- Node.js and NPM (for frontend, if needed)
+- Git
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### Installation
 
-## Contributing
+1. Clone the repository:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+   ```bash
+   git clone https://github.com/Spital-CMS/spital-backend.git
+   cd spital-cms
+   ```
 
-## Code of Conduct
+2. Install dependencies:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    ```bash
+    composer install
+    npm install
+    ```
+   
+3.Set up the environment file:
 
-## Security Vulnerabilities
+     
+    cp .env.example .env
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Configure the database and other settings in .env:
 
-## License
+```bash
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=spital_cms
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+### API Documentation
+Spital CMS provides RESTFULL APIs for all its features. To explore and test the APIs, you can use the Postman collection included in the project:
+
+Copy the SpitalCMS.postman_collection.json file from the /postman directory.
+Import it into Postman (File > Import).
+Configure environment variables (e.g., base_url, auth_token) in Postman.
+The collection includes APIs for managing articles, store settings, education, CRM, and more.
+
+
+```
+spital-cms/
+├── Modules/
+│   ├── Blog/                # Article and blog content management
+│   ├── Settings/            # General system and store settings
+│   ├── Eshop/               # Online store module
+│   ├── Education/           # Education and course management
+│   ├── CRM/                 # Customer relationship management
+│   ├── ERP/                 # Enterprise resource planning
+│   ├── Accounting/          # Online accounting system
+│   ├── Payroll/             # Payroll and employee salary management
+│   └── SocialAnalytics/     # Social media performance analytics
+├── postman/                 # Postman collection for API testing
+├── app/                     # Core Laravel code
+├── config/                  # Project configurations
+├── database/                # Migrations and seeders
+└── routes/                  # API and web routes
+```
+
+
+### Technologies
+
+- Backend: Laravel 10.x, PHP 8.1
+- Database: MySQL/PostgreSQL
+- Authentication: Laravel Sanctum
+- Permissions: Spatie Laravel Permission
+- Activity Logging: Spatie Laravel Activity Log
+- Modular Structure: Nwidart Laravel Modules
+- API Documentation: Postman Collection
+- Open Source: Licensed under MIT
+- 
+### License
+Spital CMS is released under the MIT License. You are free to use, modify, and distribute this software for both commercial and non-commercial purposes, provided the license terms are followed.
+
+### Contact
+For inquiries, support, or collaboration, please reach out:
+
+- Project Lead: Hadi Mousavi
+- Website: haddi.ir
+- GitHub: github.com/codeindevelop
+- Email: ceo@abreall.com
+- Development Company: Abreall
+- Website: abreall.com
+- To report bugs or suggest features, please create an Issue on GitHub.
+
+#### Acknowledgments
+We extend our gratitude to all developers, contributors, and users who support the growth of Spital CMS. Our mission is to build a robust and user-friendly CMS that meets the needs of modern businesses.
+
+
