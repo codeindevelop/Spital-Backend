@@ -5,7 +5,7 @@ namespace Modules\Settings\App\Services\System\Seo;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Modules\Settings\App\Models\Seo\SeoRepresentationSetting;
-use Modules\Settings\App\Repositories\System\Eshop\Seo\SeoRepresentationSettingRepository;
+use Modules\Eshop\App\Repositories\Settings\General\Seo\SeoRepresentationSettingRepository;
 
 class SeoRepresentationSettingService
 {

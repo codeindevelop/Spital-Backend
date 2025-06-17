@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Settings\App\Http\Controllers\Admin\Eshop;
+namespace Modules\Eshop\App\Http\Controllers\Admin\Settings\General;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
@@ -8,8 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
-
-use Modules\Settings\App\Services\System\Eshop\EshopGeneralSettingService;
+use Modules\Eshop\App\Services\Settings\General\EshopGeneralSettingService;
 use Symfony\Component\HttpFoundation\Response;
 
 class UpdateEshopGeneralSettingsController extends Controller

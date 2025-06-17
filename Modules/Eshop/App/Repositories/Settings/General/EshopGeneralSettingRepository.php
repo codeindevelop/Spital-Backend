@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\Settings\App\Repositories\System\Eshop;
+namespace Modules\Eshop\App\Repositories\Settings\General;
 
 
-use Modules\Settings\App\Models\Eshop\EshopGeneralSetting;
+use Modules\Eshop\App\Models\Settings\EshopGeneralSetting;
 
 class EshopGeneralSettingRepository
 {

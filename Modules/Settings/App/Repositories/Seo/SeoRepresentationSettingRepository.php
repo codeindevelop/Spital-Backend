@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Settings\App\Repositories\System\Eshop\Seo;
+namespace Modules\Eshop\App\Repositories\Settings\General\Seo;
 
 use Illuminate\Support\Facades\Auth;
 use Modules\Settings\App\Models\Seo\SeoRepresentationSetting;

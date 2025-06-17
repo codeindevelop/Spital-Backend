@@ -2,12 +2,10 @@
 
 
 use Illuminate\Support\Facades\Route;
+
 use Modules\Settings\App\Http\Controllers\Admin\System\General\Admin\Blog\AdminBlogSettingController;
-use Modules\Settings\App\Http\Controllers\Admin\Eshop\GetEshopGeneralSettingsController;
-use Modules\Settings\App\Http\Controllers\Admin\Eshop\UpdateEshopGeneralSettingsController;
 use Modules\Settings\App\Http\Controllers\Admin\System\General\Admin\Seo\SeoGeneralSettingController;
 use Modules\Settings\App\Http\Controllers\Admin\System\General\Admin\Seo\SeoRepresentationSettingController;
-
 use Modules\Settings\App\Http\Controllers\Admin\System\General\GeneralSettingController;
 
 
@@ -42,17 +40,7 @@ Route::prefix('v1/admin')->group(function () {
 
             });
 
-            // Eshop Settings
-            Route::prefix('eshop')->group(function () {
 
-                // Eshop General Settings
-                Route::get('general',
-                    GetEshopGeneralSettingsController::class)->name('admin.eshop.settings.get');
-                Route::put('general',
-                    UpdateEshopGeneralSettingsController::class)->name('admin.eshop.settings.update');
-
-
-            });
 
             // Blog Settings
             Route::prefix('blog')->group(function () {
