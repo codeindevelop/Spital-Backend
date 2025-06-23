@@ -4,7 +4,7 @@ namespace Modules\Eshop\App\Services\Settings\General;
 
 
 use Modules\Eshop\App\Models\Settings\General\EshopGeneralSetting;
-use Modules\Eshop\App\Repositories\Settings\General\EshopGeneralSettingRepository;
+use Modules\Eshop\App\Repositories\Settings\Product\EshopGeneralSettingRepository;
 
 class EshopGeneralSettingService
 {

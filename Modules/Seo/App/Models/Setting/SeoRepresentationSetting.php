@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Settings\App\Models\Seo;
+namespace Modules\Seo\App\Models\Setting;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

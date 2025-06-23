@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Settings\Database\Seeders\EshopSettings\General;
+namespace Modules\Eshop\Database\Seeders\Settings;
 
 use Illuminate\Database\Seeder;
 use Modules\Eshop\App\Models\Settings\General\EshopGeneralSetting;

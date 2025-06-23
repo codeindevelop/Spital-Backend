@@ -2,38 +2,36 @@
 
 namespace Modules\Eshop\App\Services\Settings\Product;
 
-
-use Modules\Eshop\App\Models\Settings\General\EshopGeneralSetting;
-use Modules\Eshop\App\Repositories\Settings\General\EshopGeneralSettingRepository;
+use Modules\Eshop\App\Repositories\Settings\Product\EshopProductSettingRepository;
+use Modules\Eshop\App\Models\Settings\Product\EshopProductSetting;
 
 class EshopProductSettingService
 {
-    protected EshopGeneralSettingRepository $settingRepository;
+    protected EshopProductSettingRepository $repository;
 
-    public function __construct(EshopGeneralSettingRepository $settingRepository)
+    public function __construct(EshopProductSettingRepository $repository)
     {
-        $this->settingRepository = $settingRepository;
+        $this->repository = $repository;
     }
 
     /**
-     * Get the general settings.
+     * Get product settings.
      *
-     * @return EshopGeneralSetting|null
+     * @return EshopProductSetting|null
      */
-    public function getSettings(): ?EshopGeneralSetting
+    public function getSettings(): ?EshopProductSetting
     {
-        return $this->settingRepository->getFirst();
+        return $this->repository->getSettings();
     }
 
     /**
-     * Update or create the general settings.
+     * Update product settings.
      *
      * @param  array  $data
-     * @return EshopGeneralSetting
-     * @throws \Exception
+     * @return EshopProductSetting
      */
-    public function updateSettings(array $data): EshopGeneralSetting
+    public function updateSettings(array $data): EshopProductSetting
     {
-        return $this->settingRepository->updateOrCreate($data);
+        return $this->repository->updateOrCreate($data);
     }
 }

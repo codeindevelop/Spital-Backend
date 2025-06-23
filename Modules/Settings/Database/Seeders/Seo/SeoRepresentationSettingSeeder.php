@@ -3,8 +3,8 @@
 namespace Modules\Settings\Database\Seeders\Seo;
 
 use Illuminate\Database\Seeder;
+use Modules\Seo\App\Models\Setting\SeoRepresentationSetting;
 use Ramsey\Uuid\Uuid;
-use Modules\Settings\App\Models\Seo\SeoRepresentationSetting;
 use Spatie\Activitylog\Models\Activity;
 
 class SeoRepresentationSettingSeeder extends Seeder

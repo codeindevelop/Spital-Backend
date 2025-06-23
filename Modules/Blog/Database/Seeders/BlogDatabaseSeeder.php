@@ -3,9 +3,9 @@
 namespace Modules\Blog\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Modules\Settings\App\Models\System\Blog\Post;
-use Modules\Settings\App\Models\System\Blog\PostCategory;
-use Modules\Settings\App\Models\System\Blog\PostComment;
+use Modules\Blog\App\Models\Setting\Post;
+use Modules\Blog\App\Models\Setting\PostCategory;
+use Modules\Blog\App\Models\Setting\PostComment;
 use Modules\User\App\Models\User;
 
 class BlogDatabaseSeeder extends Seeder
