@@ -2,14 +2,12 @@
 
 namespace Modules\Settings\App\Http\Controllers\Admin\System\General\Admin\Seo;
 
-use Modules\Files\App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Modules\Files\App\Http\Controllers\Controller;
 use Modules\Settings\App\Services\System\Seo\SeoGeneralSettingService;
-use Modules\Settings\App\Models\Seo\SeoGeneralSetting;
 use Symfony\Component\HttpFoundation\Response;
-use Spatie\Activitylog\Models\Activity;
 
 class SeoGeneralSettingController extends Controller
 {

@@ -1,18 +1,17 @@
 <?php
 
-namespace Modules\Settings\App\Http\Controllers\Admin\Eshop;
+namespace Modules\Eshop\App\Http\Controllers\Admin\Settings\General;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
-
-use Modules\Settings\App\Services\System\Eshop\EshopGeneralSettingService;
+use Modules\Eshop\App\Services\Settings\Product\EshopProductSettingService;
 use Symfony\Component\HttpFoundation\Response;
 
 class GetEshopGeneralSettingsController extends Controller
 {
-    protected EshopGeneralSettingService $settingService;
+    protected EshopProductSettingService $settingService;
 
-    public function __construct(EshopGeneralSettingService $settingService)
+    public function __construct(EshopProductSettingService $settingService)
     {
         $this->settingService = $settingService;
     }

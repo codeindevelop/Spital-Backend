@@ -1,10 +1,9 @@
 <?php
 
-namespace Modules\Settings\Database\Seeders\EshopSettings\General;
+namespace Modules\Eshop\Database\Seeders\Settings;
 
 use Illuminate\Database\Seeder;
-
-use Modules\Settings\App\Models\Eshop\EshopGeneralSetting;
+use Modules\Eshop\App\Models\Settings\General\EshopGeneralSetting;
 use Ramsey\Uuid\Uuid;
 
 class EshopGeneralSettingsTableSeeder extends Seeder

@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\Settings\App\Repositories\System\Eshop\Seo;
+namespace Modules\Eshop\App\Repositories\Settings\Product\Seo;
 
 use Illuminate\Support\Facades\Storage;
-use Modules\Settings\App\Models\Seo\SeoGeneralSetting;
+use Modules\Seo\App\Models\Setting\SeoGeneralSetting;
 
 class SeoGeneralSettingRepository
 {

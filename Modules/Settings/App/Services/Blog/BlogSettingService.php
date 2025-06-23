@@ -5,7 +5,7 @@ namespace Modules\Settings\App\Services\System\Blog;
 
 use Exception;
 use Illuminate\Support\Facades\Log;
-use Modules\Settings\App\Models\System\Blog\BlogSetting;
+use Modules\Blog\App\Models\Setting\BlogSetting;
 use Ramsey\Uuid\Uuid;
 
 

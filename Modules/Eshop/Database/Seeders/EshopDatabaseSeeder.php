@@ -3,6 +3,8 @@
 namespace Modules\Eshop\Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Modules\Eshop\Database\Seeders\Settings\EshopProductSettingsSeeder;
+use Modules\Eshop\Database\Seeders\Settings\EshopGeneralSettingsTableSeeder;
 
 class EshopDatabaseSeeder extends Seeder
 {
@@ -11,6 +13,10 @@ class EshopDatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // $this->call([]);
+        // General Settings
+        $this->call([EshopGeneralSettingsTableSeeder::class]);
+
+        // Product Setting
+        $this->call([EshopProductSettingsSeeder::class]);
     }
 }

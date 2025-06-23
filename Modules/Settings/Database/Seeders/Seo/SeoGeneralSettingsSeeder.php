@@ -3,8 +3,8 @@
 namespace Modules\Settings\Database\Seeders\Seo;
 
 use Illuminate\Database\Seeder;
-use Modules\Settings\App\Models\Seo\SeoGeneralSetting;
 use Illuminate\Support\Str;
+use Modules\Seo\App\Models\Setting\SeoGeneralSetting;
 
 class SeoGeneralSettingsSeeder extends Seeder
 {

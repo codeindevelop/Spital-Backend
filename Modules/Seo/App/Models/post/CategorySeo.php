@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Modules\Settings\App\Models\System\Blog\PostCategory;
+use Modules\Blog\App\Models\Setting\PostCategory;
 use Modules\User\App\Models\User;
 use Ramsey\Uuid\Uuid;
 

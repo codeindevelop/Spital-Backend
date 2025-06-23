@@ -10,7 +10,7 @@ return new class extends Migration {
         Schema::create('pages', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('parent_id')->nullable();
-            $table->foreign('parent_id')->references('id')->on('pages')->onDelete('set null');
+
 
             $table->string('title')->unique();
             $table->string('slug')->unique()->nullable();
@@ -39,10 +39,23 @@ return new class extends Migration {
             $table->softDeletes();
             $table->timestamps();
         });
+
+        // اضافه کردن کلید خارجی برای parent_id به‌صورت جداگانه
+        Schema::table('pages', function (Blueprint $table) {
+            $table->foreign('parent_id')
+                ->references('id')
+                ->on('pages')
+                ->onDelete('set null')
+                ->onUpdate('cascade');
+        });
     }
 
     public function down(): void
     {
+        // حذف کلید خارجی قبل از حذف جدول
+        Schema::table('pages', function (Blueprint $table) {
+            $table->dropForeign(['parent_id']);
+        });
         Schema::dropIfExists('pages');
     }
 };

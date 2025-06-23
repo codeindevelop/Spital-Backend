@@ -14,13 +14,17 @@ RUN apk update && apk add --no-cache \
     librdkafka-dev \
     libpng-dev \
     libjpeg-turbo-dev \
-    freetype-dev
+    freetype-dev \
+    postgresql-dev
+
 
 # Install PHP extensions
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
     docker-php-ext-install \
     pdo \
+    pgsql\
     pdo_mysql \
+    pdo_pgsql \
     mbstring \
     xml \
     zip \

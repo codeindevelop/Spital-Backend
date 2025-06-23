@@ -4,7 +4,7 @@ namespace Modules\Settings\App\Services\System\Seo;
 
 
 use Illuminate\Support\Facades\Storage;
-use Modules\Settings\App\Repositories\System\Eshop\Seo\SeoGeneralSettingRepository;
+use Modules\Eshop\App\Repositories\Settings\Product\Seo\SeoGeneralSettingRepository;
 
 class SeoGeneralSettingService
 {

@@ -23,14 +23,26 @@ return new class extends Migration {
             $table->softDeletes();
 
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
-            $table->foreign('parent_id')->references('id')->on('post_questions')->onDelete('set null');
+
             $table->foreign('created_by')->references('id')->on('users')->onDelete('restrict');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('set null');
+        });
+
+        // اضافه کردن کلید خارجی برای parent_id به‌صورت جداگانه
+        Schema::table('post_questions', function (Blueprint $table) {
+            $table->foreign('parent_id')
+                ->references('id')
+                ->on('post_questions')
+                ->onDelete('set null')
+                ->onUpdate('cascade');
         });
     }
 
     public function down(): void
     {
+        Schema::table('post_questions', function (Blueprint $table) {
+            $table->dropForeign(['parent_id']);
+        });
         Schema::dropIfExists('post_questions');
     }
 };

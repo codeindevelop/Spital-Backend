@@ -2,8 +2,8 @@
 
 namespace Modules\Blog\Database\Factories;
 
-use Modules\Settings\App\Models\System\Blog\PostComment;
-use Modules\Settings\App\Models\System\Blog\Post;
+use Modules\Blog\App\Models\Setting\PostComment;
+use Modules\Blog\App\Models\Setting\Post;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\User\App\Models\User;
 use Ramsey\Uuid\Uuid;
