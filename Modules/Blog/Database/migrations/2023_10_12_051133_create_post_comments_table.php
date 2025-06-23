@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->uuid('parent_id')->nullable();
 
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
-            $table->foreign('parent_id')->references('id')->on('post_comments')->onDelete('cascade');
+
 
             $table->string('author_name', 255)->nullable();
             $table->string('author_email', 255)->nullable();
@@ -31,10 +31,23 @@ return new class extends Migration {
             $table->softDeletes();
             $table->timestamps();
         });
+
+        // اضافه کردن کلید خارجی برای parent_id به‌صورت جداگانه
+        Schema::table('post_comments', function (Blueprint $table) {
+            $table->foreign('parent_id')
+                ->references('id')
+                ->on('post_comments')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+        });
     }
 
     public function down(): void
     {
+        // حذف کلید خارجی قبل از حذف جدول
+        Schema::table('post_comments', function (Blueprint $table) {
+            $table->dropForeign(['parent_id']);
+        });
         Schema::dropIfExists('post_comments');
     }
 };

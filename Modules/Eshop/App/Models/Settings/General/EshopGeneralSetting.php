@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Eshop\App\Models\Settings;
+namespace Modules\Eshop\App\Models\Settings\General;
 
 use Illuminate\Database\Eloquent\Model;
 use Ramsey\Uuid\Uuid;

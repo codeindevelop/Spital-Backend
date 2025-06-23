@@ -3,7 +3,7 @@
 namespace Modules\Eshop\App\Repositories\Settings\General;
 
 
-use Modules\Eshop\App\Models\Settings\EshopGeneralSetting;
+use Modules\Eshop\App\Models\Settings\General\EshopGeneralSetting;
 
 class EshopGeneralSettingRepository
 {

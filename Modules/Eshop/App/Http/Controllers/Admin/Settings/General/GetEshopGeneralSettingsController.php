@@ -4,14 +4,14 @@ namespace Modules\Eshop\App\Http\Controllers\Admin\Settings\General;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
-use Modules\Eshop\App\Services\Settings\General\EshopGeneralSettingService;
+use Modules\Eshop\App\Services\Settings\Product\EshopProductSettingService;
 use Symfony\Component\HttpFoundation\Response;
 
 class GetEshopGeneralSettingsController extends Controller
 {
-    protected EshopGeneralSettingService $settingService;
+    protected EshopProductSettingService $settingService;
 
-    public function __construct(EshopGeneralSettingService $settingService)
+    public function __construct(EshopProductSettingService $settingService)
     {
         $this->settingService = $settingService;
     }

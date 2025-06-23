@@ -3185,7 +3185,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseURL}}/api/v1/page/get-by-link/contact/tell",
+									"raw": "{{baseURL}}/api/v1/page/get-by-link/farhad",
 									"host": [
 										"{{baseURL}}"
 									],
@@ -3194,8 +3194,7 @@
 										"v1",
 										"page",
 										"get-by-link",
-										"contact",
-										"tell"
+										"farhad"
 									]
 								}
 							},
@@ -3208,7 +3207,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"parent_id\": \"9f118c7d-87ae-4b1c-ac4d-5ca784f627f1\",\n    \"title\": \"tells\",\n    \"slug\": \"tells\",\n    \"description\": \"description\",\n    \"content\": \"description\",\n    \"order\": 1,\n    \"template\": \"template\",\n    \"status\": \"published\",\n    \"visibility\": \"private\",\n    \"custom_css\": \"custom_css\",\n    \"custom_js\": \"custom_css\",\n    \"seo\": {\n        \"meta_title\": \"Home | My Site\",\n        \"meta_keywords\": null,\n        \"meta_description\": \"Welcome to our site\",\n        \"canonical_url\": null,\n        \"favicon\": null,\n        \"robots_index\": \"index\",\n        \"robots_follow\": \"follow\",\n        \"theme_color\": null,\n        \"language\": \"en\",\n        \"region\": null,\n        \"timezone\": \"UTC\",\n        \"author\": null,\n        \"og_title\": \"Home Page\",\n        \"og_description\": null,\n        \"og_image\": \"https://example.com/images/home.jpg\",\n        \"og_type\": \"website\",\n        \"og_url\": null,\n        \"og_site_name\": null,\n        \"og_locale\": \"en_US\",\n        \"og_image_alt\": null,\n        \"og_image_width\": null,\n        \"og_image_height\": null,\n        \"og_image_type\": \"image/jpeg\",\n        \"twitter_title\": null,\n        \"twitter_description\": null,\n        \"twitter_site\": null,\n        \"twitter_creator\": null,\n        \"twitter_image\": null,\n        \"twitter_card_type\": \"summary_large_image\",\n        \"twitter_site_handle\": null,\n        \"twitter_creator_handle\": null,\n        \"twitter_image_alt\": null,\n        \"twitter_image_width\": null,\n        \"twitter_image_height\": null\n    },\n    \"schema\": {\n        \"title\": \"tells\",\n        \"slug\": \"tells\",\n        \"schema_json\": \"{\\\"@type\\\":\\\"WebPage\\\",\\\"name\\\":\\\"Home\\\"}\"\n    },\n    \"published_at\": \"\", //must be a valid date\n    \"is_active\": true\n}",
+									"raw": "{\n    \"title\": \"hadسis\",\n    \"slug\": \"haسdis\",\n    \"description\": \"description\",\n    \"content\": \"description\",\n    \"order\": 1,\n    \"template\": \"template\",\n    \"status\": \"published\",\n    \"visibility\": \"public\",\n    \"password\": \"123456\",\n    \"password_confirmation\": \"123456\",\n    \"custom_css\": \"custom_css\",\n    \"custom_js\": \"custom_css\",\n    \"published_at\": null,\n    \"is_active\": true,\n    \"parent_id\": null,\n    \"seo\": {\n        \"meta_title\": \"Home | My Site\",\n        \"meta_description\": \"Welcome to our site\",\n        \"robots_index\": \"noindex\",\n        \"robots_follow\": \"follow\",\n        \"og_title\": \"Home Page\",\n        \"og_image\": \"https://example.com/images/home.jpg\",\n        \"og_type\": \"website\",\n        \"og_locale\": \"en_US\",\n        \"og_image_type\": \"image/jpeg\",\n        \"twitter_card_type\": \"summary_large_image\"\n    },\n    \"schema\": {\n        \"type\": \"Product\",\n        \"title\": \"محصول نمونه\",\n        \"slug\": \"product-sample\",\n        \"data\": {\n            \"name\": \"محصول نمونه\",\n            \"sku\": \"123456\",\n            \"price\": 99.99,\n            \"currency\": \"USD\",\n            \"description\": \"توضیحات محصول نمونه\"\n        }\n    }\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3367,15 +3366,11 @@
 															"type": "file",
 															"src": [
 																"/Users/yamata/Desktop/off/af665dc0-e3d6-4a37-a5fd-6a09ada23cc5.jpg",
-																"/Users/yamata/Desktop/off/images.jpeg"
+																"/Users/yamata/Desktop/off/images.jpeg",
+																"/Users/yamata/Desktop/16mob/پیشنهاد-لحظه-ای-2.png"
 															]
 														}
-													],
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
+													]
 												},
 												"url": {
 													"raw": "{{baseURL}}/api/v1/admin/setting/seo/representation",
@@ -3397,12 +3392,862 @@
 									]
 								}
 							]
+						},
+						{
+							"name": "‌Blog Setting",
+							"item": [
+								{
+									"name": "get",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseURL}}/api/v1/admin/setting/blog/general",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"setting",
+												"blog",
+												"general"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "update",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {}
+									},
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"public_posts_per_page\": 15,\n    \"admin_posts_per_page\": 15,\n    \"font_family\": \"Vazir\",\n    \"default_cover_image\": \"https://cover.com/images/default-cover.jpg\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}/api/v1/admin/setting/blog/general",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"setting",
+												"blog",
+												"general"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Eshop",
+							"item": [
+								{
+									"name": "General",
+									"item": [
+										{
+											"name": "get",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseURL}}/api/v1/admin/eshop/setting/general",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"eshop",
+														"setting",
+														"general"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "update",
+											"protocolProfileBehavior": {
+												"disabledSystemHeaders": {}
+											},
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"store_logo\": \"https://example.com/new-logo.png\",\n    \"store_name\": \"فروشگاه جدید\",\n    \"email\": \"new@store.com\",\n    \"phone_number\": \"+982198765432\",\n    \"mobile_number\": \"+989987654321\",\n    \"purchase_mode\": \"registered\",\n    \"address\": \"تهران، خیابان جدید، پلاک 456\",\n    \"city\": \"تهران\",\n    \"country\": \"ایران\",\n    \"province\": \"تهران\",\n    \"postal_code\": \"0987654321\",\n    \"sale_scope\": \"iran\",\n    \"shipping_scope\": \"iran\",\n    \"tax_enabled\": true,\n    \"coupon_enabled\": false,\n    \"currency\": \"USD\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseURL}}/api/v1/admin/eshop/setting/general",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"admin",
+														"eshop",
+														"setting",
+														"general"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								}
+							]
 						}
 					]
 				},
 				{
 					"name": "User",
 					"item": []
+				}
+			]
+		},
+		{
+			"name": "Blog",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Post Category",
+							"item": [
+								{
+									"name": "get all posts categries",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/admin/blog/categories/all",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"blog",
+												"categories",
+												"all"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "get   posts category by id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/admin/blog/categories/ade9e1de-7223-4676-9c83-53bddf818faf",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"blog",
+												"categories",
+												"ade9e1de-7223-4676-9c83-53bddf818faf"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "create category",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"آموزsش برنامه‌نویسی\",\n    \"slug\": \"\",\n    \"description\": \"دسته‌بندی برای مقالات مرتبط با آمsdوزش برنامه‌نویسی و کدنویسی\",\n    \"parent_id\": \"\",\n    \"is_active\": true,\n    \"seo\": {\n        \"meta_title\": \"آموزش برنامه‌نویسی | مقالات تخصصی کدنویسی\",\n        \"meta_keywords\": \"برنامه‌نویسی, کدنویسی, آموزش, توسعه نرم‌افزار\",\n        \"meta_description\": \"مقالات و آموزش‌های جامع درباره برنامه‌نویسی و توسعه نرم‌افزار\",\n        \"canonical_url\": \"https://your-domain.com/categories/آموزش-برنامه‌نویسی\",\n        \"robots_index\": \"index\",\n        \"robots_follow\": \"follow\",\n        \"og_title\": \"آموزش برنامه‌نویسی - Spital CMS\",\n        \"og_description\": \"یادگیری برنامه‌نویسی با مقالات تخصصی و کاربردی\",\n        \"og_type\": \"website\",\n        \"og_url\": \"https://your-domain.com/categories/آموزش-برنامه‌نویسی\",\n        \"og_site_name\": \"Spital CMS\",\n        \"og_image\": \"https://your-domain.com/images/programming.jpg\",\n        \"og_image_alt\": \"تصویر آموزش برنامه‌نویسی\",\n        \"og_image_width\": 1200,\n        \"og_image_height\": 630,\n        \"og_locale\": \"fa_IR\",\n        \"twitter_card\": \"summary_large_image\",\n        \"twitter_description\": \"یادگیری برنامه‌نویسی با مقالات تخصصی و کاربردی\",\n        \"twitter_site\": \"@SpitalCMS\",\n        \"twitter_creator\": \"@Abrecode\",\n        \"twitter_image\": \"https://your-domain.com/images/programming.jpg\",\n        \"generator\": \"Spital CMS, Created By Abrecode.com\"\n    },\n    \"schema\": {\n        \"type\": \"CollectionPage\",\n        \"title\": \"آموزش برنامه‌نویسی\",\n        \"slug\": \"آموزdش-برنامه‌نویسی\",\n        \"content\": \"مجموعه مقالات آموزشی در زمینه برنامه‌نویسی\",\n        \"description\": \"دسته‌بندی جامع برای مقالات برنامه‌نویسی\",\n        \"data\": {\n            \"name\": \"آموزش برنامه‌نویسی\",\n            \"description\": \"دسته‌بندی جامع برای مقالات برنامه‌نویسی\",\n            \"url\": \"https://your-domain.com/categories/آموزش-برنامه‌نویسی\"\n        },\n        \"status\": \"published\",\n        \"visibility\": \"public\",\n        \"language\": \"fa\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/admin/blog/categories/create",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"blog",
+												"categories",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "update  post category",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"آ یسی\",\n    \"slug\": \"\",\n    \"description\": \"دسته‌بندی برای مقالات مرتبط با آمsdوزش برنامه‌نویسی و کدنویسی\",\n    \"parent_id\": \"\",\n    \"is_active\": true,\n    \"seo\": {\n        \"meta_title\": \"آموزش برنامه‌نویسی | مقالات تخصصی کدنویسی\",\n        \"meta_keywords\": \"برنامه‌نویسی, کدنویسی, آموزش, توسعه نرم‌افزار\",\n        \"meta_description\": \"مقالات و آموزش‌های جامع درباره برنامه‌نویسی و توسعه نرم‌افزار\",\n        \"canonical_url\": \"https://your-domain.com/categories/آموزش-برنامه‌نویسی\",\n        \"robots_index\": \"index\",\n        \"robots_follow\": \"follow\",\n        \"og_title\": \"آموزش برنامه‌نویسی - Spital CMS\",\n        \"og_description\": \"یادگیری برنامه‌نویسی با مقالات تخصصی و کاربردی\",\n        \"og_type\": \"website\",\n        \"og_url\": \"https://your-domain.com/categories/آموزش-برنامه‌نویسی\",\n        \"og_site_name\": \"Spital CMS\",\n        \"og_image\": \"https://your-domain.com/images/programming.jpg\",\n        \"og_image_alt\": \"تصویر آموزش برنامه‌نویسی\",\n        \"og_image_width\": 1200,\n        \"og_image_height\": 630,\n        \"og_locale\": \"fa_IR\",\n        \"twitter_card\": \"summary_large_image\",\n        \"twitter_description\": \"یادگیری برنامه‌نویسی با مقالات تخصصی و کاربردی\",\n        \"twitter_site\": \"@SpitalCMS\",\n        \"twitter_creator\": \"@Abrecode\",\n        \"twitter_image\": \"https://your-domain.com/images/programming.jpg\",\n        \"generator\": \"Spital CMS, Created By Abrecode.com\"\n    },\n    \"schema\": {\n        \"type\": \"CollectionPage\",\n        \"title\": \"آموزش برنامه‌نویسی\",\n        \"slug\": \"آموزdش-برنامه‌نویسی\",\n        \"content\": \"مجموعه مقالات آموزشی در زمینه برنامه‌نویسی\",\n        \"description\": \"دسته‌بندی جامع برای مقالات برنامه‌نویسی\",\n        \"data\": {\n            \"name\": \"آموزش برنامه‌نویسی\",\n            \"description\": \"دسته‌بندی جامع برای مقالات برنامه‌نویسی\",\n            \"url\": \"https://your-domain.com/categories/آموزش-برنامه‌نویسی\"\n        },\n        \"status\": \"published\",\n        \"visibility\": \"public\",\n        \"language\": \"fa\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/admin/blog/categories/ade9e1de-7223-4676-9c83-53bddf818faf",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"blog",
+												"categories",
+												"ade9e1de-7223-4676-9c83-53bddf818faf"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "delete  post category",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/admin/blog/categories/ade9e1de-7223-4676-9c83-53bddf818faf",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"blog",
+												"categories",
+												"ade9e1de-7223-4676-9c83-53bddf818faf"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Post",
+							"item": [
+								{
+									"name": "Get all posts",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/admin/blog/posts/all",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"blog",
+												"posts",
+												"all"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "create a post",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"title\": \"چگونه برنامه‌نویسی پasبیdایتون را شروعس کنیم\",\r\n    \"slug\": \"\",\r\n    \"content\": \"<p>این مسقاله راهنمای جامعی است...</p>\",\r\n    \"summary\": \"خلاصه‌ای از آموزش پایتون\",\r\n    \"category_id\": \"\",\r\n    \"featured_image\": \"https://your-domain.com/images/python.jpg\",\r\n    \"cover_image\": {\r\n        \"id\": \"uuid-of-image\",\r\n        \"name\": \"python.jpg\",\r\n        \"alt\": \"تصویر پایتون\",\r\n        \"preview\": \"https://your-domain.com/images/python.jpg\",\r\n        \"width\": 1200,\r\n        \"height\": 630\r\n    },\r\n    \"comment_status\": true,\r\n    \"status\": \"published\",\r\n    \"visibility\": \"public\",\r\n    \"password\": null,\r\n    \"published_at\": \"2025-06-14T10:00:00Z\",\r\n    \"is_active\": true,\r\n    \"is_featured\": true,\r\n    \"is_trend\": false,\r\n    \"is_advertisement\": false,\r\n    \"reading_time\": 5,\r\n    \"post_type\": \"video\",\r\n    \"media_link\": \"https://your-domain.com/videos/python.mp4\",\r\n    \"seo\": {\r\n        \"meta_title\": \"آموزش پایتون | شروع برنامه‌نویسی با پایتون\",\r\n        \"meta_keywords\": \"پایتون, برنامه‌نویسی, آموزش, یادگیری پایتون\",\r\n        \"meta_description\": \"راهنمای کامل برای شروع برنامه‌نویسی با زبان پایتون\",\r\n        \"canonical_url\": \"https://your-domain.com/posts/چگونه-برنامه‌نویسی-پایتون-را-شروع-کنیم\",\r\n        \"robots_index\": \"index\",\r\n        \"robots_follow\": \"follow\",\r\n        \"og_title\": \"آموزش پایتون - Spital CMS\",\r\n        \"og_description\": \"یادگیری پایتون با راهنمای جامع و کاربردی\",\r\n        \"og_type\": \"article\",\r\n        \"og_url\": \"https://your-domain.com/posts/چگونه-برنامه‌نویسی-پایتون-را-شروع-کنیم\",\r\n        \"og_site_name\": \"Spital CMS\",\r\n        \"og_image\": \"https://your-domain.com/images/python.jpg\",\r\n        \"og_image_alt\": \"تصویر آموزش پایتون\",\r\n        \"og_image_width\": 1200,\r\n        \"og_image_height\": 630,\r\n        \"og_locale\": \"fa_IR\",\r\n        \"twitter_card\": \"summary_large_image\",\r\n        \"twitter_description\": \"یادگیری پایتون با راهنمای جامع و کاربردی\",\r\n        \"twitter_site\": \"@SpitalCMS\",\r\n        \"twitter_creator\": \"@Abrecode\",\r\n        \"twitter_image\": \"https://your-domain.com/images/python.jpg\",\r\n        \"generator\": \"Spital CMS, Created By Abrecode.com\"\r\n    },\r\n    \"schema\": {\r\n        \"type\": \"Article\",\r\n        \"title\": \"چگونه برنامه‌نویسی پایتون را شروع کنیم\",\r\n        \"slug\": \"چasdasdگونه-برسیبسیبسسیبنامه‌نویس sddشروع-کنیم\",\r\n        \"content\": \"راهنمای جامع برای یادگیری پایتون\",\r\n        \"description\": \"این مقاله به شما کمک می‌کند تا برنامه‌نویسی پایتون را شروع کنید\",\r\n        \"data\": {\r\n            \"headline\": \"چگونه برنامه‌نویسی پایتون را شروع کنیم\",\r\n            \"author\": \"محمد حسینی\",\r\n            \"datePublished\": \"2025-06-14\",\r\n            \"image\": \"https://your-domain.com/images/python.jpg\"\r\n        },\r\n        \"status\": \"published\",\r\n        \"visibility\": \"public\",\r\n        \"language\": \"fa\"\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/admin/blog/posts/create",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"blog",
+												"posts",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "get post by id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/admin/blog/posts/70ecf8f6-02d5-4d60-97f7-30a80aed3b59",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"blog",
+												"posts",
+												"70ecf8f6-02d5-4d60-97f7-30a80aed3b59"
+											],
+											"query": [
+												{
+													"key": "id",
+													"value": "1",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update post by id",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"title\": \"چگونه برنامه‌نویسی asdfپایتون را شروع کنیم\",\r\n    \"slug\": \"\",\r\n    \"content\": \"<p>این مقاله راهنمای جامعی برای شروع برنامه‌نویسی با پایتون است...</p>\",\r\n    \"category_id\": \"\",\r\n    \"featured_image\": \"https://your-domain.com/images/python.jpg\",\r\n    \"comment_status\": true,\r\n    \"status\": \"published\",\r\n    \"visibility\": \"public\",\r\n    \"password\": null,\r\n    \"published_at\": \"2025-06-14T10:00:00Z\",\r\n    \"is_active\": true,\r\n    \"seo\": {\r\n        \"meta_title\": \"آموزش پایتون | شروع برنامه‌نویسی با پایتون\",\r\n        \"meta_keywords\": \"پایتون, برنامه‌نویسی, آموزش, یادگیری پایتون\",\r\n        \"meta_description\": \"راهنمای کامل برای شروع برنامه‌نویسی با زبان پایتون\",\r\n        \"canonical_url\": \"https://your-domain.com/posts/چگونه-برنامه‌نویسی-پایتون-را-شروع-کنیم\",\r\n        \"robots_index\": \"index\",\r\n        \"robots_follow\": \"follow\",\r\n        \"og_title\": \"آموزش پایتون - Spital CMS\",\r\n        \"og_description\": \"یادگیری پایتون با راهنمای جامع و کاربردی\",\r\n        \"og_type\": \"article\",\r\n        \"og_url\": \"https://your-domain.com/posts/چگونه-برنامه‌نویسی-پایتون-را-شروع-کنیم\",\r\n        \"og_site_name\": \"Spital CMS\",\r\n        \"og_image\": \"https://your-domain.com/images/python.jpg\",\r\n        \"og_image_alt\": \"تصویر آموزش پایتون\",\r\n        \"og_image_width\": 1200,\r\n        \"og_image_height\": 630,\r\n        \"og_locale\": \"fa_IR\",\r\n        \"twitter_card\": \"summary_large_image\",\r\n        \"twitter_description\": \"یادگیری پایتون با راهنمای جامع و کاربردی\",\r\n        \"twitter_site\": \"@SpitalCMS\",\r\n        \"twitter_creator\": \"@Abrecode\",\r\n        \"twitter_image\": \"https://your-domain.com/images/python.jpg\",\r\n        \"generator\": \"Spital CMS, Created By Abrecode.com\"\r\n    },\r\n    \"schema\": {\r\n        \"type\": \"Article\",\r\n        \"title\": \"چگونه برنامه‌نویسی پایتون را شروع کنیم\",\r\n        \"slug\": \"چگونه-برنامه‌نویس شروع-کنیم\",\r\n        \"content\": \"راهنمای جامع برای یادگیری پایتون\",\r\n        \"description\": \"این مقاله به شما کمک می‌کند تا برنامه‌نویسی پایتون را شروع کنید\",\r\n        \"data\": {\r\n            \"headline\": \"چگونه برنامه‌نویسی پایتون را شروع کنیم\",\r\n            \"author\": \"محمد حسینی\",\r\n            \"datePublished\": \"2025-06-14\",\r\n            \"image\": \"https://your-domain.com/images/python.jpg\"\r\n        },\r\n        \"status\": \"published\",\r\n        \"visibility\": \"public\",\r\n        \"language\": \"fa\"\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/admin/post/admin-update-post/2",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"post",
+												"admin-update-post",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "delete post by id",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/admin/post/admin-delete-post/2",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"post",
+												"admin-delete-post",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "get  post by url",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/admin/post/admin-get-posts-byurl/gorgeous-cotton-pizza",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"post",
+												"admin-get-posts-byurl",
+												"gorgeous-cotton-pizza"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Comments",
+							"item": [
+								{
+									"name": "get comment by post id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/admin/blog/comments/post/bad5ea12-f796-49fc-9142-d1212d2e42d5",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"blog",
+												"comments",
+												"post",
+												"bad5ea12-f796-49fc-9142-d1212d2e42d5"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "create post-comment",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"post_id\": \"70ecf8f6-02d5-4d60-97f7-30a80aed3b59\",\r\n    \"content\": \"این مقاله بسیار مفید بود! لطفاً آموزش‌های بیشتری درباره پایتون منتشر کنید.\",\r\n    \"parent_id\": \"\",\r\n    \"author_email\": \"user@example.com\",\r\n    \"author_url\": \"https://user-website.com\",\r\n    \"status\": \"approved\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/admin/blog/comments/create",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"blog",
+												"comments",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "update comment by id",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"post_id\": \"bad5ea12-f796-49fc-9142-d1212d2e42d5\",\r\n    \"content\": \"این مقالاره پایتون منتشر کنید.\",\r\n    \"parent_id\": \"1047ef59-b559-4efe-941a-aac3e69775ef\",\r\n    \"author_email\": \"user@example.com\",\r\n    \"author_url\": \"https://user-website.com\",\r\n    \"status\": \"pending\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/admin/blog/comments/de71396e-9f9e-49a2-8d93-a3e930165dbd",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"blog",
+												"comments",
+												"de71396e-9f9e-49a2-8d93-a3e930165dbd"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "delete post-comment by id",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/admin/blog/comments/de71396e-9f9e-49a2-8d93-a3e930165dbd",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"admin",
+												"blog",
+												"comments",
+												"de71396e-9f9e-49a2-8d93-a3e930165dbd"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Public",
+					"item": [
+						{
+							"name": "Post Category",
+							"item": [
+								{
+									"name": "get all posts categries",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/public/blog/categories/all",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"public",
+												"blog",
+												"categories",
+												"all"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "get   posts category by slug",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/public/blog/categories/اخبار-های-فناوری",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"public",
+												"blog",
+												"categories",
+												"اخبار-های-فناوری"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Post",
+							"item": [
+								{
+									"name": "Get all posts",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/public/blog/posts/all",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"public",
+												"blog",
+												"posts",
+												"all"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "get post by slug",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/public/blog/posts/چگونه-برنامهنویسی-پasبیdایتون-را-شروعس-کنیم",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"public",
+												"blog",
+												"posts",
+												"چگونه-برنامهنویسی-پasبیdایتون-را-شروعس-کنیم"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Comments",
+							"item": [
+								{
+									"name": "get comment by post id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/public/blog/comments/post/70ecf8f6-02d5-4d60-97f7-30a80aed3b59",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"public",
+												"blog",
+												"comments",
+												"post",
+												"70ecf8f6-02d5-4d60-97f7-30a80aed3b59"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Post Category",
+							"item": [
+								{
+									"name": "get all posts categries",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/public/blog/categories/all",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"public",
+												"blog",
+												"categories",
+												"all"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "get   posts category by slug",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/public/blog/categories/اخبار-های-فناوری",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"public",
+												"blog",
+												"categories",
+												"اخبار-های-فناوری"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Post",
+							"item": [
+								{
+									"name": "Get all posts",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/public/blog/posts/all",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"public",
+												"blog",
+												"posts",
+												"all"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "get post by slug",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/public/blog/posts/چگونه-برنامهنویسی-پasبیdایتون-را-شروعس-کنیم",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"public",
+												"blog",
+												"posts",
+												"چگونه-برنامهنویسی-پasبیdایتون-را-شروعس-کنیم"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Comments",
+							"item": [
+								{
+									"name": "create comment",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"post_id\": \"70ecf8f6-02d5-4d60-97f7-30a80aed3b59\",\n    \"content\": \"این مقاله بسیار مفید بود! لطفاً آموزش‌های بیشتری درباره پایتون منتشر کنید.\",\n    \"parent_id\": \"\",\n    \"author_email\": \"user@example.com\",\n    \"author_url\": \"https://user-website.com\",\n    \"status\": \"pending\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/user/blog/comments/create",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"user",
+												"blog",
+												"comments",
+												"create"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Question",
+							"item": [
+								{
+									"name": "create Question",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"post_id\": \"70ecf8f6-02d5-4d60-97f7-30a80aed3b59\",\n    \"content\": \"این مقاله بسیار مفید بود! لطفاً آموزش‌های بیشتری درباره پایتون منتشر کنید.\",\n    \"parent_id\": \"\",\n    \"author_email\": \"user@example.com\",\n    \"author_url\": \"https://user-website.com\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{authServer-V1}}/api/v1/user/blog/questions/create",
+											"host": [
+												"{{authServer-V1}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"user",
+												"blog",
+												"questions",
+												"create"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
 				}
 			]
 		}
@@ -3443,6 +4288,21 @@
 		{
 			"key": "spital admin token",
 			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "authServer-V1",
+			"value": "127.0.0.1:8000",
+			"type": "default"
+		},
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "BackendURL",
+			"value": "127.0.0.1",
 			"type": "default"
 		}
 	]

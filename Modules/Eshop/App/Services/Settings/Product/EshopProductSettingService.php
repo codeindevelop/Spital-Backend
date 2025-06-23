@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\Eshop\App\Services\Settings\General;
+namespace Modules\Eshop\App\Services\Settings\Product;
 
 
 use Modules\Eshop\App\Models\Settings\General\EshopGeneralSetting;
 use Modules\Eshop\App\Repositories\Settings\General\EshopGeneralSettingRepository;
 
-class EshopGeneralSettingService
+class EshopProductSettingService
 {
     protected EshopGeneralSettingRepository $settingRepository;
 
